@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "skills": {
+    "humanizer": {
+      "version": "1.0.0",
+      "installedAt": 1771317932625
+    },
+    "music-generation": {
+      "version": "1.0.0",
+      "installedAt": 1771318582708
+    },
+    "openai-whisper-api": {
+      "version": "1.0.0",
+      "installedAt": 1771320205903
+    },
+    "gemini": {
+      "version": "1.0.0",
+      "installedAt": 1771323255092
+    },
+    "supabase": {
+      "version": "1.0.0",
+      "installedAt": 1771325162142
+    },
+    "airtable": {
+      "version": "1.0.6",
+      "installedAt": 1771332436903
+    },
+    "brave-api-search": {
+      "version": "1.0.0",
+      "installedAt": 1771337675089
+    }
+  }
+}

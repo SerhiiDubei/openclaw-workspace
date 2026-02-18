@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Warehouse Riot - Big Beat Anthem",
+  "prompt": "[MINIMAL_INTRO][ROLAND_TR909][ANALOG_KICK][HYPNOTIC_LOOP][ATMOSPHERIC_SPACE][TENSION_BUILD][VINYL_CRACKLE][LO_FI_DUST]\nKick drum pulses filter closed waiting\n\n[VERSE_1][DISTORTED_BASS][BREAKBEAT_CHAOS][AGGRESSIVE_ENERGY][REPETITIVE_CHANT][STREAM_CONSCIOUSNESS][PUNK_ATTITUDE]\nThey want control we want noise\nWarehouse calls no choice\nBreak the lock find the sound\nUnderground underground\n\n[PRE_DROP][FILTER_SWEEPS][SYNTH_RISE][ENERGY_PEAK][ROLAND_JP8000][ACID_SEQUENCES][HYPNOTIC_REPETITION][TENSION_MAXIMUM]\nRising rising rising\n\n[DROP][FULL_ARRANGEMENT][TRAINSPOTTING_ENERGY][DANCEFLOOR_TRANSCENDENCE][COLLECTIVE_EUPHORIA][PEAK_EXPERIENCE][DISTORTION_MAXIMUM]\nBass drops chaos reigns\nBodies move break the chains\nRave or die rave or die\n\n[BREAKDOWN][STRIPPED_BEATS][VOCAL_EMERGENCE][KARL_HYDE_STYLE][LAGER_MANTRA][SYNTHETIC_FOUNDATION][CONSCIOUSNESS_FLOW]\nStatic voice memory fades\nWhat we lose what we save\n\n[BUILD_UP][TEMPO_SPIKE][STUTTER_CUT_FX][SCENE_SWITCH_FX][REVERSE_SWEEP][COSMIC_PAD_COLLAPSE][ENERGY_REBUILD]\nBuilding building building\n\n[FINAL_DROP][EXTENDED_JOURNEY][PROGRESSIVE_EVOLUTION][ETERNAL_GROOVE][TEMPORAL_DISSOLUTION][FULL_CHAOS][WAREHOUSE_DESTRUCTION]\nNo end no end no end\n\n[OUTRO][FADE_OUT][DISTORTION_TAIL][VINYL_RUNOUT][TAPE_HISS_SUSTAIN]\nFeedback fades silence waits",
+  "tags": "big beat,breakbeat,warehouse rave,90s electronic,punk energy,acid",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "melodic pop,soft vocals,orchestral,modern EDM,auto-tune,clean production",
+  "gpt_description_prompt": "Aggressive 90s big beat in the style of The Prodigy. Heavy distorted Roland TR-909 drums, analog acid basslines, warehouse rave energy. Raw punk attitude, breakbeat chaos, filtered synth rises. Vinyl crackle, lo-fi dust, maximum distortion. Underground rebellion sound.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

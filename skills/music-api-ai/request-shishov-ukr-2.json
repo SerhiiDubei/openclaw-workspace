@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Шишов і Гриб - Частина II",
+  "prompt": "[Intro][Cosmic Ambient][Space Drones][Deep Void][Meditative State][Slow Build][Mystical Atmosphere]\nЗнайшов, згадав. Чи то забув\nЄвген Шишов\n\n[Verse 1][Trip Hop Beat][Downtempo][Beth Gibbons Style Vocals][Portishead Darkness][Cinematic Strings][Melancholic Beauty]\nНе ту ти річку перейшов\nКосмічний горизонта шов\nА в ньому там, Євген Шишов\nІ справжній гриб що він знайшов\n\n[Chorus][Full Arrangement][Epic Crescendo][Orchestral Techno][Spiritual Energy][Transcendence]\nВін йде крізь виміри тепер\nГриб показує йому тепер\nРеальність гнеться і ламається\nШишов прокидається, Шишов прокидається\n\n[Breakdown][Minimal][Single Piano Note][Heartbeat Bass][Isolation][Existential Void]\nКуди ж веде цей шлях?\n\n[Build Up][String Section][Timpani][Doom Jazz Elements][Rising Intensity]\nКрізь ліси розуму\nЗалишаючи буденність позаду\n\n[Final Drop][Maximum Power][Shoegaze Wall Of Sound][Techno Industrial Fusion][Apocalyptic Beauty]\nЄвген Шишов знайшов правду\nУ спорах своєї молодості\nШоу триває вічно тепер\nПоклонись, поклонись\n\n[Outro][Gradual Fade][Cosmic Echo][Infinite Reverb][Return To Silence]\nШишов йде...",
+  "tags": "trip hop,portishead,downtempo,cinematic techno,shoegaze,doom jazz,cosmic,psychedelic",
+  "style_weight": 0.8,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "pop,upbeat,commercial dance,cheerful,bubblegum,mainstream vocals",
+  "gpt_description_prompt": "Cinematic trip-hop meets underground techno. Portishead-inspired darkness with Beth Gibbons-style ethereal vocals, slow trip-hop beats, orchestral string sections, shoegaze wall of sound. Doom jazz elements, cosmic atmosphere, melancholic beauty, existential themes. Spiritual transcendence through psychedelic experience.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

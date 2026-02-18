@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Shishov's Walk - Part II",
+  "prompt": "[Intro][Cosmic Ambient][Space Drones][Deep Void][Meditative State][Slow Build][Mystical Atmosphere]\nFound, remembered. Or forgot\nYevgeny Shishov\n\n[Verse 1][Trip Hop Beat][Downtempo][Beth Gibbons Style Vocals][Portishead Darkness][Cinematic Strings][Melancholic Beauty]\nYou crossed the wrong river\nCosmic horizon walked\nAnd in it there, Yevgeny Shishov\nAnd the real mushroom that he found\n\n[Chorus][Full Arrangement][Epic Crescendo][Orchestral Techno][Spiritual Energy][Transcendence]\nHe walks through dimensions now\nThe mushroom shows him how\nReality bends and breaks\nShishov awakes, Shishov awakes\n\n[Breakdown][Minimal][Single Piano Note][Heartbeat Bass][Isolation][Existential Void]\nWhere does the path lead?\n\n[Build Up][String Section][Timpani][Doom Jazz Elements][Rising Intensity]\nThrough forests of the mind\nLeaving the mundane behind\n\n[Final Drop][Maximum Power][Shoegaze Wall Of Sound][Techno Industrial Fusion][Apocalyptic Beauty]\nYevgeny Shishov found the truth\nIn the spores of his youth\nThe Show goes on forever now\nTake a bow, take a bow\n\n[Outro][Gradual Fade][Cosmic Echo][Infinite Reverb][Return To Silence]\nShishov walks...",
+  "tags": "trip hop,portishead,downtempo,cinematic techno,shoegaze,doom jazz,cosmic,psychedelic",
+  "style_weight": 0.8,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "pop,upbeat,commercial dance,cheerful,bubblegum,mainstream vocals",
+  "gpt_description_prompt": "Cinematic trip-hop meets underground techno. Portishead-inspired darkness with Beth Gibbons-style ethereal vocals, slow trip-hop beats, orchestral string sections, shoegaze wall of sound. Doom jazz elements, cosmic atmosphere, melancholic beauty, existential themes. Spiritual transcendence through psychedelic experience.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

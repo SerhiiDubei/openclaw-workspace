@@ -1,0 +1,44 @@
+{
+  "version": "2.0",
+  "description": "Learning Music Generation System with User Approval and Feedback Loop",
+  "learningEnabled": true,
+  "approvalRequired": true,
+  "workflow": {
+    "stage1_generation": {
+      "description": "Generate draft based on user request and supertracks",
+      "output": ["lyrics_with_metatags", "style_description", "parameters"]
+    },
+    "stage2_approval": {
+      "description": "Send to user for review",
+      "userActions": ["approve", "reject", "comment"]
+    },
+    "stage3_refinement": {
+      "description": "Apply user comments and regenerate if needed",
+      "learning": "Store feedback for pattern recognition"
+    },
+    "stage4_submission": {
+      "description": "Submit to API after approval",
+      "output": "audio_file"
+    }
+  },
+  "feedbackTypes": {
+    "lyrics": ["change_theme", "add_verse", "remove_chorus", "adjust_metatags", "language_change"],
+    "style": ["more_bass", "less_drums", "add_vinyl", "change_genre", "adjust_bpm", "more_lofi"],
+    "vocal": ["change_vocal_type", "add_layers", "more_spoken", "more_melodic"],
+    "structure": ["extend_outro", "add_bridge", "shorten_intro", "reorder_sections"]
+  },
+  "learningRules": {
+    "commentPatterns": {
+      "positive": ["так", "кайф", "супер", "вогонь", "ідеально", "approve", "ok"],
+      "negative": ["ні", "не так", "перероби", "зміни", "reject", "no"],
+      "adjustments": ["більше", "менше", "додай", "прибери", "зроби", "change"]
+    },
+    "patternStorage": "memory/learning-patterns.json",
+    "mainPromptUpdates": "memory/main-prompt-evolution.md"
+  },
+  "userPreferences": {
+    "autoApproveAfter": 3,
+    "confidenceThreshold": 0.8,
+    "learningRate": "high"
+  }
+}

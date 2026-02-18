@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Шишов і Гриб - Частина I",
+  "prompt": "[Intro][Dark Ambient][Sub Bass Pulse][Vinyl Crackle][Industrial Drones][Underground Cathedral][Neon Flicker][TB-303 Acid Lines][Minimal Techno Foundation][Psychological Tension]\nЄвген Шишов по лісу йшов\nЙшов Шишов і гриб знайшов\n\n[Verse 1][Deep Kick][Analog Synth][Repetitive Hypnosis][Death In Vegas Style][Shadowy Atmosphere][Muffled Vocals][Tape Degradation]\nЧи йшов Шишов?\nЧи гриб знайшов?\nЧи лісом йшов Євген Шишов\nЧи дійсно він, Євген Шишов\nЗабув як він по лісі йшов\nТа гриб знайшов?\n\n[Build Up][Filter Sweeps][Rising Tension][Acid Sequences][Dark Energy Accumulation]\nПитає гриб, навіщо йшов?\n\n[Drop][Full Arrangement][Warehouse Rave Intensity][Distorted Bass][Psychotic Energy][Underground Techno]\nНе скажу - відповів Шишов\nОто вже Шоу!\nНе знав Шишов, який гриба знайшов\nСьогодні буде Шоу!\n\n[Breakdown][Stripped Beats][Ethereal Voices][Memory Fragments][Cosmic Echoes]\nВін йде? Чи йшов?\n\n[Build Up][Tension Rebuild][Industrial Percussion][Acid Returns]\nЧи буде йти Євген Шишов?\n\n[Final Drop][Maximum Intensity][Chaos Reigns][Eternal Groove][Distortion Peak]\nА може він горами йшов\nЗаждіть Євген Шишов собі десь йшов\n\n[Outro][Fade Out][Tape Hiss][Sub Bass Decay][Silence Waits]\nДорогою він щось знайшов",
+  "tags": "underground techno,psychedelic,acid house,death in vegas,dark ambient,industrial,warehouse,neon noir",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.7,
+  "negative_tags": "pop,commercial EDM,bright synths,happy,mainstream,auto-tune,clean production",
+  "gpt_description_prompt": "Underground psychedelic techno in the style of Death in Vegas. Dark cathedral atmosphere with TB-303 acid lines, deep sub bass, vinyl crackle, industrial drones. Muffled vocals through tape degradation, repetitive hypnotic rhythms, warehouse rave energy. Neon noir aesthetic, psychological tension, shadowy and mysterious.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

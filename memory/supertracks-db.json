@@ -1,0 +1,300 @@
+{
+  "version": "1.0",
+  "description": "Base of Knowledge - Supertracks Database for AI Music Generation",
+  "lastUpdated": "2026-02-17",
+  "supertracks": [
+    {
+      "id": "ST001",
+      "title": "Ritualistic Electronic-Soul",
+      "reference": "Moby - Flower",
+      "genres": ["electronic-soul", "downtempo", "tribal"],
+      "bpm": 90,
+      "key": "D Minor",
+      "vocal": {
+        "type": "mantra-like",
+        "style": "short call-and-response phrases",
+        "layers": "soft gospel-style harmonies, breathy hums, ghost-echo",
+        "language": "english"
+      },
+      "instruments": {
+        "bass": "Analog Moog-style - warm, rounded, slightly overdriven",
+        "drums": "Lo-Fi kit - dusty kick, muted snare, soft clap, vinyl scratches",
+        "percussion": "shaker, soft tambourine, woodblock clicks",
+        "pads": "gentle airy pad with low-pass filter, subtle chorus",
+        "fx": "vinyl crackle, room-reverb tails, micro-delays"
+      },
+      "structure": ["Intro", "Verse", "Hook", "Break", "Bridge", "Outro"],
+      "energy": "hypnotic, repetitive, tribal, spiritually mechanical",
+      "uniqueFeatures": [
+        "Minimal harmonic movement",
+        "Tight rhythmic phrasing",
+        "Dusty analog texture",
+        "Steady pulse throughout"
+      ],
+      "lyricsExcerpt": "Bring me up / Bring me down / Hold me close / Turn me 'round"
+    },
+    {
+      "id": "ST002",
+      "title": "Acid Techno Ukrainian Philosophy",
+      "genres": ["acid techno", "warehouse", "underground"],
+      "bpm": 135,
+      "key": "A Minor",
+      "vocal": {
+        "type": "elderly male",
+        "style": "wise grandfatherly tone, philosophical poetry",
+        "character": "wise old man sharing life wisdom like vintage radio broadcaster",
+        "language": "ukrainian",
+        "processing": "AM radio filter, tube warmth, tape crackle, static hiss, lo-fi 1960s-70s"
+      },
+      "instruments": {
+        "bass": "TB-303 squelchy acid basslines",
+        "drums": "Roland TR-909 hypnotic patterns",
+        "synths": "Resonant filter sweeps, distorted acid sequences",
+        "fx": "Heavy reverb, tape delay, warehouse atmosphere"
+      },
+      "structure": ["Intro", "Verse", "Build", "Drop", "Breakdown", "Outro"],
+      "energy": "raw underground, relentless, cosmic",
+      "uniqueFeatures": [
+        "Elderly voice over hard techno",
+        "Multiple layered voices in mantra sections",
+        "Vintage microphone character",
+        "Telephone filter effects"
+      ],
+      "lyricsExcerpt": "Євген Шишов по лісу йшов / Ішов Шишов і гриб знайшов"
+    },
+    {
+      "id": "ST003",
+      "title": "Detroit Deep House (Moodymann Style)",
+      "reference": "Moodymann",
+      "genres": ["deep house", "Detroit soul", "gospel house"],
+      "bpm": 118,
+      "key": "F Minor",
+      "duration": "6 minutes extended odyssey",
+      "vocal": {
+        "type": "multiple layered",
+        "style": "gospel choir excerpts, soul vocal chops, spoken word",
+        "references": ["Al Green yeah/mm-hmm", "church recordings Detroit eastside"],
+        "language": "ukrainian baritone with Detroit soul inflection",
+        "processing": "vintage tape saturation, vinyl crackle, lo-fi dusty"
+      },
+      "instruments": {
+        "keys": "Warm analog Rhodes piano",
+        "bass": "Deep sub bass with jazzy swing",
+        "drums": "808/909 vintage with dusty character",
+        "other": "Church organ riffs, gospel choir pads",
+        "fx": "Vinyl crackle, tape hiss, analog warmth"
+      },
+      "groove": {
+        "style": "Jazz swing feel",
+        "quantization": "Intentionally lagging behind beat",
+        "feel": "Organic human feel, deep pocket"
+      },
+      "structure": ["Intro", "Verse 1", "Pre-Chorus", "Chorus", "Verse 2", "Bridge", "Breakdown", "Final Chorus", "Outro"],
+      "energy": "soulful, warm, nostalgic, spiritual",
+      "uniqueFeatures": [
+        "Heavy use of soul/funk samples",
+        "Church ambience throughout",
+        "Detroit shuffle groove",
+        "Call-and-response gospel style"
+      ]
+    },
+    {
+      "id": "ST004",
+      "title": "Євген Шишов (Full Version)",
+      "reference": "Moodymann + Ukrainian folklore",
+      "genres": ["Detroit deep house", "gospel soul", "Ukrainian fusion"],
+      "bpm": 118,
+      "key": "F Minor",
+      "vocal": {
+        "type": "ukrainian baritone + gospel samples",
+        "style": "Al Green style samples, gospel shouts, spoken word",
+        "samples": ["yeah, mm-hmm", "oh Lord!", "waitaminnit!", "tell me now"],
+        "language": "ukrainian",
+        "processing": "Dusty Rhodes aesthetic, vinyl crackle, tape saturation"
+      },
+      "instruments": {
+        "keys": "Dusty Rhodes piano, church organ",
+        "bass": "Warm sub bass",
+        "drums": "Detroit shuffle, swung hi-hats",
+        "other": "Choir pads, church bells",
+        "fx": "Vinyl crackle, tape hiss, room reverb"
+      },
+      "structure": ["Intro", "Verse 1", "Pre-Chorus", "Chorus", "Verse 2", "Bridge", "Breakdown", "Final Chorus", "Outro"],
+      "energy": "spiritual, soulful, nostalgic, celebratory",
+      "uniqueFeatures": [
+        "Full Ukrainian poem adaptation",
+        "Gospel choir call-and-response",
+        "Church ambience and bells",
+        "Tape slow-down effects",
+        "Vinyl runout ending"
+      ]
+    },
+    {
+      "id": "ST005",
+      "title": "Буває що втома накриє",
+      "genres": ["conscious hip-hop", "lo-fi funk", "spoken word"],
+      "bpm": 85,
+      "key": "C Minor",
+      "vocal": {
+        "type": "man strong + woman black back vocal",
+        "style": "expressive spoken-word cadence, syncopated groove",
+        "layers": "layered back vocals, rhythmic punctuation",
+        "language": "ukrainian",
+        "tone": "emotional, philosophical, reflective"
+      },
+      "instruments": {
+        "bass": "Warm lo-fi funk bass",
+        "drums": "Dusty hip-hop breakbeats",
+        "keys": "Fender Rhodes, soft pads",
+        "fx": "Tape saturation, vinyl crackle"
+      },
+      "structure": ["Intro", "Verse", "Chorus", "Verse 2", "Bridge", "Outro"],
+      "energy": "melancholic but hopeful, introspective",
+      "uniqueFeatures": [
+        "Philosophical Ukrainian poetry",
+        "Conscious hip-hop delivery",
+        "Lo-fi funk textures",
+        "Emotional brevity"
+      ],
+      "lyricsExcerpt": "Буває що втома накриє / Безсилий подекуди ніби дитя"
+    },
+    {
+      "id": "ST006",
+      "title": "Уляна покурила плану",
+      "reference": "Gorillaz - Clint Eastwood",
+      "genres": ["trip-hop", "chill-hop", "alt-pop", "lo-fi psychedelia"],
+      "bpm": 95,
+      "key": "E Minor",
+      "vocal": {
+        "type": "half-spoken, half-rapped",
+        "style": "dry detached tone, cartoonish edges",
+        "reference": "Damon Albarn early delivery",
+        "language": "ukrainian",
+        "processing": "light echoes, whisper doubles, soft vinyl hiss, surreal half-real feeling"
+      },
+      "instruments": {
+        "bass": "Warm sub-bass, slow and hypnotic",
+        "drums": "Dusty swingy, loose handmade cracked feel",
+        "keys": "Soft Rhodes chords, muted guitars, airy analog pads",
+        "fx": "Vinyl hiss, foggy atmosphere, broken cartoon aesthetic"
+      },
+      "structure": ["Intro", "Verse", "Chorus", "Verse 2", "Bridge", "Outro"],
+      "energy": "relaxed, dusty, slightly off-kilter, slow head-nod",
+      "uniqueFeatures": [
+        "Lazy trip-hop swagger",
+        "Cartoonish surreal vibe",
+        "Satirical Ukrainian lyrics",
+        "Dreamy but streetwise atmosphere"
+      ],
+      "lyricsExcerpt": "Уляна покурила плану / І тепер проповідує дивану"
+    },
+    {
+      "id": "ST007",
+      "title": "Мені б хотілось",
+      "genres": ["post-punk", "intimate", "nocturnal", "warm"],
+      "bpm": 100,
+      "key": "G Minor",
+      "vocal": {
+        "type": "baritone-lyrical",
+        "style": "warm, restrained, almost whispered",
+        "language": "ukrainian",
+        "processing": "close mic, soft echo, intimate"
+      },
+      "instruments": {
+        "bass": "Warm, round, melodic anchor",
+        "drums": "Restrained, tom-heavy, soft snare, brushed snare, subdued hats",
+        "guitar": "Chorus haze, wide stereo, soft attacks",
+        "synths": "Pads and subtle arpeggios for glow"
+      },
+      "structure": ["Intro", "Verse", "Pre-Chorus", "Chorus", "Bridge", "Outro"],
+      "energy": "nostalgic, intimate, smoky, melancholic but warm",
+      "uniqueFeatures": [
+        "Less tension, more warmth",
+        "Tom-focused drum groove",
+        "Chorus guitar shimmer",
+        "Analog glow atmosphere"
+      ],
+      "lyricsExcerpt": "Мені б хотілось з тобою на ти / Знати колір твого запаху"
+    },
+    {
+      "id": "ST008",
+      "title": "Energetic Downtempo House",
+      "genres": ["downtempo house", "lounge", "jazz-funk", "cinematic house"],
+      "bpm": 115,
+      "key": "D Minor",
+      "duration": "7:30",
+      "vocal": {
+        "type": "energetic layered",
+        "style": "playful, soulful, meditative flow",
+        "phrases": ["take me further", "break the chain", "ride the flame"],
+        "language": "english",
+        "processing": "energetic vocal layering, delay trails"
+      },
+      "instruments": {
+        "bass": "Moog bass warmth",
+        "keys": "EP keys, marimba plucks, step arp",
+        "sax": "Muted sax riffs, alto shout, playful fades",
+        "drums": "Tribal kicks, stereo-panned bongos, hi-hat shuffle, airy hand claps",
+        "synths": "OBX pad, Balearic pad bursts, granular sweeps",
+        "fx": "Lo-fi vinyl crack, tape-saturated groove, reverb clouds, modular tape crush"
+      },
+      "structure": [
+        {"section": "Intro", "time": "0:00-1:20", "elements": ["Marimba", "Crowd Noise", "Vinyl Crack", "Soft Rise"]},
+        {"section": "Verse 1", "time": "1:20-2:40", "elements": ["EP Keys", "Hand Clap", "Air Vox", "Tape Grain"]},
+        {"section": "Chorus 1", "time": "2:40-3:20", "elements": ["Alto Shout", "Hi-Hat Hiss", "Vocal Break"]},
+        {"section": "Bridge", "time": "3:20-4:40", "elements": ["OBX Pad", "Tribal Kick", "Granular Sweep"]},
+        {"section": "Drop", "time": "4:40-5:20", "elements": ["Moog Bass", "Pad Burst", "Horn Cry", "Tape Crush"]},
+        {"section": "Interlude", "time": "5:20-6:00", "elements": ["Vinyl Bend", "Whisper Echo", "Reverb Cloud"]},
+        {"section": "Outro", "time": "6:00-7:30", "elements": ["Street Fade", "Key Ring", "Sax Fade", "Ambient Wash"]}
+      ],
+      "energy": "lounge-driven, active groove, playful, meditative flow",
+      "uniqueFeatures": [
+        "Complex 7:30 structure with detailed timestamps",
+        "Tribal rhythm sparks",
+        "Cinematic house layering",
+        "Granular sweeps and modular effects",
+        "Balearic pad bursts"
+      ]
+    }
+  ],
+  "patterns": {
+    "commonStructures": [
+      "Intro → Verse → Chorus → Verse → Bridge → Chorus → Outro",
+      "Intro → Verse → Pre-Chorus → Chorus → Verse → Bridge → Breakdown → Chorus → Outro"
+    ],
+    "commonVocalStyles": [
+      "spoken-word cadence",
+      "gospel choir call-and-response",
+      "mantra-like repetition",
+      "baritone-lyrical intimate",
+      "half-spoken half-rapped detached"
+    ],
+    "commonInstruments": [
+      "Analog/Moog bass",
+      "Rhodes piano (dusty/warm)",
+      "Lo-fi drum machines (808/909)",
+      "Vinyl crackle and tape hiss",
+      "Church organ and gospel pads"
+    ],
+    "commonFX": [
+      "Vinyl crackle",
+      "Tape saturation/wobble",
+      "Room reverb tails",
+      "Micro-delays",
+      "Chorus haze",
+      "AM radio/telephone filters"
+    ]
+  },
+  "userPreferences": {
+    "preferredLanguages": ["ukrainian", "english"],
+    "preferredVocalTypes": ["baritone", "elderly male", "gospel layers", "spoken word"],
+    "preferredGenres": ["deep house", "Detroit soul", "trip-hop", "conscious hip-hop", "acid techno"],
+    "signatureElements": [
+      "Ukrainian philosophical poetry",
+      "Vintage analog warmth",
+      "Gospel/soul vocal textures",
+      "Lo-fi dusty aesthetic",
+      "Church/religious ambience"
+    ]
+  }
+}

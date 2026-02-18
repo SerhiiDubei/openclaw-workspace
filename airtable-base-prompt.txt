@@ -1,0 +1,22 @@
+Airtable Base Structure for Music Reference Storage
+
+TABLE: References
+
+Fields:
+1. Name (Single line text) - Track name
+2. Audio File (Attachment) - MP3/WAV file
+3. Artist (Single line text) - Artist name
+4. Genre (Single select) - Options: Big Beat, Techno, House, Hip-Hop, etc.
+5. BPM (Number) - Tempo
+6. Style Tags (Multiple select) - Aggressive, Melodic, Lo-fi, etc.
+7. Reference Strength (Number 0-1) - For AI generation
+8. Public URL (URL) - Direct file link
+9. Created (Created time) - Auto timestamp
+10. Notes (Long text) - Additional description
+
+VIEW: Grid View (default)
+VIEW: Gallery View - Show audio files as cards
+
+PERMISSIONS:
+- Allow public sharing for specific records
+- Generate public URL for audio attachments
