@@ -76,3 +76,4 @@ git push origin main
 |----|----------|-------|
 | telegram:488426634 | serhii-dubei | `memory/users/serhii-dubei/` |
 | telegram:542906702 | mental-ninja | `memory/users/mental-ninja/` |
+| telegram:337958464 | evgen-shishov | `memory/users/evgen-shishov/` |
