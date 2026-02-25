@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "cache_rules": {
+    "media": {
+      "default_ttl_days": 7,
+      "max_size_mb": 100
+    },
+    "types": {
+      "session": {
+        "description": "Звичайна сесія спілкування",
+        "cache_ttl_days": 7,
+        "storage": "local + supabase"
+      },
+      "pinned": {
+        "description": "Закріплені файли (рецепти, шаблони)",
+        "cache_ttl_days": null,
+        "storage": "local + supabase",
+        "permanent": true
+      },
+      "insight": {
+        "description": "Важливі ідеї та інсайти",
+        "cache_ttl_days": null,
+        "storage": "local + supabase",
+        "permanent": true
+      }
+    }
+  },
+  "session_rules": {
+    "end_after_minutes": 30,
+    "auto_process": true
+  },
+  "users": [
+    {
+      "id": "telegram:488426634",
+      "username": "serhii-dubei",
+      "folder": "memory/users/serhii-dubei"
+    },
+    {
+      "id": "telegram:542906702",
+      "username": "mental-ninja",
+      "folder": "memory/users/mental-ninja"
+    }
+  ]
+}

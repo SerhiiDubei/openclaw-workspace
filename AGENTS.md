@@ -52,6 +52,10 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - `trash` > `rm` (recoverable beats gone forever)
 - When in doubt, ask.
 
+## ⚠️ CRITICAL RULE — Ask Before Acting
+**Before ANY file operations (create, edit, delete, git push) — ask Serhii for confirmation first.**
+Do not act autonomously on files. Always confirm: "Should I do X?" and wait for approval.
+
 ## External vs Internal
 
 **Safe to do freely:**
