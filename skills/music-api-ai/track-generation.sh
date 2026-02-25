@@ -10,7 +10,7 @@ echo "[$(date)] Starting tracking for task: $TASK_ID, user: $USER_ID" > "$LOG_FI
 for i in {1..20}; do
     sleep 30
     
-    STATUS=$(curl -s -H "Authorization: Bearer 0f8dc17272d612483647231c6aef1705" \
+    STATUS=$(curl -s -H "Authorization: Bearer ${MUSICAPI_KEY}" \
         "https://api.musicapi.ai/api/v1/sonic/task/${TASK_ID}" | jq -r '.data[0].state')
     
     echo "[$(date)] Check $i: status=$STATUS" >> "$LOG_FILE"
