@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "Центр-Центр (Eminem Style)",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/centrum-reference-1771443272.mp3",
+  "prompt": "[Intro][Eminem Style][Lose Yourself][Fast Flow][Aggressive]\nЦентр-центр\nПрийом\n\n[Verse 1][Rapid Fire][Intense][Ukrainian]\nПрийми принаймні хвилі\nПрийми ти милі\nМожливо хмурі\nМожливо бурі\nЧи то бентежні відблиски мережі\n\n[Pre-Chorus][Building Tension][Determination]\nПройди ти шлях на волю\nМинаючи в кіндолях по колу\n\n[Chorus][Epic Hook][Powerful][Anthemic]\nВлюбити в себе!\nВ себе не в себе!\nА все полюбити!\n\n[Verse 2][Faster][Technical Flow][Ukrainian]\nШтовхаючи в волю\nІз нею до бою\nІ ніжно залити кишейним рішеним софле\n\n[Bridge][Slim Shady Style][Playful Aggression]\nПанове а що там?\nПричом? А я гном!\nГном-гном!\n\n[Verse 3][Maximum Speed][Triumphant][Ukrainian]\nПобудував я сам собі цей дом\nБловом!\nХоча бува поталанить\nІ ти вже не розлом\nА такий собі захоплюючий\nІду на пролом!\n\n[Final Chorus][Grand Finale][Epic]\nЦентр-центр!\nПрийом!\n\n[Outro][Fade Out][Determination]",
+  "tags": "eminem style,lose yourself,fast rap,technical flow,ukrainian rap,intense,aggressive",
+  "style_weight": 0.8,
+  "weirdness_constraint": 0.4,
+  "negative_tags": "slow,mellow,soft,pop,mainstream",
+  "gpt_description_prompt": "Ukrainian rap in Eminem 'Lose Yourself'/'Rap God' style. Rapid-fire delivery, aggressive energy, complex rhymes, epic hooks. Ref: Eminem - Lose Yourself, Rap God, Till I Collapse. User audio 40% influence, Eminem style 80%. Raw motivational hip-hop.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

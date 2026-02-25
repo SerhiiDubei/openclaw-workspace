@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Прозорий Покров (High Voice)",
+  "prompt": "[Intro][Post Punk][Cold Wave][High Male Vocals][Tenor][Falsetto][Bright Tone]\nПід прозорим покровом ночі\nПід зірками, що падають вниз\n\n[Verse 1][Higher Register][Clear Voice][Ukrainian Lyrics]\nНе побачу у дзеркалі очі\nЩо так довго і вперто клялись\nВірність чи зрада, фальшива розрада\nБез іскри загорається хмиз\n\n[Chorus][High Energy][Elevated Pitch][Powerful]\nПолотном ти укрийся від граду\nІ тихенько в куточку молись\n\n[Verse 2][Higher Voice][Bright Tone][Cold Wave]\nПід прозорим покровом ночі\nПід зірками, що падають вниз\n\n[Bridge][High Falsetto][Emotional Peak]\nВірність чи зрада...\n\n[Final Chorus][Maximum Power][High Register]\nПолотном ти укрийся від граду\nІ тихенько в куточку молись\n\n[Outro][High Voice Fade][Reverb]",
+  "tags": "post punk,cold wave,high vocals,tenor,bright,ukrainian",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.5,
+  "negative_tags": "low vocals,bass voice,deep,monotone",
+  "gpt_description_prompt": "Ukrainian post-punk with high male tenor vocals, bright and clear voice. Cold wave atmosphere with elevated pitch, emotional falsetto moments. Post-punk energy with higher register singing.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

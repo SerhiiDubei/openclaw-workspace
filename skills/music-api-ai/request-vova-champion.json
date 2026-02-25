@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "О Вова Наш Чемпіон",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/vova-champion-1771446644.mp3",
+  "prompt": "[Intro][Champion Anthem][Energetic][Ukrainian]\nО Вова наш чемпіон\nО Вова наш чемпіон\nО Вова наш чемпіон\nЧемпіон чемпіон чемпіон чемпіон\n\n[Verse 1][Chak Rhythm][Driving Beat]\nЧак-чак-чак Юрчак\nЧак-чак-чак Юрчак\nЧак-чак-чак Юрчак\n\n[Drop][Full Power][Chak-Chak-Chak]\nЮрчак-чак-чак Юрчак\nЧак-чак-чак Юрчак\nЧак-чак-чак Юрчак\n\n[Chorus][Anthem][Powerful][Ukrainian]\nО Вова наш чемпіон\nО Вова наш чемпіон\nО Вова наш чемпіон\nЧемпіон чемпіон чемпіон чемпіон\n\n[Verse 2][Chak Rhythm][Intense]\nЮрчак-чак-чак Юрчак\nЧак-чак-чак Юрчак\nЧак-чак-чак Юрчак\n\n[Drop][Maximum Energy][Chak-Chak-Chak]\nЮрчак-чак-чак Юрчак\nЧак-чак-чак Юрчак\nЧак-чак-чак Юрчак\n\n[Final Chorus][Grand Finale][Epic]\nО Вова наш чемпіон\nО Вова наш чемпіон\nЧемпіон чемпіон чемпіон чемпіон\n\n[Outro][Fade Out][Chak Echo]",
+  "tags": "champion anthem,energetic,chak rhythm,ukrainian,sports anthem,powerful",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.5,
+  "negative_tags": "slow,melancholic,soft",
+  "gpt_description_prompt": "Energetic Ukrainian champion anthem with repetitive chak-chak-chak rhythm. Sports stadium energy, powerful and triumphant. Celebrating Vova as champion with driving beat and catchy hooks.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

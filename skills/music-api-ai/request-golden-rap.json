@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "Романюк Ліза Ярчак Джуля (Golden Rap)",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/serhii-reference-1771437872.mp3",
+  "prompt": "[Intro][Golden Rap][Ukrainian][Fast Flow][Stoned Laugh][Background]\n*hehehe*\nРоманюк сидить\n*hehehe*\nЛіза дивиться\n\n[Verse 1][Rap][Fast][Energy][Ukrainian]\nЯрчак пише, Джуля щось там робить\nWhat's up? What's up?\nРоманюк сидить, Ліза дивиться\nЯрчак пише, Джуля щось там робить\n\n[Chorus][Gospel Choir][Black Women Vocals][English]\nOh yeah! Oh yeah!\nWhat's up! What's up!\n\n[Verse 2][Rap][Fast][Ukrainian][Stoned Laugh]\n*hehehe*\nРоманюк сидить, Ліза дивиться\nЯрчак пише, Джуля щось там робить\nWhat's up?\n\n[Drop][Full Power][Bass Drop][Stoned Laugh]\n*hehehe*\nBOOM!\n\n[Chorus][Gospel Choir][English][Powerful]\nOh yeah! Oh yeah!\nWhat's up! What's up!\n\n[Verse 3][Rap][Fast][Ukrainian]\nРоманюк сидить, Ліза дивиться\nЯрчак пише, Джуля щось там робить\nWhat's up? What's up?\n\n[Drop][Maximum Energy][Stoned Laugh]\n*hehehe*\nBOOM! BOOM!\n\n[Outro][Gospel Choir][Fade Out][Stoned Laugh]\nOh yeah...\n*hehehe*",
+  "tags": "ukrainian rap,golden rap,fast rap,gospel choir,stoned laugh,trap",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.7,
+  "negative_tags": "slow,melancholic,soft",
+  "gpt_description_prompt": "Ukrainian golden rap with fast flow and energetic delivery. Stoned laugh on background. Gospel choir of black women singing English hooks. Heavy bass drops, trap influences, repetitive sections.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Володя Юрчак",
+  "prompt": "[Intro][Post Punk][Cold Wave][Ukrainian][Dark Bass]\nВолодя Юрчак\n\n[Verse 1][Kino Style][High Voice][Ukrainian Lyrics]\nВранці прокидаюсь я в снiв бреду\nВолодя Юрчак, до тебе йду\nТемна ніч спускається на дах\nВолодя Юрчак, чак-чак-чак\n\n[Chorus][Drop][Chak-Chak-Chak][Energy]\nЧак-чак-чак-чак-чак-чак!\n\n[Verse 2][Joy Division Style][Deep Voice][Ukrainian]\nСонце зайде за наш лiсок\nВолодя Юрчак, ти мiй друк\nВiтер ганяє листя в такт\nВолодя Юрчак, чак-чак-чак\n\n[Chorus][Drop][Powerful][Chak]\nЧак-чак-чак-чак-чак-чак!\n\n[Verse 3][The Cure Style][Bright Guitar][Ukrainian]\nЗiрки падають нам на шлях\nВолодя Юрчак, без жодних врак\nМiсяць свiтить крiзь хмарний факт\nВолодя Юрчак, чак-чак-чак\n\n[Bridge][English Words][Spoken]\nDarkness, shadow, light\n\n[Final Chorus][Maximum Power][All Together]\nЧак-чак-чак-чак-чак-чак!\nВолодя Юрчак!\n\n[Outro][Fade Out][Reverb]",
+  "tags": "post punk,cold wave,ukrainian post punk,kino,joy division,the cure",
+  "style_weight": 0.9,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "pop,commercial,hip-hop,electronic",
+  "gpt_description_prompt": "Ukrainian post-punk in the style of Kino (Viktor Tsoi), Joy Division, and The Cure. Cold wave atmosphere, dark basslines, reverb guitars. Melancholic vocals with energy. References: Kino - 'Gruppa Krovi', Joy Division - 'Love Will Tear Us Apart', The Cure - 'A Forest'.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

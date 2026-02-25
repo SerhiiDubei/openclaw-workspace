@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "Центр-Центр (Golden Rap)",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/centrum-reference-1771443272.mp3",
+  "prompt": "[Intro][Golden Rap][Fast Flow][Stoned Laugh]\n*hehehe*\nЦентр-центр\nПрийом\n\n[Verse 1][Fast Rap][Ukrainian][Energy]\nПрийми принаймні хвилі\nПрийми ти милі\nМожливо хмурі\nМожливо бурі\nЧи то бентежні відблиски мережі\n\n[Chorus][Gospel Choir][Black Women][English]\nOh yeah! Receive it!\nWhat's up! What's up!\n\n[Verse 2][Fast Rap][Ukrainian][Stoned Laugh]\n*hehehe*\nПройди ти шлях на волю\nМинаючи в кіндолях по колу\nШтовхаючи в волю\nІз нею до бою\n\n[Drop][Bass Drop][Stoned Laugh]\n*hehehe*\nBOOM!\n\n[Chorus][Gospel Choir][English][Powerful]\nOh yeah! Receive it!\nWhat's up! What's up!\n\n[Verse 3][Fast Rap][Ukrainian]\nВлюбити в себе\nВ себе не в себе\nА все полюбити і в себе влюбити\nІ ніжно залити кишейним рішеним софле\n\n[Drop][Maximum Energy][Stoned Laugh]\n*hehehe*\nBOOM! BOOM!\n\n[Bridge][Fast][Playful]\nПанове а що там?\nПрийом!\nПричом? А я гном!\nГном-гном!\n\n[Verse 4][Fast Rap][Triumphant][Ukrainian]\nПобудував я сам собі цей дом\nБловом!\nХоча бува поталанить\nІ ти вже не розлом\nА такий собі\nЗахоплюючий\nІду на пролом!\n\n[Final Chorus][Gospel Choir][Grand Finale]\nOh yeah! Oh yeah!\nWhat's up! What's up!\n\n[Outro][Stoned Laugh][Fade Out]\n*hehehe*\nЦентр-центр...",
+  "tags": "ukrainian golden rap,fast rap,gospel choir,stoned laugh,trap,energetic",
+  "style_weight": 0.9,
+  "weirdness_constraint": 0.7,
+  "negative_tags": "slow,melancholic,soft,orchestral",
+  "gpt_description_prompt": "Ukrainian golden rap with extremely fast flow and delivery. Stoned laugh on background throughout. Gospel choir of black women singing powerful English hooks. Heavy trap bass drops, energetic and aggressive. Inspired by reference audio.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

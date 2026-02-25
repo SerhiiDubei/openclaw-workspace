@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Дана",
+  "prompt": "[Intro][Post Punk][Golden Style][Ukrainian][Melancholic]\nДана...\n\n[Verse 1][Soft Guitar][Gentle Voice][Ukrainian]\nДана любить котиків\nМ'яких пухнастих малят\nВона грає на гітарі\nТак ніжно і так гарно\n\n[Chorus][Powerful][Emotional][Ukrainian]\nДана Дана\nЧарівна дівчинка\nДана Дана\nЛюбима моя\n\n[Verse 2][Driving Bass][Energy][Ukrainian]\nДана ходить на бокс\nМіцний кулак у неї\nВона сильна і красива\nНіхто не подолає\n\n[Chorus][Full Power][Golden Sound][Ukrainian]\nДана Дана\nЧарівна дівчинка\nДана Дана\nЛюбима моя\n\n[Bridge][Beautiful Voice][Singing][Ukrainian]\nВона так гарно співає\nГолос її як птах\nЛине в небо високо\nІ серце моє плаче\n\n[Final Chorus][Maximum Energy][Epic][Ukrainian]\nДана Дана\nЧарівна дівчинка\nДана Дана\nЛюбима моя\n\n[Outro][Soft Guitar][Fade Out][Gentle]\nДана...",
+  "tags": "ukrainian post punk,golden style,romantic,melancholic,beautiful",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.5,
+  "negative_tags": "aggressive,hard,fast",
+  "gpt_description_prompt": "Ukrainian post-punk in golden style. Romantic and melancholic, about a beautiful girl named Dana. Soft guitars, emotional vocals, gentle but powerful. Love song with post-punk atmosphere.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

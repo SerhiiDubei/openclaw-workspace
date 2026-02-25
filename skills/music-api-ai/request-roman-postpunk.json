@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Прозорий Покров",
+  "prompt": "[Intro][Post Punk][Cold Wave][Dark Bass][Reverb][Atmospheric][Melancholic]\nПід прозорим покровом ночі\nПід зірками, що падають вниз\n\n[Verse 1][Post Punk Energy][Driving Bass][Cold Guitar][Ukrainian Lyrics]\nНе побачу у дзеркалі очі\nЩо так довго і вперто клялись\nВірність чи зрада, фальшива розрада\nБез іскри загорається хмиз\n\n[Chorus][Full Power][Post Punk Anthem][Dark Energy]\nПолотном ти укрийся від граду\nІ тихенько в куточку молись\n\n[Verse 2][Cold Wave][Atmospheric][Deep Voice]\nПід прозорим покровом ночі\nПід зірками, що падають вниз\n\n[Bridge][Stripped Down][Bass Only][Spoken Word]\nВірність чи зрада...\n\n[Final Chorus][Maximum Intensity][Post Punk Peak]\nПолотном ти укрийся від граду\nІ тихенько в куточку молись\n\n[Outro][Fade Out][Reverb Tail][Silence]",
+  "tags": "post punk,cold wave,dark wave,ukrainian post punk,atmospheric,melancholic",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.5,
+  "negative_tags": "happy,upbeat,pop,commercial",
+  "gpt_description_prompt": "Ukrainian post-punk with cold wave atmosphere. Dark driving basslines, reverb-drenched guitars, melancholic vocals. Atmospheric and emotional, Joy Division and Soviet post-punk influences.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "Mushroom Techno (Emanuel Top Style)",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/vova-champion-1771446644.mp3",
+  "prompt": "[Intro][Techno][Minimal][Emanuel Top Style][Turkish Bazar Vibes][Oriental Flute]\nMushroom techno\n\n[Build Up][Roland TB-303][Acid Lines][Hypnotic]\nDum-dum-dum\n\n[Drop][Full Power][Techno][Oriental Elements][Driving Bass]\nMushroom mushroom techno\n\n[Breakdown][Minimal][Flute Solo][Middle Eastern]\n*oriental melody*\n\n[Build Up][Intense][Rising Energy]\nTechno techno\n\n[Drop][Maximum Power][Warehouse Rave][Acid Peak]\nMushroom techno!\n\n[Outro][Fade Out][303 Tail]",
+  "tags": "techno,minimal techno,emanuel top,turkish bazar,oriental,acid,90s techno",
+  "style_weight": 0.9,
+  "weirdness_constraint": 0.5,
+  "negative_tags": "melodic,soft,pop,modern edm",
+  "gpt_description_prompt": "Classic 90s minimal techno in style of Emanuel Top 'Turkish Bazar'. Hypnotic Roland TB-303 acid lines, driving four-on-the-floor beat, oriental flute elements, warehouse rave energy. Raw, repetitive, hypnotic groove with Middle Eastern influences. Reference: Emanuel Top - Turkish Bazar, Le Petit Prince label.",
+  "make_instrumental": true,
+  "mv": "sonic-v5"
+}

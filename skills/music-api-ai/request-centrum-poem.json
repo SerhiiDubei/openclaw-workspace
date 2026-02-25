@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "Центр-Центр Прийом",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/centrum-reference-1771443272.mp3",
+  "prompt": "[Intro][Spoken Word][Atmospheric][Mysterious]\nЦентр-центр\nПрийом\nПрийми принаймні хвилі\n\n[Verse 1][Poetic][Flowing][Ukrainian]\nМожливо хмурі\nМожливо бурі\nЧи то бентежні відблиски мережі\n\n[Chorus][Elevated][Powerful]\nПрийом! Прийми!\n\n[Verse 2][Journey][Epic][Ukrainian]\nПройди ти шлях на волю\nМинаючи в кіндолях по колу\nШтовхаючи в волю\nІз нею до бою\n\n[Drop][Full Power][Breakdown]\nВлюбити в себе!\n\n[Verse 3][Philosophical][Deep][Ukrainian]\nВ себе не в себе\nА все полюбити і в себе влюбити\nІ ніжно залити кишейним рішеним софле\n\n[Chorus][Grand][Epic]\nПанове а що там?\nПрийом!\n\n[Bridge][Playful][Fast]\nПричом? А я гном!\nГном-гном!\n\n[Verse 4][Victory][Building][Ukrainian]\nПобудував я сам собі цей дом\nБловом!\nХоча бува поталанить\nІ ти вже не розлом\n\n[Final Chorus][Triumphant][Maximum Energy]\nА такий собі\nЗахоплюючий\nІду на пролом!\n\n[Outro][Fade Out][Echo]\nЦентр-центр...",
+  "tags": "spoken word,poetic,atmospheric,epic,ukrainian,mysterious",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "pop,commercial,simple",
+  "gpt_description_prompt": "Epic spoken word track with poetic Ukrainian lyrics. Atmospheric and mysterious, building from quiet contemplation to triumphant climax. Inspired by user's reference audio with flowing delivery and deep emotion.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

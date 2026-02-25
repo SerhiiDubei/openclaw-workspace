@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Ромко і Сергій - Detroit Acid",
+  "prompt": "[Intro][Detroit Techno][Minimal Beat][Acid Bassline][TB-303][Cosmic Atmosphere][Laser Synth Stabs][Space Blasters][Dark Energy]\n\n[Verse 1][Ukrainian][Aggressive Joy][Ironic Twist]\nРомко прокидається — сонце вже в зеніті\nЖиття прекрасне, коли ти в агресії\n\n[Build Up][Rising Tension][Acid Lines][Detroit Groove]\nSergiy says: let's go harder!\nEvery day is war, every day is party!\n\n[Drop][Full Power][Minimal Techno][Acid Peak][Laser Sounds][Blaster FX]\nРомко не спить — Ромко бере!\nSergiy controls — Sergiy creates!\n\n[Verse 2][English][Aggressive Happiness][Ironic Life]\nWake up, it's Monday — time to destroy!\nHappy aggression is our only joy!\n\n[Build Up][Cosmic Synths][Space Sounds][Rising Energy]\nРомко каже: ще раз!\nSergiy screams: no delays!\n\n[Drop][Maximum Intensity][Detroit Techno][Acid Madness][Laser Blasts]\nLife is beautiful — life is war!\nРомко і Сергій — forever more!\n\n[Breakdown][Minimal][Cosmic Echoes][Space Ambient]\n\n[Final Drop][Ultimate Power][Acid Finale][Detroit Forever]\nAggressive joy in every cell!\nРомко та Сергій — це наш світ!\n\n[Outro][Fade Out][Acid Tail][Space Echoes]",
+  "tags": "detroit techno,minimal techno,acid,acid house,cosmic techno,laser synth,aggressive,ironic",
+  "style_weight": 0.85,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "melodic,soft,calm,orchestral,pop,mainstream",
+  "gpt_description_prompt": "Detroit minimal techno with acid house elements. Dark driving basslines, TB-303 acid sequences, cosmic laser synth stabs and blaster sounds. Aggressive energy with ironic twist. Warehouse rave atmosphere, repetitive hypnotic grooves, space techno vibes.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

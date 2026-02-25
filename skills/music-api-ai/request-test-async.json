@@ -1,0 +1,12 @@
+{
+  "custom_mode": true,
+  "title": "Бля Бля Сука Бля",
+  "prompt": "[Intro][Funky Acid][TB-303][Bassline][Groove]\nБля бля сука бля\n\n[Verse][Funky Beat][Acid House][Energy]\nБля бля сука бля\nБля бля сука бля\n\n[Drop][Full Power][Acid Peak][Funk]\nБля бля сука бля!\n\n[Outro][Fade Out][Acid Tail]",
+  "tags": "funky acid,acid house,tb-303,groove",
+  "style_weight": 0.8,
+  "weirdness_constraint": 0.5,
+  "negative_tags": "melodic,soft,slow",
+  "gpt_description_prompt": "Funky acid house with TB-303 basslines, groovy beats, energetic and raw",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}

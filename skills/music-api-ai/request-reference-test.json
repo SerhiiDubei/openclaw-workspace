@@ -1,0 +1,13 @@
+{
+  "custom_mode": true,
+  "title": "Романюк Ліза Ярчак Джуля",
+  "audio_url": "https://vwygievhdzotpcalkxig.supabase.co/storage/v1/object/public/music/references/488426634/serhii-reference-1771437872.mp3",
+  "prompt": "[Intro][Spoken Word][Minimal Beat][Atmospheric]\nРоманюк сидить\nЛіза дивиться\nЯрчак пише\nДжуля щось там робить\nWhat's up?\n\n[Verse][Energy][Driving Bass]\nРоманюк сидить\nЛіза дивиться\nЯрчак пише\nДжуля щось там робить\n\n[Drop][Full Power][Chant]\nWhat's up? What's up?\n\n[Outro][Fade Out]",
+  "tags": "spoken word,minimal,atmospheric,ukrainian",
+  "style_weight": 0.8,
+  "weirdness_constraint": 0.6,
+  "negative_tags": "melodic,soft,slow",
+  "gpt_description_prompt": "Spoken word track with minimal atmospheric beat. Inspired by user's reference audio. Raw, energetic, with repetitive chant-like vocals.",
+  "make_instrumental": false,
+  "mv": "sonic-v5"
+}
