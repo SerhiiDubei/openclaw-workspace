@@ -1,90 +1,101 @@
 #!/bin/bash
 # Check pending music tracks and send files via Telegram
-# Only cron sends files - agent only registers
+# Runs every 2 minutes via cron
 
 SUPABASE_URL="${SUPABASE_URL}"
 SUPABASE_SERVICE_KEY="${SUPABASE_SERVICE_KEY}"
 MUSICAPI_KEY="${MUSICAPI_KEY}"
 
-# Clean up old ready tracks
-rm -rf /tmp/ready_tracks/*
-
-# Get tracks with status 'running' OR completed but not sent
-TASK_IDS=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?or=(metadata->>status.eq.running,and(metadata->>status.eq.completed,metadata->>sent.neq.true))&select=metadata->>task_id" \
+# Get tracks that need processing:
+# 1. status = 'running' (new tracks)
+# 2. status = 'completed' BUT sent is NULL or not 'true' (finished but not sent)
+PENDING_TRACKS=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?or=(metadata->>status.eq.running,and(metadata->>status.eq.completed,or(metadata->>sent.is.null,metadata->>sent.neq.true)))&select=*" \
   -H "apikey: ${SUPABASE_SERVICE_KEY}" \
-  -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" | jq -r '.[].task_id' | sort -u)
+  -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}")
 
-for TASK_ID in $TASK_IDS; do
+# Process each track
+echo "$PENDING_TRACKS" | jq -c '.[]' | while read TRACK; do
+  ID=$(echo "$TRACK" | jq -r '.id')
+  USER_ID=$(echo "$TRACK" | jq -r '.user_id')
+  USERNAME=$(echo "$TRACK" | jq -r '.username')
+  TRACK_NAME=$(echo "$TRACK" | jq -r '.track_name')
+  VARIANT=$(echo "$TRACK" | jq -r '.variant')
+  TASK_ID=$(echo "$TRACK" | jq -r '.metadata.task_id // empty')
+  SENT=$(echo "$TRACK" | jq -r '.metadata.sent // "false"')
+  
+  # Skip if already sent
+  if [ "$SENT" = "true" ]; then
+    echo "Skipping $TRACK_NAME v$VARIANT - already sent"
+    continue
+  fi
+  
+  # Skip if no task_id (can't check status)
+  if [ -z "$TASK_ID" ]; then
+    echo "Skipping $TRACK_NAME v$VARIANT - no task_id"
+    continue
+  fi
+  
   # Check MusicAPI status
   STATUS_RESPONSE=$(curl -s "https://api.musicapi.ai/api/v1/sonic/task/${TASK_ID}" \
     -H "Authorization: Bearer ${MUSICAPI_KEY}")
   
-  V1_STATE=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].state')
-  V2_STATE=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].state')
+  # Get variant status (0-indexed in API)
+  API_INDEX=$((VARIANT - 1))
+  STATE=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].state // \"unknown\"")
   
-  # Only process if BOTH are ready
-  if [ "$V1_STATE" = "succeeded" ] && [ "$V2_STATE" = "succeeded" ]; then
-    # Use username with spaces (not underscores)
-    USERNAME_CLEAN=$(echo "$USERNAME" | sed 's/_/ /g')
-    TRACK_RECORD=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>task_id=eq.${TASK_ID}&limit=1" \
-      -H "apikey: ${SUPABASE_SERVICE_KEY}" \
-      -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}")
+  if [ "$STATE" = "succeeded" ]; then
+    # Get file info
+    AUDIO_URL=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].audio_url")
+    CLIP_ID=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].clip_id")
+    DURATION=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].duration // \"0\"")
     
-    USER_ID=$(echo "$TRACK_RECORD" | jq -r '.[0].user_id')
-    USERNAME=$(echo "$TRACK_RECORD" | jq -r '.[0].username')
-    TRACK_NAME=$(echo "$TRACK_RECORD" | jq -r '.[0].track_name')
-    
-    # Check if already sent - SKIP if sent=true
-    ALREADY_SENT=$(echo "$TRACK_RECORD" | jq -r '.[0].metadata.sent // "false"')
-    if [ "$ALREADY_SENT" = "true" ]; then
-      echo "Skipping ${TRACK_NAME} - already sent"
-      continue
-    fi
-    
-    # Get URLs
-    V1_URL=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].audio_url')
-    V2_URL=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].audio_url')
-    V1_CLIP=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].clip_id')
-    V2_CLIP=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].clip_id')
-    V1_DUR=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].duration')
-    V2_DUR=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].duration')
-    
-    # Download files
+    # Download file
     DATE=$(date +%Y-%m-%d)
-    OUTPUT_DIR="/tmp/ready_tracks/${USERNAME}"
+    OUTPUT_DIR="/tmp/cron_tracks/${USERNAME}"
     mkdir -p "$OUTPUT_DIR"
     
-    V1_FILE="${OUTPUT_DIR}/${USERNAME} - ${TRACK_NAME} - v1.mp3"
-    V2_FILE="${OUTPUT_DIR}/${USERNAME} - ${TRACK_NAME} - v2.mp3"
+    SAFE_NAME="${USERNAME} - ${TRACK_NAME} - v${VARIANT}.mp3"
+    LOCAL_FILE="${OUTPUT_DIR}/${SAFE_NAME}"
     
-    curl -s -L "$V1_URL" -o "$V1_FILE"
-    curl -s -L "$V2_URL" -o "$V2_FILE"
+    curl -s -L "$AUDIO_URL" -o "$LOCAL_FILE"
     
     # Upload to Storage
-    V1_PATH="music/tracks/${USERNAME}/${DATE}/${USERNAME} - ${TRACK_NAME} - v1.mp3"
-    V2_PATH="music/tracks/${USERNAME}/${DATE}/${USERNAME} - ${TRACK_NAME} - v2.mp3"
-    
-    curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$V1_PATH" | sed 's/ /%20/g')" \
+    STORAGE_PATH="music/tracks/${USERNAME}/${DATE}/${SAFE_NAME}"
+    curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$STORAGE_PATH" | sed 's/ /%20/g')" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
-      -H "Content-Type: audio/mpeg" --data-binary @"$V1_FILE" > /dev/null
+      -H "Content-Type: audio/mpeg" \
+      --data-binary @"$LOCAL_FILE" > /dev/null
     
-    curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$V2_PATH" | sed 's/ /%20/g')" \
-      -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
-      -H "Content-Type: audio/mpeg" --data-binary @"$V2_FILE" > /dev/null
-    
-    # Update database - mark as sent (only v1 record)
-    curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?id=eq.$(echo "$TRACK_RECORD" | jq -r '.[0].id')" \
+    # Update database - mark as completed and sent
+    curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?id=eq.${ID}" \
       -H "apikey: ${SUPABASE_SERVICE_KEY}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
       -H "Content-Type: application/json" \
       -d "{
-        \"audio_url\": \"${V1_URL}\",
-        \"clip_id\": \"${V1_CLIP}\",
-        \"duration\": \"${V1_DUR}\",
-        \"storage_path\": \"${V1_PATH}\",
-        \"metadata\": {\"status\": \"completed\", \"sent\": \"true\", \"task_id\": \"${TASK_ID}\", \"sent_at\": \"$(date -Iseconds)\"}
+        \"audio_url\": \"${AUDIO_URL}\",
+        \"clip_id\": \"${CLIP_ID}\",
+        \"duration\": \"${DURATION}\",
+        \"storage_path\": \"${STORAGE_PATH}\",
+        \"metadata\": {
+          \"status\": \"completed\",
+          \"sent\": \"true\",
+          \"sent_at\": \"$(date -Iseconds)\",
+          \"task_id\": \"${TASK_ID}\"
+        }
       }" > /dev/null
     
-    echo "SENT:${USER_ID}:${USERNAME}:${TRACK_NAME}"
+    # Output for sending via Telegram
+    echo "SEND:${USER_ID}:${USERNAME}:${TRACK_NAME}:${VARIANT}:${LOCAL_FILE}"
+    
+    # Clean up
+    rm "$LOCAL_FILE"
+    
+  elif [ "$STATE" = "running" ] || [ "$STATE" = "pending" ]; then
+    echo "Waiting for $TRACK_NAME v$VARIANT - status: $STATE"
+  else
+    echo "Failed $TRACK_NAME v$VARIANT - status: $STATE"
   fi
 done
+
+# Clean up empty directories
+rmdir /tmp/cron_tracks/* 2>/dev/null || true
