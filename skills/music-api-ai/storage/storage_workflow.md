@@ -4,11 +4,44 @@
 Треки зберігаються тільки в **Supabase Storage**.
 Локальна папка `output/` — тимчасова, видаляється після завантаження.
 
+## Структура файлів
+
+### Неймінг
+```
+{Username} - {Track Name} - v{1|2}.mp3
+```
+
+**Приклади:**
+- `Serhii Dubei - Detroit Techno - v1.mp3`
+- `Yevhen Shishov - Walking - v2.mp3`
+
+### Шлях в Storage
+```
+music/tracks/{Username}/{YYYY-MM-DD}/
+```
+
+**Приклад:**
+```
+music/tracks/Serhii Dubei/2026-02-27/
+├── Serhii Dubei - Detroit Techno - v1.mp3
+└── Serhii Dubei - Detroit Techno - v2.mp3
+```
+
 ## Флоу
 
 ### 1. Завантаження в Supabase
 ```bash
-supabase storage upload tracks/user_id/timestamp/track_name.mp3
+# Формуємо шлях
+USERNAME="Serhii Dubei"
+TRACK_NAME="Detroit Techno"
+DATE="2026-02-27"
+FILENAME="${USERNAME} - ${TRACK_NAME} - v1.mp3"
+
+# Завантажуємо
+curl -X POST "${SUPABASE_URL}/storage/v1/object/music/tracks/${USERNAME}/${DATE}/${FILENAME}" \
+  -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
+  -H "Content-Type: audio/mpeg" \
+  --data-binary @"track.mp3"
 ```
 
 ### 2. Запис в БД
@@ -16,10 +49,17 @@ supabase storage upload tracks/user_id/timestamp/track_name.mp3
 **Таблиця `sessions`:**
 ```json
 {
-  "id": "uuid",
-  "user_id": "telegram:123456789",
-  "created_at": "2026-02-27T14:30:00Z",
-  "title": "Назва сесії"
+  "user_id": "telegram:488426634",
+  "status": "closed",
+  "metadata": {
+    "title": "Serhii Dubei - Detroit Techno",
+    "requester": "Serhii Dubei",
+    "track_count": 2,
+    "storage_paths": [
+      "music/tracks/Serhii Dubei/2026-02-27/Serhii Dubei - Detroit Techno - v1.mp3",
+      "music/tracks/Serhii Dubei/2026-02-27/Serhii Dubei - Detroit Techno - v2.mp3"
+    ]
+  }
 }
 ```
 
@@ -27,20 +67,20 @@ supabase storage upload tracks/user_id/timestamp/track_name.mp3
 ```json
 {
   "session_id": "uuid",
+  "type": "audio",
+  "content": "Serhii Dubei - Detroit Techno (Варіант 1)",
+  "media_url": "https://cdn1.suno.ai/...",
   "metadata": {
-    "track_name": "...",
-    "track_url": "https://...",
-    "storage_path": "tracks/user_id/...",
+    "track_name": "Serhii Dubei - Detroit Techno",
     "variant": 1,
-    "prompt": "...",
-    "api_params": {...}
+    "storage_path": "music/tracks/Serhii Dubei/2026-02-27/Serhii Dubei - Detroit Techno - v1.mp3"
   }
 }
 ```
 
 ### 3. Очищення
 ```bash
-rm output/track_name.mp3
+rm output/local_file.mp3
 ```
 
 ## Референс-аудіо
@@ -54,25 +94,9 @@ rm output/track_name.mp3
 
 2. **Закинути в Storage:**
    - Bucket: `music`
-   - Path: `references/USER_ID/filename.mp3`
+   - Path: `references/{Username}/filename.mp3`
 
 3. **Записати в БД** (`media_files`):
    - `file_type`: `reference_audio`
    - `user_id`: хто надіслав
    - `metadata`: опис мелодії
-
-4. **Використати в prompt:**
-   - Додати в `gpt_description_prompt`: "Inspired by user's reference audio..."
-
-## Структура в Storage
-
-```
-tracks/
-├── {user_id}/
-│   └── {timestamp}/
-│       ├── track_v1.mp3
-│       └── track_v2.mp3
-references/
-├── {user_id}/
-│   └── filename.mp3
-```
