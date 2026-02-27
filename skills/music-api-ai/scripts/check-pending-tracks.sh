@@ -33,9 +33,10 @@ for TASK_ID in $TASK_IDS; do
     USERNAME=$(echo "$TRACK_RECORD" | jq -r '.[0].username')
     TRACK_NAME=$(echo "$TRACK_RECORD" | jq -r '.[0].track_name')
     
-    # Check if already sent
-    ALREADY_SENT=$(echo "$TRACK_RECORD" | jq -r '.[0].metadata.sent')
+    # Check if already sent - SKIP if sent=true
+    ALREADY_SENT=$(echo "$TRACK_RECORD" | jq -r '.[0].metadata.sent // "false"')
     if [ "$ALREADY_SENT" = "true" ]; then
+      echo "Skipping ${TRACK_NAME} - already sent"
       continue
     fi
     
@@ -70,8 +71,8 @@ for TASK_ID in $TASK_IDS; do
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
       -H "Content-Type: audio/mpeg" --data-binary @"$V2_FILE" > /dev/null
     
-    # Update database - mark as sent
-    curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>task_id=eq.${TASK_ID}" \
+    # Update database - mark as sent (only v1 record)
+    curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?id=eq.$(echo "$TRACK_RECORD" | jq -r '.[0].id')" \
       -H "apikey: ${SUPABASE_SERVICE_KEY}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
       -H "Content-Type: application/json" \
@@ -80,12 +81,9 @@ for TASK_ID in $TASK_IDS; do
         \"clip_id\": \"${V1_CLIP}\",
         \"duration\": \"${V1_DUR}\",
         \"storage_path\": \"${V1_PATH}\",
-        \"metadata\": {\"status\": \"completed\", \"sent\": \"true\", \"task_id\": \"${TASK_ID}\"}
+        \"metadata\": {\"status\": \"completed\", \"sent\": \"true\", \"task_id\": \"${TASK_ID}\", \"sent_at\": \"$(date -Iseconds)\"}
       }" > /dev/null
     
-    # Output for agent to send (or send via curl to Telegram)
-    echo "READY:${USER_ID}:${USERNAME}:${TRACK_NAME}:${V1_FILE}:${V2_FILE}"
-    
-    rm "$V1_FILE" "$V2_FILE"
+    echo "SENT:${USER_ID}:${USERNAME}:${TRACK_NAME}"
   fi
 done
