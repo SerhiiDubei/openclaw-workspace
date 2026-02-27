@@ -14,8 +14,40 @@ Before doing anything else:
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+5. **Create session file**: `memory/users/{username}/sessions/YYYY-MM-DD.md` (if not exists)
 
 Don't ask permission. Just do it.
+
+### 📝 Запис сесій (ДЛЯ ВСІХ КОРИСТУВАЧІВ!)
+
+**При кожній сесії з будь-яким користувачем:**
+
+1. Визначити username з Telegram ID
+2. Створити файл: `memory/users/{username}/sessions/YYYY-MM-DD.md`
+3. Записувати:
+   - Теми розмови
+   - Прийняті рішення
+   - Створені/змінені файли
+   - Важливі моменти
+
+**Шаблон сесії:**
+```markdown
+# Сесія: YYYY-MM-DD
+
+## Учасники
+- [Ім'я] (@username)
+
+## Теми
+- [тема 1]
+- [тема 2]
+
+## Рішення
+- [рішення 1]
+
+## Файли
+- створено: [...]
+- змінено: [...]
+```
 
 ## System Instructions
 
