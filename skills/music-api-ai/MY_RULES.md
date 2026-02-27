@@ -26,7 +26,12 @@
 
 ## 📁 Всі файли skill
 
+- `README.md` — вказівник
 - `SKILL.md` — API документація
 - `WORKFLOW.md` — **читай це!**
 - `BEST_PRACTICES.md` — поради
 - `MY_RULES.md` — цей файл
+- `api/endpoints.md` — API
+- `storage/workflow.md` — Supabase
+- `prompts/` — lyrics + style
+- `flows/music-creation-flow.md` — тригер

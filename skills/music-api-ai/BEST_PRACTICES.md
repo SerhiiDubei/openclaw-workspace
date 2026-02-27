@@ -146,7 +146,7 @@ Bass drops chaos reigns
 4. **Використати як референс**
    - Додати в `gpt_description_prompt`: "Inspired by user's reference audio..."
    - Описати стиль/настрій з аудіо
-5. **Згенерувати трек** звичайним процесом
+5. **Згенерувати трек** звичайним процесом (дивись `flows/music-creation-flow.md`)
 6. **Зберегти результат** в Supabase
 
 **Приклад FFmpeg:**

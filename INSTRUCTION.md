@@ -6,7 +6,7 @@
 |--------|-----|----------|
 | **Початок сесії** | Будь-яке повідомлення від користувача | Створити `memory/users/{username}/sessions/YYYY-MM-DD.md` |
 | **Новий користувач** | Перше повідомлення | `projects/onboarding/` → `README.md` |
-| **Генерація музики** | Запит "згенеруй музику" | `skills/music-api-ai/` → `WORKFLOW.md` |
+| **Генерація музики** | Запит "згенеруй музику" | `skills/music-api-ai/README.md` → `WORKFLOW.md` |
 | **Heartbeat** | Системне повідомлення | `HEARTBEAT.md` |
 | **Статус** | Команда /status | Показати session_status |
 
@@ -30,7 +30,7 @@
 ```
 INSTRUCTION.md (ти тут)
     ├── projects/onboarding/README.md
-    ├── skills/music-api-ai/WORKFLOW.md
+    ├── skills/music-api-ai/README.md
     ├── _system/USER_ONBOARDING.md
     ├── _system/FILE_CREATION_RULES.md
     └── PLANS.md

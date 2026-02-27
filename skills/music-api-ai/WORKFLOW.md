@@ -183,9 +183,15 @@ Storage + sessions + messages
 
 ## 📁 Інші файли в цьому skill
 
-| Файл | Призначення |
-|------|-------------|
-| `SKILL.md` | Загальна документація API |
-| `WORKFLOW.md` | Цей файл — конкретний флоу |
-| `MY_RULES.md` | Мій особистий чекліст |
-| `BEST_PRACTICES.md` | Поради щодо промптів |
+| Файл | Призначення | Шлях |
+|------|-------------|------|
+| `README.md` | Вказівник що читати | `/` |
+| `SKILL.md` | Загальна документація API | `/` |
+| `WORKFLOW.md` | Цей файл — конкретний флоу | `/` |
+| `MY_RULES.md` | Мій особистий чекліст | `/` |
+| `BEST_PRACTICES.md` | Поради щодо промптів | `/` |
+| `api/endpoints.md` | API endpoints | `api/` |
+| `storage/workflow.md` | Зберігання в Supabase | `storage/` |
+| `prompts/lyrics-generation.md` | Генерація текстів | `prompts/` |
+| `prompts/style-generation.md` | Генерація стилю | `prompts/` |
+| `flows/music-creation-flow.md` | Тригерний флоу | `flows/` |
