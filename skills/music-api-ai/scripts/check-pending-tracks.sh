@@ -49,8 +49,31 @@ echo "$PENDING_TRACKS" | jq -c '.[]' | while read TRACK; do
     CLIP_ID=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].clip_id")
     DURATION=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].duration // \"0\"")
     
-    # Normalize username - replace spaces with underscores, remove special chars
-    USERNAME_CLEAN=$(echo "$USERNAME" | tr ' ' '_' | tr -cd '[:alnum:]_-')
+    # Normalize username using Python (handles Cyrillic properly)
+    # RULES:
+    # 1. Translit Cyrillic to Latin (ukrainian/russian)
+    # 2. Replace spaces with underscores  
+    # 3. Remove special characters
+    # 4. Only lowercase alphanumeric, underscores, hyphens
+    # 5. NO CYRILLIC ALLOWED
+    USERNAME_CLEAN=$(python3 -c "
+import sys
+name = sys.argv[1]
+mapping = {
+    'а': 'a', 'б': 'b', 'в': 'v', 'г': 'h', 'д': 'd', 'е': 'e', 'ё': 'yo',
+    'ж': 'zh', 'з': 'z', 'и': 'y', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+    'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+    'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch',
+    'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya',
+    'і': 'i', 'ї': 'yi', 'є': 'ye', 'ґ': 'g'
+}
+result = ''
+for c in name.lower():
+    result += mapping.get(c, c)
+result = result.replace(' ', '_')
+result = ''.join(c for c in result if c.isalnum() or c in '_-')
+print(result)
+" "$USERNAME")
     
     # Download file
     DATE=$(date +%Y-%m-%d)
