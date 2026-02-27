@@ -41,6 +41,24 @@ find /root/.openclaw/workspace/memory -maxdepth 1 -type f -name "*.json"
 | Проектні файли | `projects/{project-name}/` |
 | Системні інструкції | `_system/` або корінь |
 
-## Last Check
-- 2026-02-27 04:57 PM - Files check added
-- 2026-02-24 03:54 AM - GitHub auto-pull executed
+## Music Track Status Check — Перевірка статусу треків
+
+### Що перевіряти
+```bash
+# Знайти активні треки в Supabase
+# Треки зі статусом "pending" або "running"
+```
+
+### Дії:
+1. Запитати в Supabase `music_tracks` треки без `audio_url` або зі статусом "running"
+2. Перевірити статус через MusicAPI
+3. Якщо готові — завантажити в Storage, оновити БД, надіслати повідомлення
+4. Якщо failed — оновити статус в БД
+
+### SQL для перевірки:
+```sql
+SELECT * FROM music_tracks 
+WHERE audio_url IS NULL 
+   OR metadata->>'status' = 'running' 
+   OR metadata->>'status' = 'pending';
+```
