@@ -6,23 +6,29 @@
 
 import { generatePrompt, parseRequest } from './prompt-generator.js';
 import { createTask, pollUntilComplete, downloadAudio } from './client.js';
-import { writeFile, appendFile, mkdir } from 'fs/promises';
+import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
-const LOG_FILE = './memory/music-log.jsonl';
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
-async function logGeneration(data) {
-  if (!existsSync('./memory')) {
-    await mkdir('./memory', { recursive: true });
-  }
-  await appendFile(LOG_FILE, JSON.stringify({
-    timestamp: new Date().toISOString(),
-    ...data
-  }) + '\n');
+async function saveToSupabase(data) {
+  // Save track metadata to Supabase music_tracks table
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/music_tracks`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_SERVICE_KEY,
+      'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=representation'
+    },
+    body: JSON.stringify(data)
+  });
+  return response.json();
 }
 
-async function generateMusic(userInput) {
+async function generateMusic(userInput, userId, username) {
   console.log('🎵 Parsing request...');
   const parsed = parseRequest(userInput);
   console.log('Detected:', parsed);
@@ -30,17 +36,17 @@ async function generateMusic(userInput) {
   console.log('🎵 Generating production prompt...');
   const promptData = generatePrompt(parsed.request, parsed);
   
-  // For now, use OpenAI/Claude to generate the full lyrics
-  // This would be done by the main agent using the promptData
   console.log('Prompt template ready:', promptData.user.substring(0, 200) + '...');
   
   return {
     parsed,
-    promptTemplate: promptData
+    promptTemplate: promptData,
+    userId,
+    username
   };
 }
 
-async function submitToAPI(fullParams) {
+async function submitToAPI(fullParams, userId, username) {
   console.log('🎵 Creating music task...');
   const createResult = await createTask(fullParams);
   
@@ -60,9 +66,9 @@ async function submitToAPI(fullParams) {
   return finalResult;
 }
 
-async function downloadAndSave(audioUrl, title) {
+async function downloadAndSave(audioUrl, title, variant) {
   const safeTitle = title.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-  const outputPath = `./output/${safeTitle}_${Date.now()}.mp3`;
+  const outputPath = `./output/${safeTitle}_v${variant}.mp3`;
   
   if (!existsSync('./output')) {
     await mkdir('./output', { recursive: true });
@@ -77,6 +83,8 @@ async function downloadAndSave(audioUrl, title) {
 // Main execution
 async function main() {
   const input = process.argv.slice(2).join(' ');
+  const userId = process.env.USER_ID || 'unknown';
+  const username = process.env.USERNAME || 'Unknown';
   
   if (!input) {
     console.log('Usage: node music-api-ai.js "create a jazz song about rain"');
@@ -85,10 +93,9 @@ async function main() {
   
   try {
     // Step 1: Parse and prepare
-    const { parsed, promptTemplate } = await generateMusic(input);
+    const { parsed, promptTemplate } = await generateMusic(input, userId, username);
     
     // Step 2: The agent should generate full lyrics using promptTemplate
-    // For CLI demo, we'd need the full params from user or LLM
     console.log('\n--- Ready for LLM generation ---');
     console.log('Use this prompt with your LLM to generate full lyrics:');
     console.log(JSON.stringify(promptTemplate, null, 2));
@@ -99,7 +106,7 @@ async function main() {
   }
 }
 
-export { generateMusic, submitToAPI, downloadAndSave, logGeneration };
+export { generateMusic, submitToAPI, downloadAndSave, saveToSupabase };
 
 // Run if called directly
 if (import.meta.url === `file://${process.argv[1]}`) {

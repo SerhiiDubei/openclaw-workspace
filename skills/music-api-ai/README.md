@@ -1,32 +1,45 @@
 # MusicAPI.ai Skill
 
-## Структура
+## Структура папок
 
 ```
 skills/music-api-ai/
-├── WORKFLOW.md              ← ПОЧНИ ТУТ (головний флоу)
-├── SKILL.md                 ← Мінімальна публічна документація
-├── MY_RULES.md              ← Мій чекліст
-├── api/
-│   └── endpoints.md         ← API endpoints
-├── storage/
-│   └── storage_workflow.md  ← Supabase зберігання
-├── prompts/
-│   ├── lyrics-generation.md ← Генерація текстів
-│   └── style-generation.md  ← Генерація стилю
-├── flows/
-│   └── music-creation-flow.md  ← Тригерний флоу
-├── scripts/                 ← Скрипти
-└── examples/requests/       ← Приклади запитів
+├── README.md              ← вказівник що читати
+├── SKILL.md               ← публічна API документація
+├── WORKFLOW.md            ← детальний флоу
+├── MY_RULES.md            ← мій чекліст
+├── api/                   ← робота з API
+│   └── endpoints.md
+├── storage/               ← зберігання, Supabase
+│   └── storage_workflow.md
+├── prompts/               ← prompt engineering
+│   ├── lyrics-generation.md
+│   └── style-generation.md
+├── flows/                 ← готові сценарії
+│   └── music-creation-flow.md
+├── scripts/               ← скрипти
+│   ├── client.js          ← HTTP клієнт для API
+│   ├── music-api-ai.js    ← головний CLI
+│   ├── prompt-generator.js ← генератор промптів
+│   └── track-generation.sh ← фоновий трекер
+├── examples/              ← приклади промптів
+│   └── *.json
+└── requests/              ← збережені запити
+    └── *.json
 ```
 
 ## Швидкий старт
 
-| Якщо ти... | Йди сюди |
-|------------|----------|
-| Вперше генеруєш | `WORKFLOW.md` |
-| Потрібен API | `api/endpoints.md` |
-| Потрібні тексти | `prompts/lyrics-generation.md` |
-| Потрібен стиль | `prompts/style-generation.md` |
-| Потрібно зберегти | `storage/storage_workflow.md` |
-| Тригер "створити трек" | `flows/music-creation-flow.md` |
+1. **Перший раз?** → читай `WORKFLOW.md`
+2. **API деталі?** → `api/endpoints.md`
+3. **Prompt engineering?** → `prompts/`
+4. **Готовий сценарій?** → `flows/music-creation-flow.md`
+
+## Скрипти
+
+| Скрипт | Призначення |
+|--------|-------------|
+| `client.js` | HTTP клієнт: createTask, checkStatus, pollUntilComplete |
+| `music-api-ai.js` | Головний CLI: generateMusic, submitToAPI, saveToSupabase |
+| `prompt-generator.js` | Парсинг запитів + генерація промптів |
+| `track-generation.sh` | Фоновий трекер, записує в Supabase |
