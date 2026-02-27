@@ -49,18 +49,21 @@ echo "$PENDING_TRACKS" | jq -c '.[]' | while read TRACK; do
     CLIP_ID=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].clip_id")
     DURATION=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].duration // \"0\"")
     
+    # Normalize username - replace spaces with underscores, remove special chars
+    USERNAME_CLEAN=$(echo "$USERNAME" | tr ' ' '_' | tr -cd '[:alnum:]_-')
+    
     # Download file
     DATE=$(date +%Y-%m-%d)
-    OUTPUT_DIR="/tmp/cron_tracks/${USERNAME}"
+    OUTPUT_DIR="/tmp/cron_tracks/${USERNAME_CLEAN}"
     mkdir -p "$OUTPUT_DIR"
     
-    SAFE_NAME="${USERNAME} - ${TRACK_NAME} - v${VARIANT}.mp3"
+    SAFE_NAME="${USERNAME_CLEAN} - ${TRACK_NAME} - v${VARIANT}.mp3"
     LOCAL_FILE="${OUTPUT_DIR}/${SAFE_NAME}"
     
     curl -s -L "$AUDIO_URL" -o "$LOCAL_FILE"
     
-    # Upload to Storage
-    STORAGE_PATH="music/tracks/${USERNAME}/${DATE}/${SAFE_NAME}"
+    # Upload to Storage with clean path
+    STORAGE_PATH="music/tracks/${USERNAME_CLEAN}/${DATE}/${SAFE_NAME}"
     curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$STORAGE_PATH" | sed 's/ /%20/g')" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
       -H "Content-Type: audio/mpeg" \
@@ -87,8 +90,7 @@ echo "$PENDING_TRACKS" | jq -c '.[]' | while read TRACK; do
     # Output for sending via Telegram
     echo "SEND:${USER_ID}:${USERNAME}:${TRACK_NAME}:${VARIANT}:${LOCAL_FILE}"
     
-    # Clean up
-    rm "$LOCAL_FILE"
+    # Clean up - will be done by the caller after sending
     
   elif [ "$STATE" = "running" ] || [ "$STATE" = "pending" ]; then
     echo "Waiting for $TRACK_NAME v$VARIANT - status: $STATE"
@@ -99,3 +101,6 @@ done
 
 # Clean up empty directories
 rmdir /tmp/cron_tracks/* 2>/dev/null || true
+
+# Clean up old files (older than 1 hour)
+find /tmp/cron_tracks -name "*.mp3" -type f -mmin +60 -delete 2>/dev/null || true
