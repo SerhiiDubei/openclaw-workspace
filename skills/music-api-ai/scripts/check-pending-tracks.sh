@@ -9,8 +9,8 @@ MUSICAPI_KEY="${MUSICAPI_KEY}"
 # Clean up old ready tracks
 rm -rf /tmp/ready_tracks/*
 
-# Get tracks with status 'running'
-TASK_IDS=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>status=eq.running&select=metadata->>task_id" \
+# Get tracks with status 'running' OR completed but not sent
+TASK_IDS=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?or=(metadata->>status.eq.running,and(metadata->>status.eq.completed,metadata->>sent.neq.true))&select=metadata->>task_id" \
   -H "apikey: ${SUPABASE_SERVICE_KEY}" \
   -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" | jq -r '.[].task_id' | sort -u)
 
