@@ -1,9 +1,12 @@
 #!/bin/bash
-# Check pending music tracks and process BOTH variants when ready
+# Check pending music tracks and prepare files for sending
+# Returns list of ready tracks for agent to send
 
 SUPABASE_URL="${SUPABASE_URL}"
 SUPABASE_SERVICE_KEY="${SUPABASE_SERVICE_KEY}"
 MUSICAPI_KEY="${MUSICAPI_KEY}"
+
+READY_TRACKS=""
 
 # Get unique task_ids with pending tracks
 TASK_IDS=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?select=metadata->>task_id&metadata->>status=eq.running&order=created_at.desc&limit=100" \
@@ -21,7 +24,7 @@ for TASK_ID in $TASK_IDS; do
   
   # Only process if BOTH are ready
   if [ "$V1_STATE" = "succeeded" ] && [ "$V2_STATE" = "succeeded" ]; then
-    # Get user info from first track record
+    # Get user info
     TRACK_RECORD=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>task_id=eq.${TASK_ID}&limit=1" \
       -H "apikey: ${SUPABASE_SERVICE_KEY}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}")
@@ -30,58 +33,60 @@ for TASK_ID in $TASK_IDS; do
     USERNAME=$(echo "$TRACK_RECORD" | jq -r '.[0].username')
     TRACK_NAME=$(echo "$TRACK_RECORD" | jq -r '.[0].track_name')
     
-    # Process v1
-    V1_DATA=$(echo "$STATUS_RESPONSE" | jq -r '.data[0]')
-    V1_CLIP=$(echo "$V1_DATA" | jq -r '.clip_id')
-    V1_URL=$(echo "$V1_DATA" | jq -r '.audio_url')
-    V1_DUR=$(echo "$V1_DATA" | jq -r '.duration')
+    # Get URLs
+    V1_URL=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].audio_url')
+    V2_URL=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].audio_url')
+    V1_CLIP=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].clip_id')
+    V2_CLIP=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].clip_id')
+    V1_DUR=$(echo "$STATUS_RESPONSE" | jq -r '.data[0].duration')
+    V2_DUR=$(echo "$STATUS_RESPONSE" | jq -r '.data[1].duration')
     
-    # Process v2
-    V2_DATA=$(echo "$STATUS_RESPONSE" | jq -r '.data[1]')
-    V2_CLIP=$(echo "$V2_DATA" | jq -r '.clip_id')
-    V2_URL=$(echo "$V2_DATA" | jq -r '.audio_url')
-    V2_DUR=$(echo "$V2_DATA" | jq -r '.duration')
-    
-    # Download both
+    # Create user folder if not exists
     DATE=$(date +%Y-%m-%d)
-    SAFE_NAME=$(echo "$TRACK_NAME" | sed 's/ /_/g')
+    USER_FOLDER="music/tracks/${USERNAME}/${DATE}"
     
-    V1_FILE="/tmp/${USERNAME// /_}_${SAFE_NAME}_v1.mp3"
-    V2_FILE="/tmp/${USERNAME// /_}_${SAFE_NAME}_v2.mp3"
+    # Download files with correct names
+    OUTPUT_DIR="/tmp/ready_tracks/${USERNAME}"
+    mkdir -p "$OUTPUT_DIR"
+    
+    V1_FILENAME="${USERNAME} - ${TRACK_NAME} - v1.mp3"
+    V2_FILENAME="${USERNAME} - ${TRACK_NAME} - v2.mp3"
+    
+    V1_FILE="${OUTPUT_DIR}/${V1_FILENAME}"
+    V2_FILE="${OUTPUT_DIR}/${V2_FILENAME}"
     
     curl -s -L "$V1_URL" -o "$V1_FILE"
     curl -s -L "$V2_URL" -o "$V2_FILE"
     
-    # Upload to Storage with correct naming
-    V1_PATH="music/tracks/${USERNAME}/${DATE}/${USERNAME} - ${TRACK_NAME} - v1.mp3"
-    V2_PATH="music/tracks/${USERNAME}/${DATE}/${USERNAME} - ${TRACK_NAME} - v2.mp3"
+    # Upload to Storage
+    V1_PATH="${USER_FOLDER}/${V1_FILENAME}"
+    V2_PATH="${USER_FOLDER}/${V2_FILENAME}"
     
     curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$V1_PATH" | sed 's/ /%20/g')" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
-      -H "Content-Type: audio/mpeg" --data-binary @"$V1_FILE"
+      -H "Content-Type: audio/mpeg" --data-binary @"$V1_FILE" > /dev/null
     
     curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$V2_PATH" | sed 's/ /%20/g')" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
-      -H "Content-Type: audio/mpeg" --data-binary @"$V2_FILE"
+      -H "Content-Type: audio/mpeg" --data-binary @"$V2_FILE" > /dev/null
     
-    # Update BOTH records in database
+    # Update database
     curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>task_id=eq.${TASK_ID}&variant=eq.1" \
       -H "apikey: ${SUPABASE_SERVICE_KEY}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
       -H "Content-Type: application/json" \
-      -d "{\"audio_url\": \"${V1_URL}\", \"clip_id\": \"${V1_CLIP}\", \"duration\": \"${V1_DUR}\", \"storage_path\": \"${V1_PATH}\", \"metadata\": {\"status\": \"completed\"}}"
+      -d "{\"audio_url\": \"${V1_URL}\", \"clip_id\": \"${V1_CLIP}\", \"duration\": \"${V1_DUR}\", \"storage_path\": \"${V1_PATH}\", \"metadata\": {\"status\": \"completed\"}}" > /dev/null
     
     curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>task_id=eq.${TASK_ID}&variant=eq.2" \
       -H "apikey: ${SUPABASE_SERVICE_KEY}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
       -H "Content-Type: application/json" \
-      -d "{\"audio_url\": \"${V2_URL}\", \"clip_id\": \"${V2_CLIP}\", \"duration\": \"${V2_DUR}\", \"storage_path\": \"${V2_PATH}\", \"metadata\": {\"status\": \"completed\"}}"
+      -d "{\"audio_url\": \"${V2_URL}\", \"clip_id\": \"${V2_CLIP}\", \"duration\": \"${V2_DUR}\", \"storage_path\": \"${V2_PATH}\", \"metadata\": {\"status\": \"completed\"}}" > /dev/null
     
-    # Send ONE message with BOTH tracks
-    echo "🎵 ${USERNAME} - ${TRACK_NAME} READY!"
-    echo "v1: ${V1_URL}"
-    echo "v2: ${V2_URL}"
-    
-    rm "$V1_FILE" "$V2_FILE"
+    # Add to ready list
+    READY_TRACKS="${READY_TRACKS}${USERNAME}|${TRACK_NAME}|${V1_FILE}|${V2_FILE}|${USER_ID}\n"
   fi
 done
+
+# Output ready tracks for agent to send
+echo -e "$READY_TRACKS"

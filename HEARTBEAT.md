@@ -45,20 +45,22 @@ find /root/.openclaw/workspace/memory -maxdepth 1 -type f -name "*.json"
 
 ### Що перевіряти
 ```bash
-# Знайти активні треки в Supabase
-# Треки зі статусом "pending" або "running"
+# Запустити скрипт перевірки
+/root/.openclaw/workspace/skills/music-api-ai/scripts/check-pending-tracks.sh
 ```
 
 ### Дії:
-1. Запитати в Supabase `music_tracks` треки без `audio_url` або зі статусом "running"
-2. Перевірити статус через MusicAPI
-3. Якщо готові — завантажити в Storage, оновити БД, надіслати повідомлення
+1. Перевірити `music_tracks` на треки зі статусом "running"
+2. Запитати статус через MusicAPI
+3. Якщо ОБИДВА варіанти готові:
+   - Завантажити файли з CDN
+   - Завантажити в Supabase Storage
+   - Оновити БД
+   - **Надіслати повідомлення користувачу з файлами**
 4. Якщо failed — оновити статус в БД
 
-### SQL для перевірки:
-```sql
-SELECT * FROM music_tracks 
-WHERE audio_url IS NULL 
-   OR metadata->>'status' = 'running' 
-   OR metadata->>'status' = 'pending';
-```
+### Надсилання файлів:
+- Завантажити v1 і v2 з CDN (Suno)
+- Надіслати як **файли** в Telegram
+- Неймінг: `Username - Track Name - v1.mp3`
+- Одне повідомлення з двома файлами
