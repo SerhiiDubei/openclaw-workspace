@@ -24,7 +24,8 @@ for TASK_ID in $TASK_IDS; do
   
   # Only process if BOTH are ready
   if [ "$V1_STATE" = "succeeded" ] && [ "$V2_STATE" = "succeeded" ]; then
-    # Get track info
+    # Use username with spaces (not underscores)
+    USERNAME_CLEAN=$(echo "$USERNAME" | sed 's/_/ /g')
     TRACK_RECORD=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?metadata->>task_id=eq.${TASK_ID}&limit=1" \
       -H "apikey: ${SUPABASE_SERVICE_KEY}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}")
