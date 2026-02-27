@@ -1,7 +1,7 @@
 # Music Creation Flow — Тригерний флоу
 
 ## Тригер
-Користувач каже: "Хочу створити трек" або натискає кнопку.
+Користувач каже: "Хочу створити трек" або натискає кнопку `[🎵 Створити трек]`
 
 ## Кроки збору інформації
 
@@ -32,14 +32,12 @@
 
 ## Після збору
 
-1. **Lyrics Generation** — створити текст
-2. **Style Generation** — підібрати теги
-3. **API Request** — відправити в MusicAPI
-4. **Wait & Deliver** — 2 варіанти користувачу
-5. **Save to Supabase** — зберегти все
+1. **Lyrics Generation** → `prompts/lyrics-generation.md`
+2. **Style Generation** → `prompts/style-generation.md`
+3. **API Request** → `api/endpoints.md`
+4. **Wait & Deliver** → 2 варіанти користувачу
+5. **Save to Supabase** → `storage/storage_workflow.md`
 
-## Кнопки для запуску
+## Запуск основного флоу
 
-```
-[🎵 Створити трек] → запускає цей флоу
-```
+Після збору інформації → читай `WORKFLOW.md` (7 кроків)

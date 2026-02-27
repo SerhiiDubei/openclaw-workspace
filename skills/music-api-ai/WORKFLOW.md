@@ -1,34 +1,24 @@
-# WORKFLOW.md — Флоу генерації музики
+# WORKFLOW.md — Головний флоу генерації музики
 
 > **Читати цей файл перед КОЖНОЮ генерацією!**
 
-## 🚀 Швидкий старт (досвідчений користувач)
+## 🚀 Швидкий старт
 
-```bash
-# 1. Запитати неймінг
-"Хто замовляє і як назвати трек?"
-
-# 2. Сформувати промпт
-[Intro][Instrument][Style] Текст
-
-# 3. Відправити в API
-POST /create з параметрами
-
-# 4. Зачекати ~3 хв
-Poll статус → отримати URL
-
-# 5. Зберегти в Supabase
-Storage + sessions + messages
-
-# 6. Надіслати 2 варіанти
-З поясненням який який
+```
+1. Неймінг → Хто замовляє і як назвати
+2. Prompt → Деталі в prompts/lyrics-generation.md та prompts/style-generation.md
+3. API → Деталі в api/endpoints.md
+4. Async → Не блокувати чат
+5. 2 варіанти → Завантажити обидва
+6. Supabase → Деталі в storage/storage_workflow.md
+7. Логування → Записати в music-log.jsonl
 ```
 
 ---
 
-## 📋 Детальний флоу
+## 📋 Детальний флоу (7 кроків)
 
-### Крок 1: НЕЙМІНГ (обов'язково!)
+### Крок 1: НЕЙМІНГ
 
 **Запитати:**
 ```
@@ -52,32 +42,28 @@ Storage + sessions + messages
 [Outro][Instrument][Style] Текст
 ```
 
-**Теги інструментів:**
-- `[TB-303]` — acid bass
-- `[Roland TR-909]` — drums
-- `[Analog Synth]` — synth leads
-
-**Теги стилю:**
-- `[Acid]`, `[Detroit Techno]`, `[Dark Bass]`
+**Детальніше:**
+- Тексти → `prompts/lyrics-generation.md`
+- Стиль/теги → `prompts/style-generation.md`
 
 ---
 
-### Крок 3: API ПАРАМЕТРИ
+### Крок 3: API ЗАПИТ
 
+**POST /create** з параметрами:
 ```json
 {
   "custom_mode": true,
   "prompt": "...",
-  "title": "Назва треку",
-  "tags": "genre,style,mood",
+  "title": "Назва",
+  "tags": "...",
   "style_weight": 0.8,
   "weirdness_constraint": 0.5,
-  "negative_tags": "elements to avoid",
-  "gpt_description_prompt": "опис (max 350 chars)",
-  "make_instrumental": false,
   "mv": "sonic-v5"
 }
 ```
+
+**Детальніше:** `api/endpoints.md`
 
 ---
 
@@ -86,7 +72,7 @@ Storage + sessions + messages
 **Не блокувати чат!**
 
 1. Відповісти: "🎵 Трек у черзі! Чекаємо ~3 хвилини..."
-2. Запустити фоновий трекер
+2. Запустити фоновий трекер: `./scripts/track-generation.sh TASK_ID USER_ID &`
 3. Надіслати результат окремим повідомленням
 
 ---
@@ -95,54 +81,23 @@ Storage + sessions + messages
 
 **Завжди генерувати 2 варіанти!**
 
-Надіслати окремими повідомленнями з поясненням:
+Надіслати окремо з поясненням:
 ```
-Варіант 1: [опис чим відрізняється]
-Варіант 2: [опис чим відрізняється]
+Варіант 1: [опис]
+Варіант 2: [опис]
 ```
 
 ---
 
-### Крок 6: ЗБЕРЕЖЕННЯ В SUPABASE
+### Крок 6: SUPABASE
 
 **Автоматично, без питань!**
 
-#### Таблиця `sessions`:
-```json
-{
-  "id": "uuid",
-  "user_id": "telegram:123456789",
-  "created_at": "2026-02-27T14:30:00Z",
-  "updated_at": "2026-02-27T14:35:00Z",
-  "title": "Назва сесії",
-  "metadata": {
-    "requester": "Ім'я",
-    "requester_id": "telegram:123456789",
-    "track_count": 2,
-    "status": "completed"
-  }
-}
-```
+1. Завантажити в Storage
+2. Створити запис в `sessions`
+3. Створити 2 записи в `messages`
 
-#### Таблиця `messages` (2 записи):
-```json
-{
-  "id": "uuid",
-  "session_id": "uuid",
-  "created_at": "2026-02-27T14:35:00Z",
-  "role": "assistant",
-  "content": "Назва треку (Варіант 1/2)",
-  "metadata": {
-    "track_name": "...",
-    "track_url": "https://...",
-    "variant": 1,
-    "prompt": "повний промпт",
-    "api_params": {...},
-    "generated_at": "2026-02-27T14:35:00Z",
-    "storage_path": "tracks/..."
-  }
-}
-```
+**Детальніше:** `storage/storage_workflow.md`
 
 ---
 
@@ -151,15 +106,10 @@ Storage + sessions + messages
 Записати в `memory/music-log.jsonl`:
 ```json
 {
-  "timestamp": "2026-02-27T14:35:00Z",
-  "user_id": "telegram:337958464",
-  "user_name": "Євген Шишов",
-  "track_name": "Shishov's Walk - Part I",
-  "variant": 1,
-  "prompt": "[Intro][TB-303]...",
-  "api_params": {...},
-  "storage_url": "https://...",
-  "session_id": "uuid"
+  "timestamp": "...",
+  "user_id": "...",
+  "track_name": "...",
+  "prompt": "..."
 }
 ```
 
@@ -167,31 +117,28 @@ Storage + sessions + messages
 
 ## ✅ Чекліст
 
-### Перед генерацією:
+### Перед:
 - [ ] Неймінг узгоджено
-- [ ] Prompt з правильними тегами
+- [ ] Prompt з тегами (див. prompts/)
 - [ ] Async workflow налаштовано
 
-### Після генерації:
-- [ ] Завантажено в Supabase Storage
-- [ ] Створено запис в `sessions`
-- [ ] Створено 2 записи в `messages`
-- [ ] Записано в `music-log.jsonl`
-- [ ] Надіслано користувачу обидва варіанти
+### Після:
+- [ ] Завантажено в Supabase (див. storage/)
+- [ ] Створено записи в БД
+- [ ] Записано в music-log.jsonl
+- [ ] Надіслано 2 варіанти
 
 ---
 
-## 📁 Інші файли в цьому skill
+## 📁 Структура файлів
 
-| Файл | Призначення | Шлях |
-|------|-------------|------|
-| `README.md` | Вказівник що читати | `/` |
-| `SKILL.md` | Загальна документація API | `/` |
-| `WORKFLOW.md` | Цей файл — конкретний флоу | `/` |
-| `MY_RULES.md` | Мій особистий чекліст | `/` |
-| `BEST_PRACTICES.md` | Поради щодо промптів | `/` |
-| `api/endpoints.md` | API endpoints | `api/` |
-| `storage/workflow.md` | Зберігання в Supabase | `storage/` |
-| `prompts/lyrics-generation.md` | Генерація текстів | `prompts/` |
-| `prompts/style-generation.md` | Генерація стилю | `prompts/` |
-| `flows/music-creation-flow.md` | Тригерний флоу | `flows/` |
+| Файл | Призначення |
+|------|-------------|
+| `WORKFLOW.md` | Цей файл — головний флоу |
+| `SKILL.md` | Мінімальна публічна документація |
+| `MY_RULES.md` | Мій чекліст |
+| `api/endpoints.md` | API endpoints |
+| `storage/storage_workflow.md` | Supabase зберігання |
+| `prompts/lyrics-generation.md` | Генерація текстів |
+| `prompts/style-generation.md` | Генерація стилю |
+| `flows/music-creation-flow.md` | Тригерний флоу |

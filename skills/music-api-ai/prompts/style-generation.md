@@ -1,6 +1,6 @@
 # Style Generation — Генерація стилю
 
-## Параметри
+## Параметри API
 
 ### style_weight (0.0 - 1.0)
 Сила стилю. Више = чіткіше слідує тегам.
@@ -30,7 +30,31 @@
 | House | `[House]`, `[Four on the floor]` |
 
 ## negative_tags
+
 Що уникати:
 ```json
 "negative_tags": "pop, soft, melodic, low vocals"
+```
+
+## Приклади успішних prompts
+
+**Detroit Techno:**
+```
+[Intro][Detroit Techno][Minimal][TB-303][Dark]
+Бля бля сука бля
+
+[Drop][Full Power][Acid Peak]
+Бля бля сука бля!
+```
+
+**Post-Punk:**
+```
+[Verse][Post Punk][Cold Wave][Ukrainian Lyrics]
+Під прозорим покровом ночі
+```
+
+**Big Beat:**
+```
+[Drop][Big Beat][Breakbeat][Aggressive]
+Bass drops chaos reigns
 ```

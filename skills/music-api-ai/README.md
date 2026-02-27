@@ -1,35 +1,32 @@
 # MusicAPI.ai Skill
 
-## Структура папок
+## Структура
 
 ```
 skills/music-api-ai/
-├── README.md              ← вказівник що читати
-├── SKILL.md               ← публічна API документація
-├── WORKFLOW.md            ← детальний флоу
-├── MY_RULES.md            ← мій чекліст
-├── BEST_PRACTICES.md      ← поради
-├── api/                   ← робота з API
-│   └── endpoints.md
-├── storage/               ← зберігання, Supabase
-│   └── workflow.md
-├── prompts/               ← prompt engineering
-│   ├── lyrics-generation.md
-│   └── style-generation.md
-├── flows/                 ← готові сценарії
-│   └── music-creation-flow.md
-├── scripts/               ← скрипти
-│   ├── client.js
-│   ├── music-api-ai.js
-│   ├── prompt-generator.js
-│   └── track-generation.sh
-└── examples/              ← приклади
-    └── requests/          ← request-*.json
+├── WORKFLOW.md              ← ПОЧНИ ТУТ (головний флоу)
+├── SKILL.md                 ← Мінімальна публічна документація
+├── MY_RULES.md              ← Мій чекліст
+├── api/
+│   └── endpoints.md         ← API endpoints
+├── storage/
+│   └── storage_workflow.md  ← Supabase зберігання
+├── prompts/
+│   ├── lyrics-generation.md ← Генерація текстів
+│   └── style-generation.md  ← Генерація стилю
+├── flows/
+│   └── music-creation-flow.md  ← Тригерний флоу
+├── scripts/                 ← Скрипти
+└── examples/requests/       ← Приклади запитів
 ```
 
 ## Швидкий старт
 
-1. **Перший раз?** → читай `WORKFLOW.md`
-2. **API деталі?** → `api/endpoints.md`
-3. **Prompt engineering?** → `prompts/`
-4. **Готовий сценарій?** → `flows/music-creation-flow.md`
+| Якщо ти... | Йди сюди |
+|------------|----------|
+| Вперше генеруєш | `WORKFLOW.md` |
+| Потрібен API | `api/endpoints.md` |
+| Потрібні тексти | `prompts/lyrics-generation.md` |
+| Потрібен стиль | `prompts/style-generation.md` |
+| Потрібно зберегти | `storage/storage_workflow.md` |
+| Тригер "створити трек" | `flows/music-creation-flow.md` |
