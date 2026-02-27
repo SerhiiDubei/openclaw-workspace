@@ -1,5 +1,25 @@
 # Supabase Database Structure
 
+## ⚠️ ВАЖЛИВО: Налаштування БД
+
+Для оновлення схеми виконай SQL в Supabase Dashboard (SQL Editor):
+
+```sql
+-- Оновлення таблиці music_tracks
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS user_id TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS username TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS track_name TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS variant INTEGER;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS prompt TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS api_params JSONB DEFAULT '{}';
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS storage_path TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS audio_url TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS clip_id TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS duration TEXT;
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS created_at TIMESTAMPTZ DEFAULT NOW();
+ALTER TABLE music_tracks ADD COLUMN IF NOT EXISTS metadata JSONB DEFAULT '{}';
+```
+
 ## Таблиці
 
 ### 1. users
