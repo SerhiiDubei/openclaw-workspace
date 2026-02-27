@@ -17,6 +17,17 @@ Before doing anything else:
 
 Don't ask permission. Just do it.
 
+## System Instructions
+
+**Important system files:**
+- `_system/USER_ONBOARDING.md` — How to add new users
+- `_system/FILE_CREATION_RULES.md` — Where to put files
+
+Always check these when:
+- Adding a new user
+- Creating files in new locations
+- Unsure where something belongs
+
 ## Memory
 
 You wake up fresh each session. These files are your continuity:
@@ -131,7 +142,7 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 
 ## 💓 Heartbeats - Be Proactive!
 
-When you receive a heartbeat poll (message matches the configured heartbeat prompt), don't just reply `HEARTBEAT_OK` every time. Use heartbeats productively!
+When you receive a heartbeat poll (message matches the heartbeat prompt above), don't just reply `HEARTBEAT_OK` every time. Use heartbeats productively!
 
 Default heartbeat prompt:
 `Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK.`
