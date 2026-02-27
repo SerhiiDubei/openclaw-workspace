@@ -72,11 +72,87 @@ git push origin main
 - Завантажити треки в Storage одразу після генерації
 - НЕ чекати підтвердження — робити автоматично
 
-**Приклад:**
-```bash
-# Якщо Шишов замовив трек
-curl -X POST "${SUPABASE_URL}/rest/v1/sessions" \
-  -d '{"user_id": "telegram:337958464", ...}'
+**Структура даних для збереження треків:**
+
+#### Таблиця `sessions`:
+```json
+{
+  "id": "uuid",
+  "user_id": "telegram:123456789",
+  "created_at": "2026-02-27T14:30:00Z",
+  "updated_at": "2026-02-27T14:35:00Z",
+  "title": "Назва сесії (запит користувача)",
+  "metadata": {
+    "requester": "Ім'я замовника",
+    "requester_id": "telegram:123456789",
+    "track_count": 2,
+    "status": "completed"
+  }
+}
+```
+
+#### Таблиця `messages` (2 записи — по одному на кожен варіант):
+```json
+{
+  "id": "uuid",
+  "session_id": "uuid (посилання на sessions)",
+  "created_at": "2026-02-27T14:35:00Z",
+  "role": "assistant",
+  "content": "Назва треку: [Хто] - [Стиль] (Варіант 1/2)",
+  "metadata": {
+    "track_name": "Повна назва треку",
+    "track_url": "URL в Supabase Storage",
+    "variant": 1,
+    "prompt": "Повний текст промпта який був відправлений в API",
+    "api_params": {
+      "custom_mode": true,
+      "style_weight": 0.8,
+      "weirdness_constraint": 0.5,
+      "mv": "sonic-v5",
+      "tags": "жанр,стиль,настрій",
+      "negative_tags": "що уникати",
+      "make_instrumental": false,
+      "gpt_description_prompt": "опис для генерації"
+    },
+    "generated_at": "2026-02-27T14:35:00Z",
+    "storage_path": "tracks/user_id/timestamp/track_name.mp3"
+  }
+}
+```
+
+#### Обов'язкові поля для збереження:
+| Поле | Опис | Приклад |
+|------|------|---------|
+| `user_id` | ID користувача в Telegram | `telegram:337958464` |
+| `created_at` | Час створення (ISO 8601) | `2026-02-27T14:30:00Z` |
+| `prompt` | Повний промпт для API | `[Intro][TB-303][Acid]...` |
+| `api_params` | Всі параметри API запиту | `{style_weight: 0.8, ...}` |
+| `track_url` | URL в Supabase Storage | `https://.../tracks/...mp3` |
+| `variant` | Номер варіанту (1 або 2) | `1` |
+
+**Приклад SQL для створення запису:**
+```sql
+-- Створити сесію
+INSERT INTO sessions (user_id, title, metadata)
+VALUES ('telegram:337958464', 'Detroit Acid Track', 
+        '{"requester": "Євген Шишов", "track_count": 2}'::jsonb)
+RETURNING id;
+
+-- Створити повідомлення з треком
+INSERT INTO messages (session_id, role, content, metadata)
+VALUES (
+  'session-uuid',
+  'assistant',
+  'Shishov - Detroit Acid (Варіант 1)',
+  '{
+    "track_name": "Shishov - Detroit Acid",
+    "track_url": "https://.../tracks/...mp3",
+    "variant": 1,
+    "prompt": "[Intro][TB-303][Acid]...",
+    "api_params": {"style_weight": 0.8, ...},
+    "generated_at": "2026-02-27T14:35:00Z"
+  }'::jsonb
+);
 ```
 
 ---
