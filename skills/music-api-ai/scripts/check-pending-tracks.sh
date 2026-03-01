@@ -1,10 +1,14 @@
 #!/bin/bash
 # Check pending music tracks and send files via Telegram
 # Runs every 2 minutes via cron
+# Updated for sunoapi.org provider
 
 SUPABASE_URL="${SUPABASE_URL}"
 SUPABASE_SERVICE_KEY="${SUPABASE_SERVICE_KEY}"
-MUSICAPI_KEY="${MUSICAPI_KEY}"
+SUNOAPI_KEY="${SUNOAPI_KEY:-9d1c695345ed3583c3c56b26c45d0b50}"
+
+# API Configuration
+SUNOAPI_BASE="https://api.sunoapi.org/api/v1"
 
 # Get tracks that need processing:
 # 1. status = 'running' (new tracks)
@@ -35,30 +39,48 @@ echo "$PENDING_TRACKS" | jq -c '.[]' | while read TRACK; do
     continue
   fi
   
-  # Check MusicAPI status
-  STATUS_RESPONSE=$(curl -s "https://api.musicapi.ai/api/v1/sonic/task/${TASK_ID}" \
-    -H "Authorization: Bearer ${MUSICAPI_KEY}")
+  # Check SunoAPI status
+  STATUS_RESPONSE=$(curl -s "${SUNOAPI_BASE}/generate/record-info?taskId=${TASK_ID}" \
+    -H "Authorization: Bearer ${SUNOAPI_KEY}")
   
-  # Get variant status (0-indexed in API)
-  API_INDEX=$((VARIANT - 1))
-  STATE=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].state // \"unknown\"")
+  # Check if request was successful
+  API_CODE=$(echo "$STATUS_RESPONSE" | jq -r '.code // 500')
   
-  if [ "$STATE" = "succeeded" ]; then
-    # Get file info
-    AUDIO_URL=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].audio_url")
-    CLIP_ID=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].clip_id")
-    DURATION=$(echo "$STATUS_RESPONSE" | jq -r ".data[${API_INDEX}].duration // \"0\"")
+  if [ "$API_CODE" != "200" ]; then
+    echo "API error for $TRACK_NAME v$VARIANT - code: $API_CODE"
+    continue
+  fi
+  
+  # Get task status
+  TASK_STATUS=$(echo "$STATUS_RESPONSE" | jq -r '.data.status // "UNKNOWN"')
+  
+  if [ "$TASK_STATUS" = "SUCCESS" ]; then
+    # Get variant data (0-indexed in API)
+    API_INDEX=$((VARIANT - 1))
     
-    # Normalize username using Python (handles Cyrillic properly)
-    # RULES:
-    # 1. Translit Cyrillic to Latin (ukrainian/russian)
-    # 2. Replace spaces with underscores  
-    # 3. Remove special characters
-    # 4. Only lowercase alphanumeric, underscores, hyphens
-    # 5. NO CYRILLIC ALLOWED
+    # Check if sunoData exists and has the variant
+    SUNO_DATA_LENGTH=$(echo "$STATUS_RESPONSE" | jq -r '.data.response.sunoData | length // 0')
+    
+    if [ "$API_INDEX" -ge "$SUNO_DATA_LENGTH" ]; then
+      echo "Variant $VARIANT not found for $TRACK_NAME - only $SUNO_DATA_LENGTH variants available"
+      continue
+    fi
+    
+    # Get file info
+    AUDIO_URL=$(echo "$STATUS_RESPONSE" | jq -r ".data.response.sunoData[${API_INDEX}].audioUrl // empty")
+    CLIP_ID=$(echo "$STATUS_RESPONSE" | jq -r ".data.response.sunoData[${API_INDEX}].id // empty")
+    DURATION=$(echo "$STATUS_RESPONSE" | jq -r ".data.response.sunoData[${API_INDEX}].duration // \"0\"")
+    
+    if [ -z "$AUDIO_URL" ] || [ "$AUDIO_URL" = "null" ]; then
+      echo "No audio URL for $TRACK_NAME v$VARIANT"
+      continue
+    fi
+    
+    # Normalize username: transliterate Cyrillic, keep spaces as-is for consistency
     USERNAME_CLEAN=$(python3 -c "
 import sys
 name = sys.argv[1]
+# Cyrillic to Latin mapping
 mapping = {
     'а': 'a', 'б': 'b', 'в': 'v', 'г': 'h', 'д': 'd', 'е': 'e', 'ё': 'yo',
     'ж': 'zh', 'з': 'z', 'и': 'y', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
@@ -70,8 +92,10 @@ mapping = {
 result = ''
 for c in name.lower():
     result += mapping.get(c, c)
-result = result.replace(' ', '_')
-result = ''.join(c for c in result if c.isalnum() or c in '_-')
+# Keep original spacing (don't replace spaces with underscores)
+result = ''.join(c for c in result if c.isalnum() or c in ' _-')
+# Capitalize first letter of each word for consistency
+result = ' '.join(word.capitalize() for word in result.split())
 print(result)
 " "$USERNAME")
     
@@ -85,12 +109,35 @@ print(result)
     
     curl -s -L "$AUDIO_URL" -o "$LOCAL_FILE"
     
-    # Upload to Storage with clean path
+    # Verify file was downloaded
+    if [ ! -f "$LOCAL_FILE" ] || [ ! -s "$LOCAL_FILE" ]; then
+      echo "Failed to download $TRACK_NAME v$VARIANT"
+      continue
+    fi
+    
+    # Upload to Storage with clean path using multipart/form-data
     STORAGE_PATH="music/tracks/${USERNAME_CLEAN}/${DATE}/${SAFE_NAME}"
-    curl -s -X POST "${SUPABASE_URL}/storage/v1/object/$(echo "$STORAGE_PATH" | sed 's/ /%20/g')" \
+    
+    # Create multipart upload using curl
+    BOUNDARY="----FormBoundary$(date +%s%N)"
+    
+    # Build multipart body
+    {
+      echo "--${BOUNDARY}"
+      echo 'Content-Disposition: form-data; name="file"; filename="'"${SAFE_NAME}"'"'
+      echo "Content-Type: audio/mpeg"
+      echo ""
+      cat "$LOCAL_FILE"
+      echo ""
+      echo "--${BOUNDARY}--"
+    } > /tmp/upload_body_$$.tmp
+    
+    curl -s -X POST "${SUPABASE_URL}/storage/v1/object/${STORAGE_PATH}" \
       -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
-      -H "Content-Type: audio/mpeg" \
-      --data-binary @"$LOCAL_FILE" > /dev/null
+      -H "Content-Type: multipart/form-data; boundary=${BOUNDARY}" \
+      --data-binary @/tmp/upload_body_$$.tmp > /dev/null
+    
+    rm -f /tmp/upload_body_$$.tmp
     
     # Update database - mark as completed and sent
     curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?id=eq.${ID}" \
@@ -113,12 +160,21 @@ print(result)
     # Output for sending via Telegram
     echo "SEND:${USER_ID}:${USERNAME}:${TRACK_NAME}:${VARIANT}:${LOCAL_FILE}"
     
-    # Clean up - will be done by the caller after sending
-    
-  elif [ "$STATE" = "running" ] || [ "$STATE" = "pending" ]; then
-    echo "Waiting for $TRACK_NAME v$VARIANT - status: $STATE"
+  elif [ "$TASK_STATUS" = "PENDING" ] || [ "$TASK_STATUS" = "RUNNING" ] || [ "$TASK_STATUS" = "PROCESSING" ]; then
+    echo "Waiting for $TRACK_NAME v$VARIANT - status: $TASK_STATUS"
   else
-    echo "Failed $TRACK_NAME v$VARIANT - status: $STATE"
+    echo "Failed $TRACK_NAME v$VARIANT - status: $TASK_STATUS"
+    # Update database with failed status
+    curl -s -X PATCH "${SUPABASE_URL}/rest/v1/music_tracks?id=eq.${ID}" \
+      -H "apikey: ${SUPABASE_SERVICE_KEY}" \
+      -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}" \
+      -H "Content-Type: application/json" \
+      -d "{
+        \"metadata\": {
+          \"status\": \"failed\",
+          \"task_id\": \"${TASK_ID}\"
+        }
+      }" > /dev/null
   fi
 done
 

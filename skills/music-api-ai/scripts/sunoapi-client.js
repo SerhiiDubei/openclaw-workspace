@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * SunoAPI.org Client
- * Create music generation task and poll for completion
+ * SunoAPI.org Client - Standalone
+ * Usage: node sunoapi-client.js "create a jazz song about rain"
  */
 
 const API_BASE = 'https://api.sunoapi.org/api/v1';
@@ -69,29 +69,62 @@ async function downloadAudio(url, outputPath) {
   return outputPath;
 }
 
-// CLI usage
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const command = process.argv[2];
+// Main execution
+async function main() {
+  const input = process.argv.slice(2).join(' ');
   
-  if (command === 'create') {
-    const params = JSON.parse(process.argv[3]);
-    const result = await createTask(params);
-    console.log(JSON.stringify(result, null, 2));
+  if (!input) {
+    console.log('Usage: node sunoapi-client.js "create a jazz song about rain"');
+    process.exit(1);
   }
   
-  if (command === 'status') {
-    const taskId = process.argv[3];
-    const result = await checkStatus(taskId);
-    console.log(JSON.stringify(result, null, 2));
-  }
+  console.log('🎵 Creating music task...');
+  console.log('Prompt:', input);
   
-  if (command === 'poll') {
-    const taskId = process.argv[3];
-    const result = await pollUntilComplete(taskId, (s) => {
-      console.error(`Status: ${s.status}`);
+  try {
+    const createResult = await createTask({
+      prompt: input,
+      customMode: true,
+      instrumental: true,
+      style: 'Jazz',
+      title: 'AI Generated Track',
+      model: 'V4_5',
+      callBackUrl: 'https://httpbin.org/post'
     });
-    console.log(JSON.stringify(result, null, 2));
+    
+    if (createResult.code !== 200) {
+      throw new Error(`Failed to create task: ${createResult.msg}`);
+    }
+    
+    const taskId = createResult.data?.taskId;
+    console.log(`✓ Task created: ${taskId}`);
+    
+    console.log('⏳ Waiting for generation (~2-3 minutes)...');
+    const finalResult = await pollUntilComplete(taskId, (status) => {
+      process.stdout.write(`\rStatus: ${status.status}                    `);
+    });
+    
+    console.log('\n✓ Generation complete!');
+    
+    // Display results
+    if (finalResult.response?.sunoData) {
+      finalResult.response.sunoData.forEach((track, index) => {
+        console.log(`\nTrack ${index + 1}:`);
+        console.log(`  Title: ${track.title}`);
+        console.log(`  Audio: ${track.audioUrl}`);
+        console.log(`  Duration: ${track.duration}s`);
+      });
+    }
+    
+  } catch (error) {
+    console.error('❌ Error:', error.message);
+    process.exit(1);
   }
+}
+
+// Run if called directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main();
 }
 
 export { createTask, checkStatus, pollUntilComplete, downloadAudio };

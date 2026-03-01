@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
- * Main CLI for MusicAPI.ai skill
+ * Main CLI for SunoAPI skill
  * Usage: node music-api-ai.js "create a jazz song about rain"
+ * Updated for sunoapi.org provider
  */
 
 import { generatePrompt, parseRequest } from './prompt-generator.js';
@@ -50,16 +51,21 @@ async function submitToAPI(fullParams, userId, username) {
   console.log('🎵 Creating music task...');
   const createResult = await createTask(fullParams);
   
-  if (!createResult.task_id && !createResult.body?.task_id) {
-    throw new Error(`Failed to create task: ${JSON.stringify(createResult)}`);
+  // Check if API call was successful
+  if (createResult.code !== 200) {
+    throw new Error(`Failed to create task: ${createResult.msg}`);
   }
   
-  const taskId = createResult.task_id || createResult.body.task_id;
+  const taskId = createResult.data?.taskId;
+  if (!taskId) {
+    throw new Error(`No task_id in response: ${JSON.stringify(createResult)}`);
+  }
+  
   console.log(`✓ Task created: ${taskId}`);
   
   console.log('⏳ Waiting for generation (this may take 1-3 minutes)...');
   const finalResult = await pollUntilComplete(taskId, (status) => {
-    process.stderr.write(`\rStatus: ${status.status} ${status.progress ? `(${status.progress}%)` : ''}  `);
+    process.stderr.write(`\rStatus: ${status.status}                    `);
   });
   
   console.log('\n✓ Generation complete!');
