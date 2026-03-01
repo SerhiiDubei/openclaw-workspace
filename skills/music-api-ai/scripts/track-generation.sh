@@ -48,3 +48,6 @@ curl -s -X POST "${SUPABASE_URL}/rest/v1/music_tracks" \
   }" > /dev/null 2>&1
 
 echo "Task ${TASK_ID} registered for ${USERNAME} - ${TRACK_NAME} (v1 + v2)"
+
+# Trigger immediate check (non-blocking)
+(/root/.openclaw/workspace/skills/music-api-ai/scripts/check-pending-tracks.sh &)
