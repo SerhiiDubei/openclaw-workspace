@@ -17,6 +17,11 @@ PENDING_TRACKS=$(curl -s "${SUPABASE_URL}/rest/v1/music_tracks?or=(metadata->>st
   -H "apikey: ${SUPABASE_SERVICE_KEY}" \
   -H "Authorization: Bearer ${SUPABASE_SERVICE_KEY}")
 
+# Exit early if no pending tracks (silent - no output)
+if [ -z "$PENDING_TRACKS" ] || [ "$PENDING_TRACKS" = "[]" ]; then
+  exit 0
+fi
+
 # Process each track
 echo "$PENDING_TRACKS" | jq -c '.[]' | while read TRACK; do
   ID=$(echo "$TRACK" | jq -r '.id')
