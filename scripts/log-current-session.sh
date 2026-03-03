@@ -17,8 +17,18 @@ if [ -z "$USERNAME" ] || [ -z "$USER_MESSAGE" ]; then
     exit 1
 fi
 
-# Конвертуємо username в формат директорії
-USER_DIR=$(echo "$USERNAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr '_' '-')
+# Мапа username → user_dir (для відомих користувачів)
+declare -A USER_MAP
+USER_MAP["bomberman047"]="serhii-dubei"
+USER_MAP["mental-ninja"]="mental-ninja"
+
+# Визначаємо директорію користувача
+if [ -n "${USER_MAP[$USERNAME]}" ]; then
+    USER_DIR="${USER_MAP[$USERNAME]}"
+else
+    # Конвертуємо username в формат директорії
+    USER_DIR=$(echo "$USERNAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr '_' '-')
+fi
 SESSION_FILE="$WORKSPACE/memory/users/$USER_DIR/sessions/$DATE.md"
 
 # Створюємо директорію
