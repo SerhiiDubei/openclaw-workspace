@@ -41,8 +41,8 @@
 
 | # | Company | Role | URL | Score | Tier | Notes |
 |---|---------|------|-----|-------|------|-------|
-| 21 | Magnetics | PM | https://djinni.co/jobs/807435 | **6/10** | 2 | **Role:** PM — ок. **Domain:** Agency, UX-UI, front-end — не чистий продукт. **Overall:** Agency model. |
-| 22 | Reelly | Product Operations Manager | https://djinni.co/jobs/807464 | **5/10** | 3 | **Role:** Operations focus, post-sale customer experience — не чистий PM. **Overall:** Operations. |
+| 21 | Magnetics | PM | https://djinni.co/jobs/807435 | **7/10** | 2 | **Role:** PM — ок. **Domain:** Agency, UX-UI, front-end — agency, але твої скіли (design, PM). **Overall:** Agency, але релевантно. |
+| 22 | Reelly | Product Operations Manager | https://djinni.co/jobs/807464 | **7/10** | 2 | **Role:** Operations focus, але customer success + продукт. **Domain:** SaaS. **Overall:** Operations, але близько до PM. |
 | 23 | Corpsoft.io | Product Delivery Manager | https://djinni.co/jobs/743091 | **4/10** | 4 | **Role:** Delivery focus. **Salary:** $1000-2450 — низька ЗП. **Overall:** Низька зарплата. |
 | 24 | Playme studio | Payments PM | https://djinni.co/jobs/807473 | **8/10** | 1 | **Role:** Payments PM — ідеально. **Domain:** Payment solutions, web products — супер метч з Paydefi. **Overall:** Payments + твій досвід. |
 | 25 | Universe group | Product Operations Manager (Pixella) | https://djinni.co/jobs/807504 | **6/10** | 2 | **Role:** Operations. **Domain:** AI-first visual content, web product — цікаво. **Overall:** AI + operations. |
