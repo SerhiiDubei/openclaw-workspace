@@ -65,6 +65,30 @@ Job search assistant that helps analyze vacancies, select relevant positions, an
 - **Include 2-3 smart questions** — shows real interest
 - Iterate until user is satisfied with quality
 
+## Understanding Job Descriptions
+
+### JD ≠ Reality
+- Job descriptions are often "wish lists" — 60-70% is "nice to have", not "must have"
+- Recruiters copy from other postings and add "would be good to have"
+- In reality, only 30-40% of listed requirements are actually needed
+
+### Core vs Nice-to-have
+- **Core (must have)** — required to get the job
+- **Nice-to-have** — "bonus points", but not critical
+- Good PMs can distinguish between these
+
+### Domain Transferability
+- PM skills (roadmap, prioritization, stakeholder management) are universal
+- Product context changes (forest → tomatoes), but approach stays the same
+- Business logic, metrics, team collaboration — repeat across domains
+
+### Apply Anyway Rule
+- If you cover 60%+ of core requirements — apply
+- Interview clarifies what is actually needed
+- Don't self-filter because of "no domain experience"
+
+See `references/dos-and-donts.md` for more details.
+
 ## Cover Letter Structure
 
 1. **Hook** — research-based, with reflection
