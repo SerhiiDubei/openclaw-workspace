@@ -60,12 +60,26 @@ For selected vacancies:
 - Never use generic phrases like "I am a perfect fit" without evidence
 - Always research company before writing cover letter
 - Address gaps honestly but positively
-- Keep cover letters under 400 words
+- **Keep cover letters 100-150 words max** — recruiters don't read long texts
 - Use active voice and specific metrics
+- **Sound human, not AI** — avoid "When I saw... it resonated" type of water
+- **Include 2-3 smart questions** — shows real interest
 - Iterate until user is satisfied with quality
+
+## Cover Letter Structure (Updated)
+
+1. **Warm greeting** — 1 sentence
+2. **Compliment / match statement** — 1-2 sentences
+3. **Relevant experience** — 2-3 achievements with numbers
+4. **Questions** — 2-3 about team, goals, stability
+5. **Call proposal** — 1 sentence
+
+See `references/dos-and-donts.md` for detailed guidelines and examples.
 
 ## Files
 
 - `references/my-resume.md` — user's resume (load first)
 - `references/my-profile.md` — additional preferences and info
 - `references/cover-letter-template.md` — template structure
+- `references/dos-and-donts.md` — tone and style guidelines
+- `examples/` — sample cover letters
