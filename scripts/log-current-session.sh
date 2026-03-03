@@ -47,3 +47,9 @@ cat >> "$SESSION_FILE" << EOF
 EOF
 
 echo "Session logged: $USER_DIR/$DATE.md"
+
+# Авто-пуш на GitHub (тихий, без помилок якщо немає змін)
+cd "$WORKSPACE" 2>/dev/null || exit 0
+git add "$SESSION_FILE" 2>/dev/null
+git commit -m "Update session: $USER_DIR/$DATE.md" 2>/dev/null
+git push origin main 2>/dev/null &
