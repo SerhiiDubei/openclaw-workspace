@@ -11,23 +11,28 @@ Job search assistant that helps analyze vacancies, select relevant positions, an
 
 ### Phase 1: Setup (One-time)
 1. Load user's resume from `references/my-resume.md`
-2. Load additional info from `references/my-profile.md`
-3. Understand target roles, industries, and preferences
+2. Load detailed skills from `references/my-skills-detailed.md`
+3. Load additional info from `references/my-profile.md`
+4. Understand target roles, industries, and preferences
 
-### Phase 2: Vacancy Analysis
-When user shares a vacancy:
-1. **Analyze the vacancy** — extract key requirements, skills, culture fit
-2. **Match with profile** — compare against resume and preferences
-3. **Score relevance** — rate 1-10 with reasoning
-4. **Identify gaps** — what skills/experience are missing
+### Phase 2: Vacancy Analysis (CRITICAL)
+**Step 0: Research (MANDATORY)** — Follow `references/research-protocol.md`
+1. **Research company** — visit website, understand product
+2. **Research product** — what it does, for whom, differentiation
+3. **Analyze requirements** — compare with detailed skills
+4. **Score relevance** — rate 1-10 with reasoning
+
+**Step 1: Match Analysis**
+- Load `references/my-skills-detailed.md`
+- Compare key requirements with actual skills
+- Identify: ✅ Strong match / ⚠️ Partial / ❌ Gap
 
 ### Phase 3: Cover Letter Creation
-For selected vacancies:
-1. **Research company** — understand their mission, values, products
-2. **Highlight matches** — connect user's experience to job requirements
-3. **Address gaps** — explain how user can compensate for missing skills
-4. **Write tailored letter** — specific, not generic; 3-4 paragraphs
-5. **Iterate based on feedback** — user reviews and suggests improvements
+1. **Write hook** — based on research, not generic
+2. **Highlight relevant experience** — 2-3 achievements with numbers
+3. **Address gaps honestly** — if needed
+4. **Ask smart questions** — 2-3 specific ones
+5. **Iterate based on feedback**
 
 ## Output Format
 
@@ -49,16 +54,10 @@ For selected vacancies:
 **Recommendation:** [Apply / Skip / Consider with caveats]
 ```
 
-### Cover Letter Structure
-1. **Hook** — specific connection to company/role
-2. **Value proposition** — 2-3 key achievements relevant to job
-3. **Motivation** — why this company specifically
-4. **Call to action** — request for interview
-
 ## Rules
 
 - Never use generic phrases like "I am a perfect fit" without evidence
-- Always research company before writing cover letter
+- **Always research company before writing cover letter** — MANDATORY
 - Address gaps honestly but positively
 - **Keep cover letters 100-150 words max** — recruiters don't read long texts
 - Use active voice and specific metrics
@@ -66,20 +65,21 @@ For selected vacancies:
 - **Include 2-3 smart questions** — shows real interest
 - Iterate until user is satisfied with quality
 
-## Cover Letter Structure (Updated)
+## Cover Letter Structure
 
-1. **Warm greeting** — 1 sentence
-2. **Compliment / match statement** — 1-2 sentences
-3. **Relevant experience** — 2-3 achievements with numbers
-4. **Questions** — 2-3 about team, goals, stability
-5. **Call proposal** — 1 sentence
+1. **Hook** — research-based, with reflection
+2. **Relevant experience** — 2-3 achievements with numbers
+3. **Questions** — 2-3 specific about team/goals/process
+4. **Call proposal** — 1 sentence
 
-See `references/dos-and-donts.md` for detailed guidelines and examples.
+See `references/dos-and-donts.md` for detailed guidelines.
 
 ## Files
 
 - `references/my-resume.md` — user's resume (load first)
+- `references/my-skills-detailed.md` — detailed skills matrix (**load for every vacancy**)
 - `references/my-profile.md` — additional preferences and info
-- `references/cover-letter-template.md` — template structure
+- `references/research-protocol.md` — **mandatory research checklist**
 - `references/dos-and-donts.md` — tone and style guidelines
+- `references/cover-letter-template.md` — template structure
 - `examples/` — sample cover letters
