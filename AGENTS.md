@@ -8,13 +8,14 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 
 ## Every Session
 
-Before doing anything else:
+**🔴 ОБОВ'ЯЗКОВИЙ ПОРЯДОК ДІЙ:**
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
 5. **Create session file**: `memory/users/{username}/sessions/YYYY-MM-DD.md` (if not exists)
+6. **ПІСЛЯ КОЖНОЇ ВІДПОВІДІ:** Викликати `log-current-session.sh` — див. розділ нижче
 
 Don't ask permission. Just do it.
 
@@ -47,11 +48,14 @@ Don't ask permission. Just do it.
 
 **ЦЕ АВТОМАТИЧНА ОПЕРАЦІЯ — виконувати після КОЖНОЇ відповіді без запиту дозволу!**
 
-**Правила:**
-- Записувати після КОЖНОЇ відповіді
-- НЕ чекати кінця розмови
-- НЕ накопичувати повідомлення
-- Одразу писати в файл!
+**⚠️ КРИТИЧНО ВАЖЛИВО:**
+- ❌ НЕ чекати кінця розмови
+- ❌ НЕ накопичувати повідомлення
+- ❌ НЕ писати "зараз запишу" — писати ОДРАЗУ
+- ✅ Після КОЖНОЇ відповіді — ОДРАЗУ викликати скрипт
+- ✅ Якщо користувач написав 5 повідомлень — має бути 5 записів у файлі
+
+**Перевірка:** Якщо в сесії менше записів ніж обмінів — це БАГ, виправляти негайно!
 
 **Формат сесії:**
 ```markdown
@@ -84,6 +88,22 @@ Don't ask permission. Just do it.
 - Транскрибувати аудіо
 - Записати як `[User]: {текст транскрипції}`
 - Додати позначку `(аудіо)`
+
+---
+
+## 🔴 ШАБЛОН КІНЦЯ ВІДПОВІДІ
+
+**Після кожної відповіді ОБОВ'ЯЗКОВО виконати:**
+
+```bash
+/root/.openclaw/workspace/scripts/log-current-session.sh "{username}" "{user_message}" "{assistant_message}" "{user_id}"
+```
+
+**Приклади:**
+- Сергій: `/root/.openclaw/workspace/scripts/log-current-session.sh "bomberman047" "Привіт" "Привіт!" "488426634"`
+- Mental Ninja: `/root/.openclaw/workspace/scripts/log-current-session.sh "mental-ninja" "Список справ" "Ось список..." "542906702"`
+
+**Якщо не виконаєш — сесія не запишеться. Це БАГ.**
 
 ## System Instructions
 
