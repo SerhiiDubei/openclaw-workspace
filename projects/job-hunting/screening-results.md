@@ -45,7 +45,7 @@
 | 22 | Reelly | Product Operations Manager | https://djinni.co/jobs/807464 | **7/10** | 2 | **Role:** Operations focus, але customer success + продукт. **Domain:** SaaS. **Overall:** Operations, але близько до PM. |
 | 23 | Corpsoft.io | Product Delivery Manager | https://djinni.co/jobs/743091 | **4/10** | 4 | **Role:** Delivery focus. **Salary:** $1000-2450 — низька ЗП. **Overall:** Низька зарплата. |
 | 24 | Playme studio | Payments PM | https://djinni.co/jobs/807473 | **8/10** | 1 | **Role:** Payments PM — ідеально. **Domain:** Payment solutions, web products — супер метч з Paydefi. **Overall:** Payments + твій досвід. |
-| 25 | Universe group | Product Operations Manager (Pixella) | https://djinni.co/jobs/807504 | **6/10** | 2 | **Role:** Operations. **Domain:** AI-first visual content, web product — цікаво. **Overall:** AI + operations. |
+| 25 | Universe group | Product Operations Manager (Pixella) | https://djinni.co/jobs/807504 | **7/10** | 2 | **Role:** Operations, але AI + visual content — релевантно. **Domain:** AI-first, web product — цікаво. **Overall:** AI + operations, релевантно. |
 | 26 | Obrio | PM (Growth) | https://djinni.co/jobs/769851 | **7/10** | 2 | **Role:** Growth PM — ок. **Domain:** Spirituality, 70M+ users — цікаво, але домен специфічний. **Overall:** Growth, але spirituality. |
 | 27 | Cait solutions | PM (Refurbished IT) | https://djinni.co/jobs/807541 | **4/10** | 4 | **Role:** PM — ок. **Domain:** E-commerce, Amazon/eBay, refurbished tech — не твій фокус. **Overall:** Не цікаво. |
 | 28 | Netsolid investments | Project Manager | https://djinni.co/jobs/807566 | **3/10** | 4 | **Role:** Investment fund, startup ecosystem — не продуктова роль. **Overall:** Не PM. |
@@ -55,7 +55,7 @@
 | 32 | P-product | Senior Sales Manager | https://djinni.co/jobs/807711 | **2/10** | 4 | **Role:** Sales, не PM. **Overall:** Skip. |
 | 33 | Dataart | Senior Data Product Lead | https://djinni.co/jobs/807728 | **5/10** | 3 | **Role:** Data governance. **Domain:** Construction — не твій фокус. **Overall:** Data + construction. |
 | 34 | Hantix | Sportbook Manager | https://djinni.co/jobs/807722 | **2/10** | 4 | **Domain:** iGaming — skip. |
-| 35 | Railsware | PMM (Growth) | https://djinni.co/jobs/805349 | **7/10** | 2 | **Role:** Product Marketing Manager — marketing focus. **Domain:** B2B SaaS, Coupler.io, data integration — цікаво. **Overall:** Marketing, але сильний продукт. |
+| 35 | Railsware | PMM (Growth) | https://djinni.co/jobs/805349 | **8/10** | 2 | **Role:** Product Marketing Manager — marketing focus, але сильний B2B SaaS. **Domain:** Coupler.io, data integration — цікаво. **Overall:** Marketing, але сильний продукт + data. |
 | 36 | GeoBuyer | PM | https://djinni.co/jobs/807737 | **6/10** | 2 | **Role:** PM — ок. **Domain:** B2B marketplace, Poland launch — цікаво. **Overall:** B2B + новий ринок. |
 | 37 | Handmade hub | Продюсер курсів | https://djinni.co/jobs/807768 | **2/10** | 4 | **Role:** EdTech, course production — не PM. **Overall:** Skip. |
 | 38 | Verv | Billing/Payment PM | https://djinni.co/jobs/807778 | **8/10** | 1 | **Role:** Payment PM — ідеально. **Domain:** Billing, global regions, merchant B2C — супер метч з Paydefi. **Overall:** Payments + global. |
@@ -69,7 +69,7 @@
 | # | Company | Role | URL | Score | Tier | Notes |
 |---|---------|------|-----|-------|------|-------|
 | 41 | Emilus | B2B Sales Manager | https://djinni.co/jobs/807841 | **2/10** | 4 | **Role:** Sales, не PM. **Overall:** Skip. |
-| 42 | Develux | Senior PM (HRTech) | https://djinni.co/jobs/807848 | **6/10** | 2 | **Role:** Senior PM — ок. **Domain:** HRM system, US market — цікаво, але HR домен. **Overall:** HR + US. |
+| 42 | Develux | Senior PM (HRTech) | https://djinni.co/jobs/807848 | **7/10** | 2 | **Role:** Senior PM — ок. **Domain:** HRM system, US market — цікаво, HR не ідеально, але US + сильний продукт. **Overall:** HR + US, але релевантно. |
 | 43 | Skelar | Fintech PM | https://djinni.co/jobs/807869 | **5/10** | 3 | **Role:** PM — ок. **Domain:** TENTENS Tech, social discovery — не чистий фінтех. **Overall:** Social discovery. |
 | 44 | E-chat | PMM (B2B SaaS) | https://djinni.co/jobs/807807 | **6/10** | 2 | **Role:** Product Marketing Manager — marketing focus. **Domain:** B2B SaaS, business communications. **Overall:** Marketing. |
 | 45 | Fyst | Lead PM (Payment Orchestration) | https://djinni.co/jobs/807962 | **9/10** | 1 | **Role:** Lead PM — супер. **Domain:** Payment orchestration, acquiring, 50+ PSP integrations — ідеальний метч з Paydefi. **Overall:** 🔥 Payments + leadership. |
@@ -86,7 +86,7 @@
 | 56 | Frontline robotics | Product Lifecycle Manager | https://djinni.co/jobs/808211 | **4/10** | 4 | **Role:** Hardware, роботи. **Domain:** MilTech. **Overall:** Hardware, не software. |
 | 57 | Ggr partners | PM iGaming | https://djinni.co/jobs/808216 | **3/10** | 4 | **Domain:** iGaming — skip. |
 | 58 | Hanna robulets | Project Manager | https://djinni.co/jobs/799245 | **4/10** | 4 | **Role:** Project, не Product. **Domain:** B2C. **Overall:** Project. |
-| 59 | Дія | BA/Product Manager | https://djinni.co/jobs/808260 | **6/10** | 2 | **Role:** PM — ок. **Domain:** Government tech, Дія — державний продукт. **Overall:** Держава, але цікаво. |
+| 59 | Дія | BA/Product Manager | https://djinni.co/jobs/808260 | **7/10** | 2 | **Role:** PM — ок. **Domain:** Government tech, Дія — державний продукт, але масштаб + вплив на мільйони. **Overall:** Держава, але масштаб і вплив. |
 | 60 | Appflame2 | LTV PM (Findies) | https://djinni.co/jobs/808259 | **5/10** | 3 | **Role:** LTV PM. **Domain:** Social shopping, women shopping — не твій фокус. **Overall:** Shopping. |
 
 ---
@@ -103,9 +103,9 @@
 | 66 | Soma studio | Head of Product | https://djinni.co/jobs/808343 | **3/10** | 4 | **Domain:** iGaming — skip. |
 | 67 | Bekey | PM (HealthTech) | https://djinni.co/jobs/808350 | **6/10** | 2 | **Role:** PM — ок. **Domain:** Health/AI — цікаво. **Overall:** AI + health. |
 | 68 | Fanscrm | PM/PO | https://djinni.co/jobs/808346 | **4/10** | 4 | **Domain:** OnlyFans — дубль, сірий. **Overall:** Skip. |
-| 69 | Precoro | PM (B2B SaaS) | https://djinni.co/jobs/789586 | **6/10** | 2 | **Role:** PM — ок. **Domain:** Procurement, US/UK markets. **Overall:** B2B + US. |
+| 69 | Precoro | PM (B2B SaaS) | https://djinni.co/jobs/789586 | **7/10** | 2 | **Role:** PM — ок. **Domain:** Procurement, US/UK markets — B2B + англомовні ринки. **Overall:** B2B + US/UK, релевантно. | |
 | 70 | !fest | AI PM | https://djinni.co/jobs/722673 | **5/10** | 3 | **Role:** PM. **Domain:** Restaurant/AI, Львів — ресторани. **Overall:** Ресторани. |
-| 71 | Mobilunity | Senior PM | https://djinni.co/jobs/800379 | **6/10** | 2 | **Role:** Senior PM — ок. **Domain:** E-commerce/AI, US client. **Overall:** AI + US. |
+| 71 | Mobilunity | Senior PM | https://djinni.co/jobs/800379 | **7/10** | 2 | **Role:** Senior PM — ок. **Domain:** E-commerce/AI, US client — AI + американський клієнт. **Overall:** AI + US, релевантно. | |
 | 72 | 34th grade | Head of Own Brand | https://djinni.co/jobs/808385 | **5/10** | 3 | **Role:** Implementation. **Domain:** Retail/Electronics. **Overall:** Implementation. |
 | 73 | Genesis | PMM | https://djinni.co/jobs/808433 | **5/10** | 3 | **Role:** Product Marketing Manager. **Domain:** Mobile apps. **Overall:** Marketing. |
 | 74 | Mira | PM (Hardware/Software) | https://djinni.co/jobs/753568 | **4/10** | 4 | **Format:** Hybrid. **Domain:** Hardware/IoT. **Overall:** Гібрид + hardware — skip. |
