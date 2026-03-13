@@ -2,16 +2,34 @@
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
+- **Name:** Сергій Дубей
+- **What to call them:** Сергій, чувак, бро
+- **Pronouns:** —
+- **Timezone:** Europe/Kiev (GMT+2)
 - **Notes:**
+  - Telegram: @bomberman047 (ID: 488426634)
+  - Адмін і основний користувач системи
 
 ## Context
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
+**Інтереси:**
+- AI та автоматизація
+- Музика та генерація аудіо (працюємо з music-api-ai)
+- Тестування API (особливо Kimi/Nano Banana)
+- OpenClaw налаштування та оптимізація
 
----
+**Активні проєкти:**
+1. **Nano Banana / Kimi інтеграція** — тестування ендпоінтів
+2. **OpenClaw workspace** — налаштування системи пам'яті, авто-логування сесій
+3. **Game Designer Assistant skill** — планували створити (останнє обговорення 11.03)
 
-The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
+**Важливі файли:**
+- `TESTING_TODO.md` — план тестування
+- Профіль: `memory/users/serhii-dubei/profile.md`
+- Сесії: `memory/users/serhii-dubei/sessions/`
+
+**Стиль спілкування:**
+- Казуальний, дружній
+- Любить розбиратися в деталях
+- Пише голосом часто
+- Ініціативний в плані покращення системи
