@@ -15,9 +15,14 @@
   - Nano Banana інтеграція
   - Тестування Kimi API
   - OpenClaw workspace налаштування
+  - **Music generation з SunoAPI** — активно генерує треки
 - **Нотатки:**
   - Обговорював пакети Kimi та інтеграцію з Nano Banana
   - "Unlimited Slides visual mode with Nano Banana" — внутрішня фіча Kimi, не Replicate
+  - **Job-hunter skill approved** (2026-03-13): нова структура cover letter з Match Summary
+  - **SunoAPI workflow** (2026-03-13): використовує `/generate/upload-cover` для каверів
+  - Його референсний трек "Дядя Бог" / "Aleg" збережено в Supabase
+  - Текст пісні "Aleg" збережено в memory/2026-03-13.md
 
 ### Mental Ninja (@mental_ninja)
 - **ID:** telegram:542906702  
