@@ -9,6 +9,8 @@
 
 ### 1. Billtech — Operations Manager (9/10)
 
+**Посилання:** https://jobs.dou.ua/companies/billtech/vacancies/334601/
+
 **Дослідження:**
 - **Компанія:** BillTech — багатопрофільна ІТ-компанія
 - **Продукт:** Blockchain + GameDev проекти, повний цикл розробки
@@ -43,6 +45,8 @@ GameDev — мій супер-пріоритет. Розумію фінансо�
 
 ### 2. Avirise — Growth PM (9/10)
 
+**Посилання:** https://jobs.dou.ua/companies/avirise/vacancies/ (Growth PM — перевірити актуальність)
+
 **Дослідження:**
 - **Компанія:** Avirise — мобільні застосунки з широкою аудиторією
 - **Продукт:** Web-воронки для мобільних продуктів
@@ -69,6 +73,8 @@ Growth PM з фокусом на web-воронки — це прямо моя �
 ---
 
 ### 3. Fyst — Lead PM Payment Orchestration (9/10)
+
+**Посилання:** https://fyst.applytojob.com/apply/3gk5lTdlBC/Senior-Product-Manager-Payment-Processing
 
 **Дослідження:**
 - **Компанія:** Fyst — payment orchestration platform
@@ -100,6 +106,8 @@ Payment orchestration platform на launch stage — це саме те, де я
 
 ### 4. Checkbox group — Senior PM (8/10)
 
+**Посилання:** https://jobs.dou.ua/companies/checkbox/vacancies/342030/
+
 **Дослідження:**
 - **Компанія:** Checkbox — українська продуктова фінтех-компанія
 - **Продукт:** Обробка чеків для підприємців (100M+ чеків, 100K+ компаній)
@@ -124,6 +132,8 @@ Checkbox — продукт, який спрощує життя 100K+ підпр
 ---
 
 ### 5. Ideals — Senior PM (8/10)
+
+**Посилання:** https://startup.jobs/senior-product-manager-ideals-7011379
 
 **Дослідження:**
 - **Компанія:** Ideals — B2B SaaS, secure business collaboration
@@ -150,6 +160,8 @@ Ideals — 2M+ users, secure collaboration. Цікавить роль Senior PM 
 
 ### 6. Playme studio — Payments PM (8/10)
 
+**Посилання:** https://jobs.dou.ua/companies/playme-studio/vacancies/346856/
+
 **Дослідження:**
 - **Компанія:** Playme studio — iGaming (але payment focus)
 - **Продукт:** Payment solutions для web
@@ -174,6 +186,8 @@ Payments PM — роль, яка поєднує мій досвід в Paydefi (
 ---
 
 ### 7. Verv — Billing/Payment PM (8/10)
+
+**Посилання:** https://jobs.dou.ua/companies/verv/ (або перевірити актуальність на сайті компанії)
 
 **Дослідження:**
 - **Компанія:** Verv — мобільні додатки (health & fitness)
