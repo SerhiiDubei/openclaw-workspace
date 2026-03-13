@@ -45,7 +45,7 @@ GameDev — мій супер-пріоритет. Розумію фінансо�
 
 ### 2. Avirise — Growth PM (9/10)
 
-**Посилання:** https://jobs.dou.ua/companies/avirise/vacancies/ (Growth PM — перевірити актуальність)
+**Посилання:** https://djinni.co/jobs/798190
 
 **Дослідження:**
 - **Компанія:** Avirise — мобільні застосунки з широкою аудиторією
@@ -74,7 +74,7 @@ Growth PM з фокусом на web-воронки — це прямо моя �
 
 ### 3. Fyst — Lead PM Payment Orchestration (9/10)
 
-**Посилання:** https://fyst.applytojob.com/apply/3gk5lTdlBC/Senior-Product-Manager-Payment-Processing
+**Посилання:** https://djinni.co/jobs/807962
 
 **Дослідження:**
 - **Компанія:** Fyst — payment orchestration platform
@@ -187,7 +187,7 @@ Payments PM — роль, яка поєднує мій досвід в Paydefi (
 
 ### 7. Verv — Billing/Payment PM (8/10)
 
-**Посилання:** https://jobs.dou.ua/companies/verv/ (або перевірити актуальність на сайті компанії)
+**Посилання:** https://djinni.co/jobs/807778
 
 **Дослідження:**
 - **Компанія:** Verv — мобільні додатки (health & fitness)
@@ -218,6 +218,8 @@ Billing/Payment PM для global B2C — цікавий виклик. В Paydefi
 
 ### 8. Magnetics — PM (7/10)
 
+**Посилання:** https://djinni.co/jobs/807435
+
 **Дослідження:**
 - **Компанія:** Magnetics — AI-powered marketing platform
 - **Продукт:** AI-інструменти для маркетингових команд, автоматизація креативів
@@ -245,6 +247,8 @@ AI для маркетингових команд — це саме той пр�
 
 ### 9. Reelly — Product Operations Manager (7/10)
 
+**Посилання:** https://djinni.co/jobs/807464
+
 **Дослідження:**
 - **Компанія:** Reelly — продукт для real estate/продажів
 - **Продукт:** Платформа для автоматизації продажів і роботи з лідами
@@ -269,6 +273,8 @@ Product Operations Manager — роль, яка поєднує мій досві
 ---
 
 ### 10. Universe group — Product Operations Manager (7/10)
+
+**Посилання:** https://djinni.co/jobs/807504
 
 **Дослідження:**
 - **Компанія:** Universe Group — екосистема продуктів (мобільні застосунки, SaaS)
@@ -295,6 +301,8 @@ Product Operations в multi-product компанії — це завдання �
 
 ### 11. Obrio — PM Growth (7/10)
 
+**Посилання:** https://djinni.co/jobs/769851
+
 **Дослідження:**
 - **Компанія:** Obrio — продуктова компанія (wellness/meditation простір)
 - **Продукт:** Мобільні застосунки в wellness ніші
@@ -319,6 +327,8 @@ PM Growth в wellness — цікаве поєднання домену, який
 ---
 
 ### 12. Railsware — PMM Growth (8/10)
+
+**Посилання:** https://djinni.co/jobs/805349
 
 **Дослідження:**
 - **Компанія:** Railsware — продуктова студія (Mailtrap, Coupler.io)
@@ -345,6 +355,8 @@ Railsware — компанія, продуктами якої користуют
 
 ### 13. GeoBuyer — PM (6/10)
 
+**Посилання:** https://djinni.co/jobs/807737
+
 **Дослідження:**
 - **Компанія:** GeoBuyer — платформа для закупівель/тендерів
 - **Продукт:** B2B marketplace для закупівель
@@ -369,6 +381,8 @@ GeoBuyer — цікавий виклик в B2B marketplace домені. Мій
 ---
 
 ### 14. Redvike — Senior PM PropTech (6/10)
+
+**Посилання:** https://djinni.co/jobs/749107
 
 **Дослідження:**
 - **Компанія:** Redvike — аутсорсинг, але з власним PropTech продуктом
@@ -395,6 +409,8 @@ Senior PM в PropTech — цікава можливість зануритись
 
 ### 15. Develux — Senior PM HRTech (7/10)
 
+**Посилання:** https://djinni.co/jobs/807848
+
 **Дослідження:**
 - **Компанія:** Develux — аутсорсингова компанія з власними продуктами
 - **Продукт:** HRTech рішення (ймовірно для recruitment/HR automation)
@@ -419,6 +435,8 @@ Senior PM в HRTech — цікавий шанс попрацювати в дом
 ---
 
 ### 16. E-chat — PMM B2B SaaS (6/10)
+
+**Посилання:** https://djinni.co/jobs/807807
 
 **Дослідження:**
 - **Компанія:** E-chat — комунікаційна платформа
@@ -445,6 +463,8 @@ PMM для B2B SaaS — роль, яка дозволить використат
 
 ### 17. Softsich — Middle PM Funnel & Growth (6/10)
 
+**Посилання:** https://djinni.co/jobs/808074
+
 **Дослідження:**
 - **Компанія:** Softsich — продуктова компанія
 - **Продукт:** Не зовсім ясно, ймовірно мобільний/web продукт
@@ -469,6 +489,8 @@ Funnel & Growth — саме те, чим я займаюсь останні 2 �
 ---
 
 ### 18. Дія — BA/Product Manager (7/10)
+
+**Посилання:** https://djinni.co/jobs/808260
 
 **Дослідження:**
 - **Компанія:** Міністерство цифрової трансформації України (Дія)
@@ -497,6 +519,8 @@ Funnel & Growth — саме те, чим я займаюсь останні 2 �
 
 ### 19. Bekey — PM HealthTech (6/10)
 
+**Посилання:** https://djinni.co/jobs/808350
+
 **Дослідження:**
 - **Компанія:** Bekey — HealthTech продукт
 - **Продукт:** Медичний/здоров'я застосунок
@@ -521,6 +545,8 @@ HealthTech — домен, який безпосередньо допомага�
 ---
 
 ### 20. Precoro — PM B2B SaaS (7/10)
+
+**Посилання:** https://djinni.co/jobs/789586
 
 **Дослідження:**
 - **Компанія:** Precoro — B2B SaaS для закупівель
@@ -547,6 +573,8 @@ Precoro — B2B SaaS для закупівель, цікавий продукт 
 
 ### 21. Mobilunity — Senior PM (7/10)
 
+**Посилання:** https://djinni.co/jobs/800379
+
 **Дослідження:**
 - **Компанія:** Mobilunity — аутсорсингова компанія, staff augmentation
 - **Продукт:** Внутрішні продукти для оптимізації процесів
@@ -571,6 +599,8 @@ Senior PM для internal products — цікавий виклик. Внутрі
 ---
 
 ### 22. Justmarkets — PM KYC (6/10)
+
+**Посилання:** https://djinni.co/jobs/808468
 
 **Дослідження:**
 - **Компанія:** Justmarkets — фінтех/трейдингова платформа
@@ -597,6 +627,8 @@ PM для KYC — цікава спеціалізація в фінтеху. В 
 
 ### 23. Godlike — PMM Growth Lead (6/10)
 
+**Посилання:** https://djinni.co/jobs/808757
+
 **Дослідження:**
 - **Компанія:** Godlike — ігрова/кіберспортивна компанія
 - **Продукт:** Ігрові продукти або платформи для геймерів
@@ -622,6 +654,8 @@ PMM Growth Lead в геймінгу — роль, яка поєднує мій �
 
 ### 24. Timelinesai — Product/Delivery Manager (7/10)
 
+**Посилання:** https://djinni.co/jobs/778785
+
 **Дослідження:**
 - **Компанія:** Timelinesai — SaaS продукт
 - **Продукт:** Ймовірно таймлайни/планування/проєктний менеджмент інструмент
@@ -646,6 +680,8 @@ Product/Delivery Manager — роль, яка поєднує стратегію 
 ---
 
 ### 25. Unihost — PMM (6/10)
+
+**Посилання:** https://djinni.co/jobs/807264
 
 **Дослідження:**
 - **Компанія:** Unihost — хостингова компанія
