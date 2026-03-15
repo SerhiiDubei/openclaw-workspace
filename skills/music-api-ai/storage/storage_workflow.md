@@ -1,4 +1,6 @@
-# Storage Workflow — Зберігання треків
+# Storage Workflow — Зберігання треків (SunoAPI)
+
+**⚠️ ТІЛЬКИ SunoAPI — НІ MusicAPI.ai!**
 
 > Детальна схема БД: `_system/SUPABASE_SCHEMA.md`
 
@@ -89,20 +91,65 @@ curl -X POST "${SUPABASE_URL}/storage/v1/object/music/tracks/${USERNAME}/${DATE}
 rm output/local_file.mp3
 ```
 
-## Референс-аудіо
+## Референс-аудіо (ОНОВЛЕНО — система для референсів)
 
-**Коли користувач надсилає аудіо:**
+**Коли користувач надсилає аудіо як референс:**
 
-1. **Конвертувати** OGG → MP3:
-   ```bash
-   ffmpeg -i input.ogg -codec:a libmp3lame -q:a 2 output.mp3
-   ```
+### 1. Отримання файлу
+- Користувач надсилає MP3/WAV/OGG файл
+- Зберегти локально
+- Конвертувати OGG → MP3 (якщо потрібно):
+  ```bash
+  ffmpeg -i input.ogg -codec:a libmp3lame -q:a 2 output.mp3
+  ```
 
-2. **Закинути в Storage:**
-   - Bucket: `music`
-   - Path: `references/{Username}/filename.mp3`
+### 2. Неймінг референсу
+**Формат:** `REF - {Username} - {Artist} - {Track Name}.mp3`
 
-3. **Записати в БД** (`media_files`):
-   - `file_type`: `reference_audio`
-   - `user_id`: хто надіслав
-   - `metadata`: опис мелодії
+**Приклади:**
+- `REF - Sergiy - Joy Orbison - flight fm.mp3`
+- `REF - Roman - Daft Punk - One More Time.mp3`
+
+### 3. Завантаження в Storage
+```
+music/references/{Username}/{YYYY-MM-DD}/
+```
+
+**Приклад:**
+```
+music/references/Sergiy/2026-03-13/
+├── REF - Sergiy - Joy Orbison - flight fm.mp3
+├── REF - Sergiy - The Prodigy - Breathe.mp3
+└── REF - Sergiy - Aphex Twin - Windowlicker.mp3
+```
+
+### 4. Запис в БД (`reference_tracks`)
+```json
+{
+  "user_id": "telegram:488426634",
+  "username": "Sergiy",
+  "original_artist": "Joy Orbison",
+  "original_track": "flight fm",
+  "storage_path": "music/references/Sergiy/2026-03-13/REF - Sergiy - Joy Orbison - flight fm.mp3",
+  "style_dna": {
+    "genre": "UK Garage",
+    "bpm": 130,
+    "mood": "dark, club energy",
+    "key_elements": ["skippy drums", "wobbly bass", "filter modulation"]
+  },
+  "usage_status": "active",
+  "created_at": "2026-03-13T17:00:00Z"
+}
+```
+
+### 5. Відправка назад користувачу
+- Перейменований файл
+- Як файл (не посилання!)
+- З описом Style DNA
+
+### 6. Використання для генерації
+При генерації нового треку:
+1. Читати `style_dna` з референсу
+2. Перетворити в SunoAPI промпт
+3. Генерувати
+4. Зберігати зв'язок: `generated_track` → `reference_track_id`

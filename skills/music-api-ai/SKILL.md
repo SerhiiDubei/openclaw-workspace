@@ -1,27 +1,81 @@
-# MusicAPI.ai Skill
+# SunoAPI Music Generation Skill
 
-Generate AI music through MusicAPI.ai unified API.
+**⚠️ ТІЛЬКИ SunoAPI — MusicAPI.ai ВИДАЛЕНО!**
+
+Генерація музики через SunoAPI.org (API для Suno AI).
+
+## Конфігурація
+
+- **Base URL:** `https://api.sunoapi.org/api/v1`
+- **Auth:** Bearer token (вже в ENV)
+- **Model:** V4_5
 
 ## Швидкий старт
 
 1. Читай `WORKFLOW.md` — повний флоу
 2. Дивись `prompts/` — lyrics та style
 3. Дивись `api/endpoints.md` — API деталі
-4. Дивись `storage/storage_workflow.md` — зберігання
 
-## API Configuration
+## ⚠️ CRITICAL RULES
 
-- **Base URL:** `https://api.musicapi.ai/api/v1/sonic/`
-- **Auth:** Bearer token
-- **Model:** `sonic-v5`
+### ТІЛЬКИ SunoAPI
+- **НІ** MusicAPI.ai — видалено повністю
+- **НІ** спроб використати старі endpoints
+- **ТАК** SunoAPI.org з моделлю V4_5
+
+### Неймінг файлів (ОБОВ'ЯЗКОВО)
+**Формат:** `[Ім'я користувача] - [Назва треку] - v[1/2].mp3`
+
+**Приклади:**
+- `Sergiy - Detroit Acid - v1.mp3`
+- `Roman - Summer Vibes - v2.mp3`
+
+### Відправка файлів (ОБОВ'ЯЗКОВО)
+1. Завантажити обидва варіанти з CDN
+2. Перейменувати за форматом вище
+3. Надіслати як **файли** (не посилання!)
+4. Одне повідомлення з двома файлами
 
 ## Структура
 
 ```
 skills/music-api-ai/
-├── WORKFLOW.md              ← Почни тут
-├── api/endpoints.md         ← API
-├── prompts/                 ← Lyrics + Style
-├── storage/storage_workflow.md  ← Supabase
-└── flows/                   ← Тригери
+├── SKILL.md              ← Цей файл
+├── WORKFLOW.md           ← Головний флоу
+├── api/endpoints.md      ← SunoAPI endpoints
+├── prompts/              ← Lyrics + Style
+└── scripts/sunoapi-client.js  ← Клієнт
 ```
+
+## Кроки генерації
+
+1. Узгодити неймінг з користувачем
+2. Створити task через `/generate`
+3. Чекати `record-info` поки не SUCCESS
+4. Завантажити 2 аудіо файли
+5. Перейменувати за правилом
+6. Надіслати користувачеві як файли
+
+---
+
+## Робота з референсами (ОНОВЛЕНО)
+
+### Варіант 1: Користувач надсилає аудіо файл (РЕКОМЕНДОВАНО)
+**Флоу:**
+1. Користувач надсилає MP3/WAV/OGG файл
+2. Я зберігаю в `music/references/{Username}/`
+3. Створюю Style DNA аналіз
+4. Відправляю файл назад з описом
+5. Використовую для генерації
+
+**Неймінг референсу:** `REF - {Username} - {Artist} - {Track}.mp3`
+**Шлях:** `music/references/{Username}/{YYYY-MM-DD}/`
+
+### Варіант 2: Опис за посиланням (альтернатива)
+**Флоу:**
+1. Користувач дає посилання (YouTube/Spotify)
+2. Я аналізую публічну інформацію
+3. Створюю Style DNA без завантаження
+4. Генерую на основі опису
+
+**Примітка:** Без скачування аудіо (copyright)

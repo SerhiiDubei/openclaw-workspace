@@ -1,4 +1,6 @@
-# Lyrics Generation — Генерація текстів
+# Lyrics Generation — Генерація текстів (SunoAPI)
+
+**⚠️ ТІЛЬКИ SunoAPI — НІ MusicAPI.ai!**
 
 ## Формат
 

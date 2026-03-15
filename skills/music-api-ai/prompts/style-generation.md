@@ -1,4 +1,6 @@
-# Style Generation — Генерація стилю
+# Style Generation — Генерація стилю (SunoAPI)
+
+**⚠️ ТІЛЬКИ SunoAPI — НІ MusicAPI.ai!**
 
 ## Параметри API
 

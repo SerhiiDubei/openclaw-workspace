@@ -1,58 +1,104 @@
-# MusicAPI.ai — API Endpoints
+# SunoAPI Endpoints
+
+**⚠️ ТІЛЬКИ SunoAPI — НІ MusicAPI.ai!**
 
 ## Base URL
 ```
-https://api.musicapi.ai/api/v1/sonic/
+https://api.sunoapi.org/api/v1
 ```
 
 ## Endpoints
 
-### POST /create
+### POST /generate
 Створити новий трек.
 
 **Request:**
 ```json
 {
-  "custom_mode": true,
-  "prompt": "[Intro][Guitar][Folk]\\nLyrics...",
-  "title": "Song Title",
-  "tags": "genre,style,mood",
-  "style_weight": 0.8,
-  "weirdness_constraint": 0.5,
-  "negative_tags": "elements to avoid",
-  "gpt_description_prompt": "Production description (max 350 chars)",
-  "make_instrumental": false,
-  "mv": "sonic-v5"
+  "prompt": "Electronic synthwave with driving beat",
+  "customMode": true,
+  "instrumental": true,
+  "style": "Electronic Synthwave",
+  "title": "Track Title",
+  "model": "V4_5",
+  "callBackUrl": "https://httpbin.org/post"
 }
 ```
 
 **Response:**
 ```json
 {
-  "task_id": "uuid",
-  "status": "pending"
-}
-```
-
-### GET /task/{task_id}
-Перевірити статус генерації.
-
-**Response:**
-```json
-{
-  "id": "uuid",
-  "status": "processing|complete|failed",
-  "result": {
-    "audio_url": "https://..."
+  "code": 200,
+  "msg": "success",
+  "data": {
+    "taskId": "uuid"
   }
 }
 ```
 
-### GET /stems/{task_id}
-Отримати STEMS (окремі доріжки).
+### GET /generate/record-info
+Перевірити статус генерації.
+
+**URL:**
+```
+/generate/record-info?taskId={task_id}
+```
+
+**Response (PENDING):**
+```json
+{
+  "code": 200,
+  "data": {
+    "status": "PENDING",
+    "response": null
+  }
+}
+```
+
+**Response (TEXT_SUCCESS):**
+```json
+{
+  "code": 200,
+  "data": {
+    "status": "TEXT_SUCCESS",
+    "response": {
+      "sunoData": [
+        {
+          "id": "...",
+          "streamAudioUrl": "https://...",
+          "title": "...",
+          "tags": "..."
+        },
+        {
+          "id": "...",
+          "streamAudioUrl": "https://...",
+          "title": "...",
+          "tags": "..."
+        }
+      ]
+    }
+  }
+}
+```
+
+## Status Flow
+
+```
+PENDING → FIRST_SUCCESS → TEXT_SUCCESS
+```
+
+**Час очікування:** 2-5 хвилин
 
 ## Auth
+
 Bearer token в заголовку:
 ```
-Authorization: Bearer {token}
+Authorization: Bearer {SUNOAPI_KEY}
 ```
+
+## Важливо
+
+- Завжди використовувати `callBackUrl` (навіть фейковий)
+- Завжди чекати `TEXT_SUCCESS`
+- Завжди отримуємо 2 варіанти
+- **НІ** інших endpoints!
