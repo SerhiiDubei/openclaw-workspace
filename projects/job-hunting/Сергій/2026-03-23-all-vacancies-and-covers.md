@@ -13,10 +13,10 @@
 | 2 | **Headway Inc** | PMM (Web RnD) | https://djinni.co/jobs/812406 | **Tier 1** | ✅ Нижче |
 | 3 | **RecruitGarden** | PM (AI Security) | https://djinni.co/jobs/812547 | **Tier 1** | ✅ Нижче |
 | 4 | **Growica** | AI-Driven PM | https://djinni.co/jobs/813453 | **Tier 1** | ✅ Нижче |
-| 5 | **Skylum** | PM (AI Photo) | https://djinni.co/jobs/811913 | **Tier 1** | ⏳ |
-| 6 | **Katana Media** | PM Web3 | https://djinni.co/jobs/812447 | **Tier 1** | ⏳ |
-| 7 | **OmegaRender** | CMO (AI Viz) | https://djinni.co/jobs/812385 | **Tier 1** | ⏳ |
-| 8 | **AI Merchandising** | PM/Project | https://djinni.co/jobs/758977 | **Tier 1** | ⏳ |
+| 5 | **Skylum** | PM (AI Photo) | https://djinni.co/jobs/811913 | **Tier 1** | ✅ Нижче |
+| 6 | **Katana Media** | PM Web3 | https://djinni.co/jobs/812447 | **Tier 1** | ✅ Нижче |
+| 7 | **OmegaRender** | CMO (AI Viz) | https://djinni.co/jobs/812385 | **Tier 1** | ✅ Нижче |
+| 8 | **AI Merchandising** | PM/Project | https://djinni.co/jobs/758977 | **Tier 1** | ✅ Нижче |
 | 9 | **Justmarkets tech** | PM Core | https://djinni.co/jobs/805144 | **Tier 2** | ⏳ |
 | 10 | **Justmarkets tech** | PM Loyalty | https://djinni.co/jobs/813244 | **Tier 2** | ⏳ |
 | 11 | **Justmarkets tech** | PM Website | https://djinni.co/jobs/813317 | **Tier 2** | ⏳ |
@@ -132,6 +132,112 @@ Questions:
 • What internal tools are you looking to build or improve with AI?
 • How do you measure the success of AI-driven initiatives?
 • What's the biggest bottleneck in your current product development process?
+```
+
+---
+
+### 5. Skylum — Product Manager (AI Photo Editing)
+**Посилання:** https://djinni.co/jobs/811913
+
+```
+Match Summary:
+• AI product development — 10+ neural models in production, fine-tuning experience at Songer AI
+• AI-powered creative tools — deployed models for photo/video generation at Point2Web
+• Product optimization — boosted conversion rates by 50%, 30%, 25% across verticals
+• Technical AI skills — prompt engineering, model stabilization, output control
+
+Skylum's Luminar Neo competes with Adobe using AI-first approach — 30+ AI features including Sky AI, Face AI, GenErase. I've worked with similar challenges: at Songer AI, I fine-tuned music generation models for style consistency and output stability. Same problem, different medium.
+
+What I bring: experience making AI models production-ready, controlling outputs, balancing automation with user control. At Point2Web, I deployed and fine-tuned visual generation models — understanding the technical constraints and user expectations.
+
+Gap Address: Limited photography domain expertise, but strong AI implementation experience transfers directly. I understand creative workflows and AI tool adoption.
+
+Questions:
+• How do you balance AI automation with preserving photographer's creative control?
+• What's the most requested AI feature that technical constraints prevent from shipping?
+• How do you measure success — user retention, feature adoption, or revenue per user?
+
+My AI model deployment experience and creative tool optimization could strengthen Skylum's product roadmap.
+```
+
+---
+
+### 6. Katana Media — Product Manager Web3
+**Посилання:** https://djinni.co/jobs/812447
+
+```
+Match Summary:
+• AI tool power user — 10+ models integrated, daily AI workflow automation
+• End-to-end product delivery — launched products from 0 to 1 at Hubmee, Songer AI
+• Cross-functional leadership — led teams of 20+, coordinated devs, designers, QA
+• Technical PM skills — API integrations, data flows, prediction models
+
+Web3 + AI is where I want to be. At Katana Media, you're building DeFi products with heavy AI integration — exactly the intersection I'm targeting. I've worked with AI models, built automation systems, and launched products from scratch.
+
+What I've done: built multi-agent systems at Songer AI that processed data and automated delivery. Integrated AI into workflows at Point2Web, reducing delivery time by 30%. Launched products from 0 at Hubmee and Songer AI.
+
+Gap Address: Limited pure Web3/DeFi experience, but strong AI implementation and product launch background. I learn domains fast — went from zero to crypto payment GTM at Paydefi in weeks.
+
+Questions:
+• What DeFi products are you building and what user problems do they solve?
+• How do you use AI tools in the product development process?
+• What's the biggest UX challenge in Web3 that AI could help solve?
+
+My AI expertise and product launch experience could accelerate your DeFi product roadmap.
+```
+
+---
+
+### 7. OmegaRender — Chief Marketing Officer
+**Посилання:** https://djinni.co/jobs/812385
+
+```
+Match Summary:
+• Growth strategy — 3x qualified leads at Paydefi, GTM from scratch
+• AI-powered marketing — integrated 10+ AI tools, creative automation at Point2Web
+• CRO expertise — +50%, +30%, +25% conversion improvements, +260% signup-to-deposit
+• Full-cycle marketing — positioning, funnels, acquisition across channels
+
+Note: This is CMO role, not pure PM. But the AI + creative industry angle is strong.
+
+OmegaRender's Alpharender reduces production time by 95% using 30+ AI models — that's transformative. At Point2Web, I achieved similar efficiency gains using AI for creative production. I understand how to market AI tools to creative professionals.
+
+What I bring: growth strategy experience, AI tool marketing, and understanding of creative workflows. I've marketed AI-powered solutions and understand the value proposition for professionals.
+
+Gap Address: This is marketing leadership, not product management. But my growth and AI background could fit.
+
+Questions:
+• What's the current customer acquisition strategy for Alpharender?
+• How do you position against traditional architectural visualization services?
+• What's the biggest objection prospects have about AI-generated renders?
+
+My growth strategy and AI marketing experience could help scale OmegaRender's market presence.
+```
+
+---
+
+### 8. AI Merchandising — Project/Product Manager
+**Посилання:** https://djinni.co/jobs/758977
+
+```
+Match Summary:
+• AI/ML project leadership — led AI model integration at Point2Web, Songer AI
+• Technical PM skills — API integrations, Python basics, cloud platforms (AWS/GCP/Azure exposure)
+• Cross-functional coordination — managed 8+ person teams across functions
+• Modern AI tools — ChatGPT, Claude, Gemini power user for workflow automation
+
+"AI as a working tool, not a buzzword" — that's exactly how I work. At Point2Web, I don't just use AI; I deploy and fine-tune models for production. At Songer AI, I built multi-agent systems that automated entire workflows.
+
+Technical skills match: Jira/Linear/Trello mastery, prioritization frameworks (RICE, WSJF, ROI), Agile/Scrum/Kanban. I've led AI/ML projects from concept to launch.
+
+Gap Address: US EST timezone (7 AM – 4 PM) means early mornings for me. But my AI project experience aligns perfectly.
+
+Questions:
+• What types of AI/ML projects does your team typically work on?
+• How do you balance Build vs Buy vs Partner decisions for AI components?
+• What's the most complex AI project you've delivered recently?
+
+My hands-on AI project experience and technical PM background could drive your AI initiatives to results.
 ```
 
 ---
