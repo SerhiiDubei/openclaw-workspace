@@ -5,148 +5,226 @@ description: Job search assistant for analyzing vacancies, selecting relevant po
 
 # Job Hunter
 
+**⚠️ ОБОВ'ЯЗКОВО прочитати `ARCHITECTURE.md` перед роботою!**
+
 Job search assistant that helps analyze vacancies, select relevant positions, and create tailored cover letters.
 
-## Workflow
+---
 
-### Phase 1: Setup (One-time)
-1. Load user's resume from `references/my-resume.md`
-2. Load detailed skills from `references/my-skills-detailed.md`
-3. Load additional info from `references/my-profile.md`
-4. Understand target roles, industries, and preferences
+## 🎯 Швидкий старт (для тих, хто пам'ятає)
 
-### Phase 2: Vacancy Analysis (CRITICAL)
-**Step 0: Research (MANDATORY)** — Follow `references/research-protocol.md`
-1. **Research company** — visit website, understand product
-2. **Research product** — what it does, for whom, differentiation
-3. **Check format** — remote / hybrid / office, relocation requirements
-4. **Analyze requirements** — compare with detailed skills
-5. **Score relevance** — rate 1-10 with reasoning
+1. Вакансії → `00-inbox/`
+2. Скринінг → `01-screening/`
+3. Дослідження → `02-research/{company}/`
+4. Cover letter → `03-cover-letters/{company}/`
+5. Надіслано → `04-applied/{company}/`
 
-**Step 1: Match Analysis**
-- Load `references/my-skills-detailed.md`
-- Compare key requirements with actual skills
-- Identify: ✅ Strong match / ⚠️ Partial / ❌ Gap
-- **DO NOT limit to fixed number of matches** — list ALL strong matches
+**Деталі — в `ARCHITECTURE.md`**
 
-### Phase 3: Cover Letter Creation (NEW STRUCTURE)
+---
 
-**Критично важливо:**
-- **УКРАЇНСЬКОЮ мовою** (не англійською, якщо не вимагається спеціально)
-- **Питання прості**, для продовження діалогу — не складні "екзаменаційні"
-- **Кількість питань змінна** — залежить від match (1-3 питання)
+## 🔄 Повний Пайплайн (крок за кроком)
 
-**Обов'язкова структура (див. `references/cover-letter-template.md`):**
+### Крок 0: Отримання вакансій
+**Коли:** Користувач кидає batch вакансій
+**Дія:** Зберегти "як є" без обробки
+**Куди:** `projects/job-hunting/{username}/00-inbox/{YYYY-MM-DD}-raw-batch.md`
+**Шаблон:**
+```markdown
+# Вакансії — {date}
 
-1. **Match Summary (ОБОВ'ЯЗКОВО)** — 2-3 булети з конкретними матчами requirements ↔ досвід з метриками
-2. **Hook** — рефлексія на основі власного досвіду, не пустий комплімент
-3. **Deep Dive** — [що робив] → [результат з цифрами] → [релевантність вакансії]
-4. **Gap Address** — чесно, з transferable skills (якщо є gap)
-5. **Questions (1-3 штуки)** — прості питання про їхній продукт/команду/процеси
+## {Company} — {Role}
+- **Джерело:** @djinni_jobs_bot / посилання
+- **Локація:** {місто}
+- **Формат:** {remote/hybrid/office}
+- **Зарплата:** {range}
+- **Статус:** 🆕 Нова
+```
+
+### Крок 1: Скринінг (Screening)
+**Коли:** Після отримання batch'я
+**Дія:** Відфільтрувати і розподілити по tiers
+**Куди:** `01-screening/{date}-tier-distribution.md`
+**Чекліст:**
+- [ ] Відкрити `references/my-profile.md` — перевірити фільтри
+- [ ] Відфільтрувати по формату (remote/hybrid/office)
+- [ ] Відфільтрувати по індустрії (no iGaming?)
+- [ ] Відфільтрувати по досвіду (no junior)
+- [ ] Розподілити: Tier 1 (AI/Growth), Tier 2 (можливо), Tier 3 (слабо)
+
+**Формат виходу:**
+```markdown
+## Tier 1 — Пріоритет
+- [ ] {Company} — {Role} (причина: ...)
+
+## Tier 2 — Можливо
+...
+
+## Tier 3 — Слабо
+...
+
+## Відфільтровано
+- ❌ {Company} — причина: hybrid в Києві, релокейт не планую
+```
+
+### Крок 2: Дослідження (Research)
+**Коли:** Для кожної Tier 1 компанії
+**Дія:** Дослідити компанію і записати
+**Куди:** `02-research/{company-name}/research.md`
+**Чекліст (див. `references/research-protocol.md`):**
+- [ ] Сайт компанії (що роблять)
+- [ ] Продукт (для кого, як вирішує проблему)
+- [ ] Формат роботи (remote/гібрид/офіс)
+- [ ] Recent news / funding
+- [ ] 2-3 цікавих факти
+
+### Крок 3: Match Analysis
+**Коли:** Після дослідження
+**Дія:** Порівняти requirements з резюме
+**Куди:** Додати в той же `02-research/{company}/research.md`
+**Чекліст:**
+- [ ] Відкрити `references/my-resume.md`
+- [ ] Відкрити `references/my-skills-detailed.md`
+- [ ] Списати ВСІ strong matches з метриками
+- [ ] Вказати gaps (якщо є)
+- [ ] Оцінка: Apply / Skip / Consider
+
+**Формат:**
+```markdown
+## Match Analysis
+✅ Strong: {requirement} — {твій досвід з метрикою}
+⚠️ Partial: {requirement} — {частково, бо...}
+❌ Gap: {requirement} — {немає, але transferable...}
+
+**Рекомендація:** Apply / Skip / Consider
+```
+
+### Крок 4: Cover Letter
+**Коли:** Після Match Analysis
+**Дія:** Написати кавер українською
+**Куди:** `03-cover-letters/{company-name}/draft.md`
+**Обов'язково:** Див. `references/cover-letter-template.md`
+
+**Структура:**
+1. **Match Summary** — 2-3 булети з конкретними матриками
+2. **Hook** — рефлексія на основі досвіду
+3. **Deep Dive** — [що робив] → [результат з цифрами] → [релевантність]
+4. **Gap Address** — чесно, з transferable skills
+5. **Questions (1-3)** — прості, для діалогу
 6. **CTA** — 1 речення
 
-**CRITICAL RULES (див. `references/dos-and-donts.md`):**
-- **НІ** фіксованій кількості матчів — писати ВСІ сильні матчі
-- **НІ** "працював з X" — тільки "зробив Y → результат Z → релевантно тому що"
-- **НІ** пустим компліментам — тільки рефлексія на основі досвіду
-- **НІ** ігноруванню gaps — адресувати чесно з transferable skills
-- **НІ** офісу/гібриду без remote option — фільтрувати відразу
+**CRITICAL:**
+- Українською мовою (не англійською)
+- Змінна кількість питань (не обов'язково 3)
+- Мінімум назв компаній — "на попередній роботі", не "At Point2Web"
 
-## Output Format
+### Крок 5: Рев'ю
+**Коли:** Cover letter готовий
+**Дія:** Перевірити перед відправкою
+**Чекліст:**
+- [ ] Прочитати вголос — звучить як людина?
+- [ ] Перевірити на "AI-slop" — немає "When I saw... it resonated"?
+- [ ] Всі метрики є в `my-resume.md`?
+- [ ] Довжина < 400 слів?
+- [ ] Питання прості — не "який retention healthy"?
 
-### Vacancy Analysis
-```markdown
-## Vacancy: [Company] — [Role]
+### Крок 6: Відправка
+**Коли:** Користувач схвалив
+**Дія:** Перенести в applied
+**Куди:** `04-applied/{company-name}/`
 
-**Relevance Score:** X/10
-**Format:** [remote / hybrid / office] | **Relocation:** [required / optional / no]
+---
 
-**Key Requirements:**
-- [requirement 1]
-- [requirement 2]
+## 📋 Правила (швидкий参考)
 
-**Match Analysis:**
-✅ Strong match: [what fits with metrics]
-✅ Strong match: [what fits with metrics]
-⚠️ Partial match: [what partially fits]
-❌ Gap: [what's missing — and how to address]
+### Мова
+- **УКРАЇНСЬКОЮ** — дефолт
+- Англійською — тільки якщо вакансія вимагає
 
-**Recommendation:** [Apply / Skip / Consider with caveats]
-```
+### Метрики
+- ТІЛЬКИ з `my-resume.md` і `my-skills-detailed.md`
+- НЕ вигадувати цифри
+- НЕ перебільшувати
 
-### Cover Letter Format
-```markdown
-Match: [requirement] — [experience with metrics]
-Match: [requirement] — [experience with metrics]
+### Питання
+- Прості, для діалогу
+- Не "екзаменаційні"
+- Змінна кількість (1-3)
 
-[Hook — reflection based on experience]
+Приклади хороших:
+- "Скільки людей у команді?"
+- "У вас є план на півроку?"
+- "Процеси вже налагоджені?"
 
-[Deep dive — what → result → relevance]
+Приклади поганих:
+- "Який retention ви бачите як healthy?"
+- "Як виглядає інфраструктура A/B-тестів?"
 
-[Gap address if needed]
+### Назви компаній
+- Мінімізувати в cover letter
+- "На попередній роботі..."
+- "На минулому проєкті..."
+- Не "At Point2Web, I..."
 
-Questions:
-- [specific question 1]
-- [specific question 2]
-- [specific question 3]
+---
 
-[CTA]
-```
+## 📁 Файли (де що лежить)
 
-## Rules
+**Проектні файли:**
+- `projects/job-hunting/{username}/00-inbox/` — вхідні вакансії
+- `projects/job-hunting/{username}/01-screening/` — після відбору
+- `projects/job-hunting/{username}/02-research/{company}/` — дослідження
+- `projects/job-hunting/{username}/03-cover-letters/{company}/` — кавери
+- `projects/job-hunting/{username}/04-applied/{company}/` — надіслані
+- `projects/job-hunting/{username}/99-archive/` — архів
 
-- Never use generic phrases like "I am a perfect fit" without evidence
-- **Always research company before writing cover letter** — MANDATORY
-- **Always start with Match Summary** — recruiters need quick guide
-- Address gaps honestly but positively with transferable skills
-- **Keep cover letters 100-150 words max** — recruiters don't read long texts
-- Use active voice and specific metrics
-- **Sound human, not AI** — avoid "When I saw... it resonated" type of water
-- **Include 2-3 smart questions** — shows real interest
-- **Filter by format early** — don't waste time on hybrid/office if not interested
-- Iterate until user is satisfied with quality
+**Референси (завжди читати):**
+- `references/my-resume.md` — резюме
+- `references/my-skills-detailed.md` — детальні скіли
+- `references/my-profile.md` — преференції
+- `references/research-protocol.md` — як досліджувати
+- `references/dos-and-donts.md` — що можна/не можна
+- `references/cover-letter-template.md` — шаблон кавера
 
-## Understanding Job Descriptions
+**Приклади:**
+- `examples/` — зразки cover letters
 
-### JD ≠ Reality
-- Job descriptions are often "wish lists" — 60-70% is "nice to have", not "must have"
-- Recruiters copy from other postings and add "would be good to have"
-- In reality, only 30-40% of listed requirements are actually needed
+---
 
-### Core vs Nice-to-have
-- **Core (must have)** — required to get the job
-- **Nice-to-have** — "bonus points", but not critical
-- Good PMs can distinguish between these
+## 🚫 Anti-patterns
 
-### Domain Transferability
-- PM skills (roadmap, prioritization, stakeholder management) are universal
-- Product context changes (forest → tomatoes), but approach stays the same
-- Business logic, metrics, team collaboration — repeat across domains
+❌ **Все в одну папку** — робиш `ls` і не розумієш що де
+❌ **Назви без дат** — не зрозуміло що нове
+❌ **Англійська без причини** — тільки якщо вакансія вимагає
+❌ **Загальні фрази** — "AI Product Development" без контексту
+❌ **Фіксовані 3 питання** — має бути змінна кількість
+❌ **Назви компаній в кавері** — "At Point2Web, I..."
 
-### Apply anyway rule
-- If you cover 60%+ of core requirements — apply
-- Interview clarifies what is actually needed
-- Don't self-filter because of "no domain experience"
+---
 
-## Changelog & Approvals
+## ✅ Чекліст перед комітом
+
+- [ ] Файл в правильній папці (див. ARCHITECTURE.md)
+- [ ] Назва з датою
+- [ ] Мова: українська
+- [ ] Конкретика з резюме, не загальні фрази
+- [ ] Прості питання
+- [ ] Немає "AI-slop"
+
+---
+
+## Changelog
+
+### 2026-03-24 — Оновлено пайплайн ✅
+- Додано `ARCHITECTURE.md` з чіткою структурою
+- Пайплайн: 00-inbox → 01-screening → 02-research → 03-cover-letters → 04-applied
+- Чіткі чеклісти на кожному кроці
+- Приклади файлів
 
 ### 2026-03-13 — User Approval ✅
-User approved new cover letter structure after testing on 3 real vacancies (Gamzix, Universe, Everstar).
-**Approved approach:**
-- Match Summary з конкретними метриками з резюме
-- Hook на основі реального досвіду (не вигаданий)
-- Deep Dive: [що робив] → [результат] → [релевантність]
-- Gap Address чесно з transferable skills
-- Фільтрація по формату (офіс/гібрид/remote) відразу
+User approved new cover letter structure after testing on 3 real vacancies.
 
-**Key principle:** Use ONLY real data from `my-resume.md` and `my-skills-detailed.md`. NO invented metrics.
-
-## Files
-
-- `references/my-resume.md` — user's resume (load first)
-- `references/my-skills-detailed.md` — detailed skills matrix (**load for every vacancy**)
-- `references/my-profile.md` — additional preferences and info
-- `references/research-protocol.md` — **mandatory research checklist**
-- `references/dos-and-donts.md` — **CRITICAL: tone, structure, Match Summary, Gap Address rules**
-- `references/cover-letter-template.md` — **updated template structure**
-- `examples/` — **sample cover letters with new format**
+### 2026-03-24 — Українська мова ✅
+- Всі cover letters українською
+- Прості питання для діалогу
+- Змінна кількість питань
