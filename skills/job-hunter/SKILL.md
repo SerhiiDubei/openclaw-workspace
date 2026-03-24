@@ -31,13 +31,18 @@ Job search assistant that helps analyze vacancies, select relevant positions, an
 
 ### Phase 3: Cover Letter Creation (NEW STRUCTURE)
 
+**Критично важливо:**
+- **УКРАЇНСЬКОЮ мовою** (не англійською, якщо не вимагається спеціально)
+- **Питання прості**, для продовження діалогу — не складні "екзаменаційні"
+- **Кількість питань змінна** — залежить від match (1-3 питання)
+
 **Обов'язкова структура (див. `references/cover-letter-template.md`):**
 
 1. **Match Summary (ОБОВ'ЯЗКОВО)** — 2-3 булети з конкретними матчами requirements ↔ досвід з метриками
 2. **Hook** — рефлексія на основі власного досвіду, не пустий комплімент
 3. **Deep Dive** — [що робив] → [результат з цифрами] → [релевантність вакансії]
 4. **Gap Address** — чесно, з transferable skills (якщо є gap)
-5. **Questions** — 2-3 конкретних про їхній продукт
+5. **Questions (1-3 штуки)** — прості питання про їхній продукт/команду/процеси
 6. **CTA** — 1 речення
 
 **CRITICAL RULES (див. `references/dos-and-donts.md`):**

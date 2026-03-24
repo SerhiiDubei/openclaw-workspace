@@ -1,15 +1,41 @@
-Hi team,
+# Приклад: PM в FinTech (WebCap v2 — ОНОВЛЕНО)
 
-FinDrive sounds like an interesting challenge — early-stage fintech with real user validation. I like that it's hands-on.
+## Вакансія
+- Компанія: FinDrive — fintech для small business
+- Вимоги: fintech experience, growth, AI-integration
+- Формат: remote/hourly
 
-Quick context: I've spent 6+ years in product, last few focused on fintech growth (Paydefi — 3x qualified leads in 2 months) and AI-integrated products (Point2Web — 30% faster delivery). I also build financial prediction models when the product needs it.
+---
 
-A few questions to understand the setup:
-- How many people on the team right now? Who would I work closest with?
-- Is this a new PM role or is someone already in place?
-- What are the concrete goals for the next 3-6 months?
-- How stable is the project funding-wise? (Hourly format makes me curious about long-term plans)
+## Cover Letter (УКРАЇНСЬКОЮ)
 
-Worth a 15-min call to see if there's a fit?
+Match: Ви шукаєте PM з fintech-досвідом — 6+ років в продукті, останнє — Paydefi, де за 2 місяці виріс qualified leads у 3 рази. Для AI: впроваджував AI-фічі в Point2Web, скоротив час доставки на 30%.
 
-Serhii
+FinDrive — амбітний проєкт у цікавій ніші. Виділяється з потоку CRM та звітних систем. Запускав fintech-продукти з 0 — знаю виклики на ранній стадії з валідацією.
+
+Коротко: 7+ років запускаю продукти з нуля і веду на growth-стадії. Останнє — Point2Web (AI-інтеграція, -30% часу доставки), до цього — Paydefi (3x leads за 2 місяці). Також будував фінансові prediction-моделі як додатковий інструмент.
+
+Питання:
+- Скільки людей зараз у команді і з ким найтісніше працюватиму?
+- Це нова роль PM чи хтось вже є на місці?
+- Які конкретні цілі на наступні 3-6 місяців?
+
+Готовий на 15-хвилинний колл — подивимось, чи є fit.
+
+Сергій
+
+---
+
+## Аналіз структури
+
+| Елемент | Виконання |
+|---------|-----------|
+| Match Summary | ✅ Конкретика: 3x leads, -30% доставки |
+| Hook | ✅ Рефлексія на ранню стадію + валідацію |
+| Deep Dive | ✅ Два кейси з цифрами + релевантність |
+| Questions | ✅ Прості, про команду та цілі |
+| CTA | ✅ Конкретна пропозиція |
+
+## Що змінено
+❌ Було англійською — стало українською
+❌ Питання були про "funding" та "інфраструктуру" — стали простіше про команду та цілі

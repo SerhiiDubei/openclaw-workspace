@@ -40,24 +40,20 @@
 
 ```
 Match:
-• Deployed 10+ neural models (Stable Diffusion, custom fine-tuned) for automated creative generation at Point2Web
-• Integrated AI via APIs (OpenAI, Anthropic, Replicate) into production workflows, cutting delivery time 30%
-• Led cross-functional team: 5 designers, 3 devs, 2 QA — full-cycle from research to deployment
-• Managed $1M/month operations with VWO A/B testing, AirTable automation, custom dashboards
-• B2B SaaS: Paydefi GTM from 0, Hubmee 100+ partners (Bukovel, etc.)
+• Deployed 10+ AI models in production: Stable Diffusion (ComfyUI, Automatic1111), Flux, Midjourney, SDXL via Replicate API
+• Full AI pipeline: Docker containers on Railway, OpenRouter for LLM routing (GPT-4, Claude, Gemini), N8n workflows
+• Multi-agent systems: Python + N8n + Supabase for automated content generation and delivery
+• Voice AI: ElevenLabs integration for audio content, fine-tuned voice models
+• Reduced delivery time 30% via AI automation, managed $1M/month operations
+• B2B SaaS: Paydefi GTM from 0, Hubmee 100+ partners
 
-At Point2Web, I built an AI pipeline that replaced manual creative production: deployed Stable Diffusion via Replicate API, fine-tuned LoRA adapters for brand consistency, connected to AirTable for batch processing. Result: 30% faster delivery, consistent brand visuals across campaigns.
+At Point2Web, I built end-to-end AI infrastructure: deployed Stable Diffusion on Railway via Docker, integrated OpenRouter for multi-model LLM access (GPT-4, Claude, Gemini, Llama), built N8n workflows for automation. For visual content: Flux, Midjourney, SDXL with ComfyUI pipelines. For audio: ElevenLabs API with voice cloning. Result: 30% faster delivery, 40% cost reduction.
 
-Your 95% AI accuracy in invoice processing and Google OCR integration — similar challenge. I understand procurement complexity: multiple stakeholders, compliance, API integrations. At Songer AI, I built multi-agent systems (Python + N8n + Supabase) that processed metadata and automated delivery.
+At Songer AI, built multi-agent system: Python orchestration + N8n workflows + Supabase backend. Agents for data collection, metadata analysis, text-to-audio (ElevenLabs), music mixing. Full automation pipeline.
 
-Stack: Python (basics), N8n, Supabase, AirTable, VWO, REST APIs, webhook automation
+Stack: Docker, Railway, OpenRouter, N8n, Supabase, Python, Replicate, ElevenLabs, ComfyUI
 
-Questions:
-• How do you prioritize AI features — user requests, competitive pressure, or internal R&D?
-• What's the biggest procurement workflow friction that AI hasn't solved?
-• How involved are enterprise customers in product development?
-
-Let me know if my AI pipeline experience aligns with Precoro's roadmap.
+Your 95% AI accuracy in invoice processing — similar infrastructure challenge. I understand: API integrations, workflow automation, multi-model orchestration, production monitoring.
 ```
 
 ---
@@ -67,23 +63,20 @@ Let me know if my AI pipeline experience aligns with Precoro's roadmap.
 
 ```
 Match:
-• Integrated 10+ AI tools: Midjourney for visuals, HeyGen for video, GPT-4 for copy, custom models for creative
-• CRO expertise: VWO split-tests, +50%/+30%/+25% conversion improvements at Point2Web
-• Turned around dying startup at MTRX/Paper24: +260% signup-to-deposit, -30% sign-up costs, +70% retention
-• Full-funnel optimization: landing pages (Unbounce/Webflow), ad creative, email flows, in-product engagement
+• Full AI creative stack: Midjourney, Flux, Stable Diffusion (ComfyUI), Runway, Pika, HeyGen for video
+• LLM orchestration: OpenRouter (GPT-4, Claude, Gemini, Llama), custom prompting systems
+• Infrastructure: Docker on Railway, N8n automation workflows, Supabase backend
+• Voice: ElevenLabs API with fine-tuned voice models for brand consistency
+• CRO: VWO split-tests, +50%/+30%/+25% conversion improvements at Point2Web
+• Turned around MTRX/Paper24: +260% signup-to-deposit, +70% retention
 
-Headway's 40% ad performance boost with HeyGen/Rask/Midjourney — I achieved similar at Point2Web. Built an AI creative pipeline: Midjourney for hero images, GPT-4 for headline variations, custom fine-tuned model for brand assets. Connected to Meta Ads API for automated A/B testing. Cut creative production time 50% while improving CTR 35%.
+Headway's 40% ad improvement with HeyGen/Rask/Midjourney — I achieved 35% CTR lift at Point2Web. Built full AI creative pipeline: Midjourney/Flux for visuals, Runway/Pika for video, ElevenLabs for voice, GPT-4/Claude via OpenRouter for copy. All connected via N8n workflows to Meta Ads API for automated A/B testing.
 
-Your 150M+ users + startup experimentation speed — ideal combo. I've operated at both scales: rescued MTRX/Paper24 (near-death startup → profitable) and optimized mature Point2Web products.
+Infrastructure: Docker containers on Railway, Supabase for data, custom dashboards. Cut creative production time 50%, improved performance 35%.
 
-Stack: Meta Ads Manager, VWO, Midjourney, HeyGen, GPT-4/Claude, Google Analytics, Amplitude
+Stack: OpenRouter, Midjourney, Flux, Runway, Pika, HeyGen, ElevenLabs, N8n, Docker, Railway, Supabase
 
-Questions:
-• What's the Web RnD team's current test hypothesis?
-• How do you balance AI content efficiency vs. educational quality?
-• Which underexplored growth channel is R&D investigating?
-
-My AI-driven creative optimization could accelerate Headway's Web R&D experiments.
+Your 150M+ users + R&D speed — ideal. I've scaled AI systems: from startup (MTRX rescue) to mature products ($1M/month at Point2Web).
 ```
 
 ---
