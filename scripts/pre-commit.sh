@@ -13,7 +13,9 @@ echo "🔍 Перевірка архітектури..."
 
 # 1. Перевірка: нові папки в корені (крім дозволених)
 ALLOWED_DIRS="_system scripts tmp"
-NEW_DIRS=$(git diff --cached --name-status | grep "^A" | cut -f2 | grep "^[^/]*/" | cut -d'/' -f1 | sort -u | grep -v "^\." || true)
+# Отримуємо тільки нові файли (A) і шукаємо ті, що в корені
+NEW_ROOT_FILES=$(git diff --cached --name-status | grep "^A" | sed 's/^A[[:space:]]*//' | grep "^[^/]*$" || true)
+NEW_DIRS=$(git diff --cached --name-status | grep "^A" | sed 's/^A[[:space:]]*//' | grep "/" | cut -d'/' -f1 | sort -u | grep -v "^\." || true)
 
 ILLEGAL_DIRS=""
 if [ -n "$NEW_DIRS" ]; then
