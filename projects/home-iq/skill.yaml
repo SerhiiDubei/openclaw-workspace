@@ -1,0 +1,47 @@
+# skill.yaml
+name: home-iq-copywriter
+description: Write high-converting lead generation copy for home services marketplaces. Generates complete page copy with reviews, FAQs, and conversion-optimized structure.
+version: 1.0.0
+author: Kimi Claw
+
+keywords:
+  - lead generation
+  - copywriting
+  - home services
+  - landing pages
+  - conversion optimization
+  - flooring
+  - siding
+  - hvac
+  - security
+
+inputs:
+  - name: vertical
+    type: string
+    description: Service category (flooring, siding, hvac, home-security)
+    required: true
+  - name: tone
+    type: string
+    description: Tone variant (professional, friendly, premium, budget, technical)
+    required: false
+    default: professional
+  - name: include_variants
+    type: boolean
+    description: Generate all 5 tone variants
+    required: false
+    default: false
+
+outputs:
+  - type: file
+    description: Complete page copy in markdown format
+    path: "copy/{vertical}.md"
+
+examples:
+  - input:
+      vertical: flooring
+      tone: professional
+    description: Generate professional flooring lead-gen copy
+  - input:
+      vertical: hvac
+      include_variants: true
+    description: Generate HVAC copy with all tone variants
