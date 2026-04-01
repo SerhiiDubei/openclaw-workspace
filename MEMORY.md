@@ -17,6 +17,14 @@
   - OpenClaw workspace налаштування
   - **Music generation з SunoAPI** — активно генерує треки
   - **Home IQ Lead Gen System** (2026-03-27): копірайтинг для 4 вертикалей (flooring, siding, HVAC, home security)
+- **Професійний досвід** (оновлено 2026-03-30):
+  - **Product Marketing Manager** — лідував командами баєрів, бюджет $1M+/місяць
+  - **CRO Specialist** — працював з review-сайтами та quiz-воронками
+  - **Dating/Social Discovery** — 2+ роки досвіду в ніші
+  - **AI-автоматизація** — OpenClaw + Claude Code для job hunting та мультиагентних систем
+- **Ключові досягнення:**
+  - Мультиагентна система для генерації музики: +15% retention для нових юзерів, -17% CAC
+  - Динамічне ціноутворення без даних: +11% revenue за місяць
 - **Нотатки:**
   - Обговорював пакети Kimi та інтеграцію з Nano Banana
   - "Unlimited Slides visual mode with Nano Banana" — внутрішня фіча Kimi, не Replicate
