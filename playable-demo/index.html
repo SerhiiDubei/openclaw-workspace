@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Playable Ad Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #game-container {
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container"></div>
+    <script>
+        const config = {
+            type: Phaser.AUTO,
+            width: 360,
+            height: 640,
+            parent: 'game-container',
+            backgroundColor: '#0f0f23',
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 200 },
+                    debug: false
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        const game = new Phaser.Game(config);
+        let score = 0;
+        let scoreText;
+        let player;
+        let stars;
+        let bombs;
+        let cursors;
+        let gameOver = false;
+        let ctaButton;
+
+        function preload() {
+            // Create simple graphics programmatically (no external assets)
+            const graphics = this.make.graphics({ x: 0, y: 0, add: false });
+            
+            // Player basket
+            graphics.fillStyle(0x4ecdc4);
+            graphics.fillRoundedRect(0, 0, 60, 40, 10);
+            graphics.generateTexture('basket', 60, 40);
+            graphics.clear();
+            
+            // Star
+            graphics.fillStyle(0xffd93d);
+            graphics.fillCircle(15, 15, 15);
+            graphics.generateTexture('star', 30, 30);
+            graphics.clear();
+            
+            // Bomb
+            graphics.fillStyle(0xff4757);
+            graphics.fillCircle(15, 15, 15);
+            graphics.generateTexture('bomb', 30, 30);
+            graphics.clear();
+            
+            // CTA Button
+            graphics.fillStyle(0x00d26a);
+            graphics.fillRoundedRect(0, 0, 200, 50, 25);
+            graphics.generateTexture('cta', 200, 50);
+        }
+
+        function create() {
+            // Background gradient effect
+            const graphics = this.add.graphics();
+            graphics.fillGradientStyle(0x0f0f23, 0x0f0f23, 0x16213e, 0x16213e, 1);
+            graphics.fillRect(0, 0, 360, 640);
+
+            // Title
+            this.add.text(180, 40, 'CATCH THE STARS', {
+                fontSize: '24px',
+                fontFamily: 'Arial, sans-serif',
+                fontStyle: 'bold',
+                fill: '#fff'
+            }).setOrigin(0.5);
+
+            // Instructions
+            this.add.text(180, 70, 'Tap & drag to move', {
+                fontSize: '14px',
+                fontFamily: 'Arial, sans-serif',
+                fill: '#888'
+            }).setOrigin(0.5);
+
+            // Score
+            scoreText = this.add.text(180, 100, 'Score: 0', {
+                fontSize: '20px',
+                fontFamily: 'Arial, sans-serif',
+                fill: '#ffd93d'
+            }).setOrigin(0.5);
+
+            // Player
+            player = this.physics.add.sprite(180, 580, 'basket');
+            player.setCollideWorldBounds(true);
+            player.setImmovable(true);
+
+            // Stars group
+            stars = this.physics.add.group();
+
+            // Bombs group
+            bombs = this.physics.add.group();
+
+            // Spawn stars
+            this.time.addEvent({
+                delay: 800,
+                callback: spawnStar,
+                callbackScope: this,
+                loop: true
+            });
+
+            // Spawn bombs
+            this.time.addEvent({
+                delay: 1500,
+                callback: spawnBomb,
+                callbackScope: this,
+                loop: true
+            });
+
+            // Touch/mouse control
+            this.input.on('pointermove', (pointer) => {
+                if (!gameOver) {
+                    player.x = Phaser.Math.Clamp(pointer.x, 30, 330);
+                }
+            });
+
+            // Collisions
+            this.physics.add.overlap(player, stars, collectStar, null, this);
+            this.physics.add.overlap(player, bombs, hitBomb, null, this);
+
+            // CTA Button (initially hidden)
+            ctaButton = this.add.container(180, 320);
+            const ctaBg = this.add.sprite(0, 0, 'cta');
+            const ctaText = this.add.text(0, 0, 'PLAY NOW', {
+                fontSize: '20px',
+                fontFamily: 'Arial, sans-serif',
+                fontStyle: 'bold',
+                fill: '#fff'
+            }).setOrigin(0.5);
+            ctaButton.add([ctaBg, ctaText]);
+            ctaButton.setVisible(false);
+            ctaButton.setDepth(100);
+
+            // CTA click
+            ctaBg.setInteractive({ useHandCursor: true });
+            ctaBg.on('pointerdown', () => {
+                // Simulate CTA click
+                window.open('https://github.com', '_blank');
+            });
+        }
+
+        function update() {
+            if (gameOver) return;
+
+            // Clean up off-screen objects
+            stars.children.each((star) => {
+                if (star.y > 650) {
+                    star.destroy();
+                }
+            });
+
+            bombs.children.each((bomb) => {
+                if (bomb.y > 650) {
+                    bomb.destroy();
+                }
+            });
+        }
+
+        function spawnStar() {
+            if (gameOver) return;
+            const x = Phaser.Math.Between(30, 330);
+            const star = stars.create(x, -30, 'star');
+            star.setVelocityY(Phaser.Math.Between(150, 250));
+        }
+
+        function spawnBomb() {
+            if (gameOver) return;
+            const x = Phaser.Math.Between(30, 330);
+            const bomb = bombs.create(x, -30, 'bomb');
+            bomb.setVelocityY(Phaser.Math.Between(200, 300));
+        }
+
+        function collectStar(player, star) {
+            star.destroy();
+            score += 10;
+            scoreText.setText('Score: ' + score);
+            
+            // Visual feedback
+            this.tweens.add({
+                targets: scoreText,
+                scale: 1.2,
+                duration: 100,
+                yoyo: true
+            });
+
+            // End game after 100 points
+            if (score >= 100 && !gameOver) {
+                endGame(this);
+            }
+        }
+
+        function hitBomb(player, bomb) {
+            this.physics.pause();
+            gameOver = true;
+            player.setTint(0xff4757);
+            
+            endGame(this);
+        }
+
+        function endGame(scene) {
+            gameOver = true;
+            scene.physics.pause();
+            
+            // Show CTA
+            ctaButton.setVisible(true);
+            ctaButton.setAlpha(0);
+            ctaButton.setScale(0.5);
+            
+            scene.tweens.add({
+                targets: ctaButton,
+                alpha: 1,
+                scale: 1,
+                duration: 300,
+                ease: 'Back.out'
+            });
+
+            // Game over text
+            scene.add.text(180, 220, score >= 100 ? 'YOU WON!' : 'GAME OVER', {
+                fontSize: '36px',
+                fontFamily: 'Arial, sans-serif',
+                fontStyle: 'bold',
+                fill: score >= 100 ? '#00d26a' : '#ff4757'
+            }).setOrigin(0.5).setDepth(99);
+
+            // Final score
+            scene.add.text(180, 270, 'Final Score: ' + score, {
+                fontSize: '20px',
+                fontFamily: 'Arial, sans-serif',
+                fill: '#fff'
+            }).setOrigin(0.5).setDepth(99);
+        }
+    </script>
+</body>
+</html>
