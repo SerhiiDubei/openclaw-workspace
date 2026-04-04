@@ -1,5 +1,11 @@
 # Roadmap: GB AI Automation
 
+> **📌 Source Legend:**
+> - 🎙️ = Отримано від Сергія (голосове)
+> - 🤖 = Дописано AI (структура, систематизація, деталі)
+
+---
+
 ## Статус: MVP (Active Development)
 
 ---
