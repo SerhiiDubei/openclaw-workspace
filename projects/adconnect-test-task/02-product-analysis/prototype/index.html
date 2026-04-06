@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheDatingCritic - Знайди свій ідеальний dating сайт</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 30px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 20px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,107,0.5);
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Quiz Section */
+        .quiz-section {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            display: none;
+        }
+        
+        .quiz-section.active {
+            display: block;
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .quiz-header h2 {
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .quiz-progress {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .question {
+            display: none;
+        }
+        
+        .question.active {
+            display: block;
+        }
+        
+        .question h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .option {
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+            transform: scale(1.02);
+        }
+        
+        .option-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .option-text {
+            font-weight: 500;
+        }
+        
+        /* Results Section */
+        .results-section {
+            display: none;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .results-section.active {
+            display: block;
+        }
+        
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .results-header h2 {
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .match-card {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border: 2px solid #667eea;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .match-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .match-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .match-logo {
+            width: 60px;
+            height: 60px;
+            background: #667eea;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .match-info h3 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .match-score {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .match-reasons {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .match-reasons li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .match-reasons li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        
+        .match-button {
+            display: block;
+            width: 100%;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .match-button:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Reviews Section */
+        .reviews-section {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .review-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .review-meta h4 {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+        
+        .verified {
+            color: #28a745;
+            font-size: 12px;
+        }
+        
+        .review-stars {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        
+        .review-text {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* Gamification Widget */
+        .gamification-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            width: 280px;
+        }
+        
+        .widget-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .widget-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 10px;
+        }
+        
+        .widget-level {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .widget-xp {
+            font-size: 12px;
+            color: #888;
+        }
+        
+        .xp-bar {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .xp-progress {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100%;
+            width: 65%;
+        }
+        
+        .widget-tasks {
+            font-size: 13px;
+        }
+        
+        .widget-tasks li {
+            padding: 5px 0;
+            list-style: none;
+        }
+        
+        .widget-tasks li:before {
+            content: "☐ ";
+            color: #667eea;
+        }
+        
+        .widget-tasks li.completed:before {
+            content: "☑ ";
+            color: #28a745;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .quiz-section, .results-section, .reviews-section {
+                padding: 30px 20px;
+            }
+            
+            .gamification-widget {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">💕 TheDatingCritic</div>
+            <nav class="nav-links">
+                <a href="#reviews">Огляди</a>
+                <a href="#quiz">Підбір</a>
+                <a href="#community">Спільнота</a>
+                <a href="#">Увійти</a>
+            </nav>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Знайди свій ідеальний dating сайт<br>за 60 секунд</h1>
+            <p>Ми проаналізували 50+ dating платформ і знаємо, яка підійде саме тобі. Безкоштовно. Без реєстрації.</p>
+            <a href="#" class="cta-button" onclick="startQuiz(); return false;">🚀 Підібрати сайт</a>
+            
+            <div class="social-proof">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Dating сайтів</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Щасливих пар</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">4.9⭐</div>
+                    <div class="stat-label">Рейтинг</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Quiz Section -->
+        <section class="quiz-section" id="quiz-section">
+            <div class="quiz-header">
+                <h2>🎯 Давай знайдемо твій match!</h2>
+                <p>Відповідай на 5 простих питань</p>
+            </div>
+            
+            <div class="quiz-progress">
+                <div class="quiz-progress-bar" id="progress-bar"></div>
+            </div>
+            
+            <!-- Question 1 -->
+            <div class="question active" data-question="1">
+                <h3>Що ти шукаєш? 💘</h3>
+                <div class="options">
+                    <div class="option" onclick="answer(1, 'serious')">
+                        <div class="option-icon">💑</div>
+                        <div class="option-text">Серйозні стосунки</div>
+                    </div>
+                    <div class="option" onclick="answer(1, 'friends')">
+                        <div class="option-icon">🤝</div>
+                        <div class="option-text">Дружбу</div>
+                    </div>
+                    <div class="option" onclick="answer(1, 'fun')">
+                        <div class="option-icon">🎉</div>
+                        <div class="option-text">Веселощі</div>
+                    </div>
+                    <div class="option" onclick="answer(1, 'notsure')">
+                        <div class="option-icon">🤔</div>
+                        <div class="option-text">Ще не знаю</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question" data-question="2">
+                <h3>Скільки тобі років? 🎂</h3>
+                <div class="options">
+                    <div class="option" onclick="answer(2, '18-25')">
+                        <div class="option-icon">🎓</div>
+                        <div class="option-text">18-25</div>
+                    </div>
+                    <div class="option" onclick="answer(2, '26-35')">
+                        <div class="option-icon">💼</div>
+                        <div class="option-text">26-35</div>
+                    </div>
+                    <div class="option" onclick="answer(2, '36-45')">
+                        <div class="option-icon">🏠</div>
+                        <div class="option-text">36-45</div>
+                    </div>
+                    <div class="option" onclick="answer(2, '45+')">
+                        <div class="option-icon">🌟</div>
+                        <div class="option-text">45+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question" data-question="3">
+                <h3>Який бюджет? 💰</h3>
+                <div class="options">
+                    <div class="option" onclick="answer(3, 'free')">
+                        <div class="option-icon">🆓</div>
+                        <div class="option-text">Безкоштовно</div>
+                    </div>
+                    <div class="option" onclick="answer(3, 'budget')">
+                        <div class="option-icon">💵</div>
+                        <div class="option-text">До $20/міс</div>
+                    </div>
+                    <div class="option" onclick="answer(3, 'mid')">
+                        <div class="option-icon">💳</div>
+                        <div class="option-text">До $50/міс</div>
+                    </div>
+                    <div class="option" onclick="answer(3, 'premium')">
+                        <div class="option-icon">💎</div>
+                        <div class="option-text">Гроші не проблема</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="question" data-question="4">
+                <h3>Що для тебе важливо? ⭐</h3>
+                <div class="options">
+                    <div class="option" onclick="answer(4, 'verified')">
+                        <div class="option-icon">✅</div>
+                        <div class="option-text">Верифіковані профілі</div>
+                    </div>
+                    <div class="option" onclick="answer(4, 'matching')">
+                        <div class="option-icon">🎯</div>
+                        <div class="option-text">Smart matching</div>
+                    </div>
+                    <div class="option" onclick="answer(4, 'privacy')">
+                        <div class="option-icon">🔒</div>
+                        <div class="option-text">Приватність</div>
+                    </div>
+                    <div class="option" onclick="answer(4, 'community')">
+                        <div class="option-icon">👥</div>
+                        <div class="option-text">Велика спільнота</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="question" data-question="5">
+                <h3>Де шукаєш? 🌍</h3>
+                <div class="options">
+                    <div class="option" onclick="answer(5, 'local')">
+                        <div class="option-icon">📍</div>
+                        <div class="option-text">В своєму місті</div>
+                    </div>
+                    <div class="option" onclick="answer(5, 'country')">
+                        <div class="option-icon">🇺🇦</div>
+                        <div class="option-text">По Україні</div>
+                    </div>
+                    <div class="option" onclick="answer(5, 'international')">
+                        <div class="option-icon">🌐</div>
+                        <div class="option-text">Міжнародно</div>
+                    </div>
+                    <div class="option" onclick="answer(5, 'online')">
+                        <div class="option-icon">💻</div>
+                        <div class="option-text">Онлайн спочатку</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section class="results-section" id="results-section">
+            <div class="results-header">
+                <h2>🎉 Ось твої ідеальні match!</h2>
+                <p>На основі твоїх відповідей ми підібрали 3 найкращі варіанти</p>
+            </div>
+            
+            <!-- Match 1 -->
+            <div class="match-card">
+                <div class="match-badge">⭐ 95% MATCH</div>
+                
+                <div class="match-header">
+                    <div class="match-logo">M</div>
+                    <div class="match-info">
+                        <h3>Match.com</h3>
+                        <div class="match-score">⭐⭐⭐⭐⭐ 4.8/5 (12,450 відгуків)</div>
+                    </div>
+                </div>
+                
+                <ul class="match-reasons">
+                    <li>Спеціалізується на серйозних стосунках</li>
+                    <li>Велика база користувачів 26-35 років</li>
+                    <li>Продвинутий алгоритм matching</li>
+                    <li>7 днів безкоштовно для тесту</li>
+                </ul>
+                
+                <button class="match-button">🚀 Спробувати безкоштовно</button>
+            </div>
+            
+            <!-- Match 2 -->
+            <div class="match-card" style="border-color: #764ba2; background: linear-gradient(135deg, #764ba220, #667eea20);">
+                <div class="match-badge" style="background: #764ba2;">87% MATCH</div>
+                
+                <div class="match-header">
+                    <div class="match-logo" style="background: #764ba2;">E</div>
+                    <div class="match-info">
+                        <h3>eHarmony</h3>
+                        <div class="match-score">⭐⭐⭐⭐⭐ 4.7/5 (8,920 відгуків)</div>
+                    </div>
+                </div>
+                
+                <ul class="match-reasons">
+                    <li>Найкращий для довгострокових стосунків</li>
+                    <li>Детальний personality test</li>
+                    <li>Compatibility score для кожного match</li>
+                    <li>Висока якість профілів</li>
+                </ul>
+                
+                <button class="match-button">💘 Перейти до eHarmony</button>
+            </div>
+            
+            <!-- Match 3 -->
+            <div class="match-card" style="border-color: #28a745; background: linear-gradient(135deg, #28a74520, #20c99720);">
+                <div class="match-badge" style="background: #28a745;">82% MATCH</div>
+                
+                <div class="match-header">
+                    <div class="match-logo" style="background: #28a745;">ES</div>
+                    <div class="match-info">
+                        <h3>EliteSingles</h3>
+                        <div class="match-score">⭐⭐⭐⭐ 4.5/5 (6,340 відгуків)</div>
+                    </div>
+                </div>
+                
+                <ul class="match-reasons">
+                    <li>Для освічених професіоналів</li>
+                    <li>82% користувачів з вищою освітою</li>
+                    <li>Ручна верифікація профілів</li>
+                    <li>3-7 matches щодня</li>
+                </ul>
+                
+                <button class="match-button" style="background: #28a745;">💎 Долучитися до EliteSingles</button>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button onclick="startQuiz()" style="background: none; border: 2px solid #667eea; color: #667eea; padding: 12px 30px; border-radius: 25px; cursor: pointer;">🔄 Пройти квіз знову</button>
+            </div>
+        </section>
+        
+        <!-- Reviews Section -->
+        <section class="reviews-section" id="reviews">
+            <div class="section-header">
+                <h2>💬 Що кажуть наші користувачі</h2>
+                <p>Реальні історії від реальних людей</p>
+            </div>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">ОК</div>
+                        <div class="review-meta">
+                            <h4>Олена К.</h4>
+                            <div class="verified">✅ Верифікований користувач</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Завдяки TheDatingCritic знайшла свого чоловіка! Пройшла квіз, отримала рекомендацію Match.com, і через 3 місяці ми вже планували весілля 💕"</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">АМ</div>
+                        <div class="review-meta">
+                            <h4>Андрій М.</h4>
+                            <div class="verified">✅ Верифікований користувач</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Довго не міг вибрати dating сайт — їх так багато! Квіз допоміг зрозуміти, що мені потрібно. Зараз у стосунках вже 8 місяців 🎉"</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">КВ</div>
+                        <div class="review-meta">
+                            <h4>Катерина В.</h4>
+                            <div class="verified">✅ Верифікований користувач</div>
+                        </div>
+                    </div>
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Класна ідея з квізом! Зекономила купу часу — не треба самій вивчати всі ці сайти. Отримала 3 варіанти, вибрала eHarmony, і не помилилась 🥰"</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Gamification Widget -->
+        <div class="gamification-widget">
+            <div class="widget-header">
+                <div class="widget-avatar">🎯</div>
+                <div>
+                    <div class="widget-level">Dating Explorer</div>
+                    <div class="widget-xp">2,450 / 3,000 XP</div>
+                </div>
+            </div>
+            
+            <div class="xp-bar">
+                <div class="xp-progress"></div>
+            </div>
+            
+            <div class="widget-tasks">
+                <strong>🎯 Наступні завдання:</strong>
+                <ul>
+                    <li class="completed">Пройти квіз (+50 XP)</li>
+                    <li>Спробувати рекомендований сайт (+100 XP)</li>
+                    <li>Написати відгук (+75 XP)</li>
+                    <li>Запросити друга (+150 XP)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 TheDatingCritic.com — Всі права захищено 💕</p>
+            <p style="font-size: 14px; margin-top: 10px;">Made with love for finding love</p>
+        </footer>
+    </div>
+    
+    <script>
+        let currentQuestion = 1;
+        const totalQuestions = 5;
+        const answers = {};
+        
+        function startQuiz() {
+            document.getElementById('quiz-section').classList.add('active');
+            document.getElementById('results-section').classList.remove('active');
+            currentQuestion = 1;
+            updateProgress();
+            showQuestion(1);
+            
+            // Scroll to quiz
+            document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function updateProgress() {
+            const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+        
+        function showQuestion(num) {
+            document.querySelectorAll('.question').forEach(q => {
+                q.classList.remove('active');
+            });
+            document.querySelector(`[data-question="${num}"]`).classList.add('active');
+        }
+        
+        function answer(questionNum, value) {
+            answers[questionNum] = value;
+            
+            if (questionNum < totalQuestions) {
+                currentQuestion++;
+                updateProgress();
+                showQuestion(currentQuestion);
+            } else {
+                // Quiz complete
+                updateProgress();
+                document.getElementById('progress-bar').style.width = '100%';
+                
+                setTimeout(() => {
+                    document.getElementById('quiz-section').classList.remove('active');
+                    document.getElementById('results-section').classList.add('active');
+                    document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
